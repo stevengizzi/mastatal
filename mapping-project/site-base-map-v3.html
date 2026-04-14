@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Site Base Map — Rancho Mastatal PDC</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #171c17; color: #b8c8b0; font-family: 'Courier New', monospace; padding: 16px; min-height: 100vh; -webkit-user-select: none; user-select: none; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 17px; font-weight: 700; color: #7db860; letter-spacing: .06em; text-transform: uppercase; }
+  .sub { font-size: 9.5px; color: #4e5e44; margin-top: 3px; }
+  .header { margin-bottom: 12px; border-bottom: 1px solid #262e26; padding-bottom: 8px; }
+  .controls { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; align-items: center; }
+  .controls label { font-size: 10px; cursor: pointer; display: flex; align-items: center; gap: 4px; }
+  .controls label.on { color: #7db860; }
+  .controls label.off { color: #3e4e38; }
+  .controls input[type=checkbox] { accent-color: #7db860; width: 12px; height: 12px; }
+  .sep { height: 14px; width: 1px; background: #2a352a; }
+  .btn { font-size: 10px; padding: 3px 10px; border-radius: 3px; cursor: pointer; font-family: inherit; }
+  .btn-measure { border: 1px solid #3a4a35; background: transparent; color: #5a6a50; }
+  .btn-measure.active { border-color: #d0a030; background: #2a2510; color: #d0a030; }
+  .btn-clear { border: 1px solid #4a2a2a; background: #2a1515; color: #c06050; }
+  .btn-add-node { border: 1px solid #3a4a35; background: transparent; color: #5a7a50; }
+  .btn-add-node.active { border-color: #4a9a40; background: #1a2a1a; color: #7db860; }
+  .btn-add-interior { border: 1px solid #3a5a4a; background: transparent; color: #4a8a70; }
+  .btn-add-interior.active { border-color: #3a9a70; background: #0f2a20; color: #5ab890; }
+  .btn-fullscreen { border: 1px solid #3a4a35; background: transparent; color: #5a7a50; font-size: 13px; padding: 1px 7px; border-radius: 3px; cursor: pointer; font-family: inherit; }
+  .btn-fullscreen.active { border-color: #4a9a40; background: #1a2a1a; color: #7db860; }
+  .btn-sm { font-size: 13px; padding: 2px 8px; border-radius: 3px; cursor: pointer; font-family: inherit; border: 1px solid #3a4a35; background: #1a221a; color: #7db860; min-width: 28px; text-align: center; }
+  .btn-sm:active { background: #2a352a; }
+  .hint { font-size: 10px; color: #d0a030; margin-bottom: 8px; padding: 4px 8px; background: #2a2510; border-radius: 3px; border: 1px solid #3a3020; display: inline-block; }
+  .map-wrap { background: #111511; border-radius: 5px; border: 1px solid #222a22; padding: 4px; overflow: hidden; position: relative; touch-action: none; }
+  svg { display: block; }
+  .zoom-controls { display: flex; gap: 6px; align-items: center; }
+  .zoom-pct { font-size: 10px; color: #607a50; min-width: 36px; text-align: center; }
+  .edge-info, .meas-panel { margin-top: 8px; background: #1a221a; border-radius: 4px; padding: 5px 10px; border: 1px solid #2a3a28; font-size: 11px; }
+  .meas-panel { background: #1a1a10; border-color: #3a3020; }
+  .meas-title { font-size: 9px; color: #8a7a50; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .meas-row { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; }
+  .meas-row + .meas-row { border-top: 1px solid #2a2a1a; }
+  .meas-label { color: #d0a030; font-size: 11px; }
+  .meas-val { color: #b8a860; font-size: 11px; }
+  .meas-elev { color: #6a6a50; margin-left: 8px; font-size: 10px; }
+  .meas-del { font-size: 9px; color: #6a4a40; background: none; border: none; cursor: pointer; font-family: inherit; padding: 0 4px; }
+  .stats { margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .stat { background: #181f18; border-radius: 3px; padding: 5px 8px; border: 1px solid #222a22; }
+  .stat-label { font-size: 7.5px; color: #3e4e38; text-transform: uppercase; letter-spacing: .07em; }
+  .stat-val { font-size: 10.5px; color: #94a488; margin-top: 1px; }
+  .note { font-size: 9px; color: #3e4e38; margin-top: 12px; line-height: 1.5; }
+  .reset-view { font-size: 9px; color: #5a6a50; background: none; border: 1px solid #2a352a; border-radius: 3px; padding: 2px 6px; cursor: pointer; font-family: inherit; }
+  .reset-view:active { background: #1a221a; }
+  /* Edit panel */
+  .edit-panel { margin-top: 8px; background: #1a1a10; border-radius: 4px; padding: 10px 14px; border: 1px solid #3a3020; font-size: 11px; }
+  .edit-panel-title { font-size: 9px; color: #8a7a50; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+  .edit-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; margin-bottom: 10px; }
+  .edit-field { display: flex; flex-direction: column; gap: 3px; }
+  .edit-field-label { font-size: 8px; color: #4e5e44; text-transform: uppercase; letter-spacing: .05em; }
+  .edit-field input { background: #111511; border: 1px solid #2a352a; color: #94a488; font-family: 'Courier New', monospace; font-size: 11px; padding: 4px 6px; border-radius: 2px; width: 100%; -webkit-user-select: text; user-select: text; }
+  .edit-field input:focus { outline: none; border-color: #4a6a3a; color: #b8c8b0; }
+  .edit-elev-hint { font-size: 9px; color: #4e5e44; }
+  .edit-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .btn-save { border: 1px solid #4a6a3a; background: #1a2a1a; color: #7db860; }
+  .btn-cancel { border: 1px solid #3a4a35; background: transparent; color: #5a6a50; }
+  .btn-delete { border: 1px solid #4a2a2a; background: #1a1010; color: #c06050; margin-left: auto; }
+  .btn-delete.confirm { background: #2a1010; border-color: #b03030; color: #e05050; }
+  /* Compact paired toggles */
+  .pair-tog { display: flex; border: 1px solid #2a352a; border-radius: 3px; overflow: hidden; }
+  .pair-tog button { font-size: 9px; padding: 2px 8px; border: none; background: transparent; color: #3e4e38; cursor: pointer; font-family: inherit; min-height: 22px; line-height: 1; }
+  .pair-tog button + button { border-left: 1px solid #2a352a; }
+  .pair-tog button.active { background: #2a352a; color: #7db860; }
+  /* Inline scale input */
+  #scaleInlineInput {
+    display: none; position: fixed;
+    background: #111511; border: 1px solid #4a6a3a;
+    color: #607a50; font-family: 'Courier New', monospace; font-size: 9px;
+    padding: 0 3px; border-radius: 2px; outline: none; z-index: 500;
+    -webkit-user-select: text; user-select: text;
+  }
+  /* Saved indicator */
+  .saved-dot { display: inline-block; width: 6px; height: 6px; background: #7db860; border-radius: 50%; margin-left: 8px; opacity: 0; transition: opacity 0.25s; vertical-align: middle; }
+  /* Data panel */
+  .data-section { margin-top: 10px; }
+  .data-toggle { font-size: 10px; color: #4e5e44; background: none; border: 1px solid #222a22; border-radius: 3px 3px 3px 3px; padding: 4px 8px; cursor: pointer; font-family: inherit; width: 100%; text-align: left; }
+  .data-toggle:hover { color: #607a50; border-color: #2a352a; }
+  .data-body { background: #181f18; border: 1px solid #2a352a; border-top: none; border-radius: 0 0 4px 4px; padding: 8px 10px; display: none; }
+  .data-body.open { display: block; }
+  .data-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 6px; }
+  .data-row:last-child { margin-bottom: 0; }
+  .btn-data-export { border: 1px solid #2a4a2a; background: #141e14; color: #5a8a50; }
+  .btn-data-export:hover { border-color: #4a6a3a; color: #7db860; }
+  .btn-data-import { border: 1px solid #2a3a4a; background: #14181e; color: #507090; }
+  .btn-data-import:hover { border-color: #3a5a7a; color: #7090c0; }
+  .btn-data-reset { border: 1px solid #3a2a2a; background: #1a1414; color: #806050; }
+  .btn-data-reset:hover { border-color: #5a3a3a; color: #c06050; }
+  /* Layers dropdown */
+  #btnLayers { display: none; font-size: 10px; padding: 3px 8px; border-radius: 3px; cursor: pointer; font-family: inherit; border: 1px solid #2a352a; background: #181f18; color: #607a50; white-space: nowrap; }
+  #layersGroup { display: contents; }
+  body.fs-mode #btnLayers { display: flex; align-items: center; min-height: 44px; padding: 0 10px; }
+  body.fs-mode #layersGroup { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: rgba(17,21,17,0.97); border: 1px solid #2a352a; border-radius: 4px; padding: 8px 12px; flex-direction: column; gap: 7px; z-index: 300; min-width: 140px; }
+  body.fs-mode #layersGroup.layers-open { display: flex; }
+  body.fs-mode #layersGroup label { font-size: 11px; min-height: 36px; display: flex; align-items: center; gap: 6px; }
+  body.fs-mode #layersGroup input[type=checkbox] { width: 15px; height: 15px; }
+  /* Fullscreen button hidden in fs-mode — Esc exits */
+  body.fs-mode #btnFullscreen { display: none; }
+  /* Touch targets in fullscreen */
+  body.fs-mode .controls .btn { min-height: 44px; display: flex; align-items: center; }
+  body.fs-mode .controls .btn-sm { min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; }
+  body.fs-mode .controls .reset-view { min-height: 44px; display: flex; align-items: center; }
+  body.fs-mode .controls .zoom-pct { min-height: 44px; display: flex; align-items: center; }
+  body.fs-mode .pair-tog button { min-height: 44px; padding: 0 12px; }
+  /* Toolbar collapse */
+  #toolbarInner { display: contents; }
+  #btnToolbarCollapse { display: none; font-size: 18px; padding: 2px 8px; border-radius: 3px; cursor: pointer; font-family: inherit; border: 1px solid #3a4a35; background: #1a221a; color: #7db860; line-height: 1; }
+  body.fs-mode #btnToolbarCollapse { display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
+  body.fs-mode.toolbar-collapsed #toolbarInner { display: none; }
+  /* Fullscreen overrides */
+  body.fs-mode { padding: 0 !important; background: #0a0f0a !important; }
+  body.fs-mode .wrap { max-width: 100% !important; padding: 0 !important; }
+  body.fs-mode .header { display: none; }
+  body.fs-mode .controls {
+    position: fixed; top: 12px; left: 12px; z-index: 200;
+    background: rgba(20,25,20,0.9); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    border: 1px solid #2a352a; border-radius: 6px;
+    padding: 6px 10px; margin: 0; width: auto;
+  }
+  body.fs-mode.toolbar-collapsed .controls {
+    background: transparent !important; border-color: transparent !important;
+    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+    padding: 0 !important; box-shadow: none !important;
+  }
+  body.fs-mode #hint {
+    position: fixed; top: 52px; left: 50%; transform: translateX(-50%); z-index: 200;
+  }
+  body.fs-mode .map-wrap {
+    position: fixed; inset: 0; border-radius: 0; border: none; padding: 0; z-index: 10;
+  }
+  body.fs-mode #map { width: 100% !important; height: 100% !important; display: block; }
+  body.fs-mode .edge-info {
+    position: fixed; bottom: 8px; left: 8px; right: 8px; z-index: 200; margin: 0;
+  }
+  body.fs-mode .meas-panel {
+    position: fixed; bottom: 56px; left: 8px; right: 8px; z-index: 200; margin: 0;
+  }
+  body.fs-mode .edit-panel {
+    position: fixed; bottom: 8px; left: 8px; right: 8px; z-index: 200; margin: 0;
+    max-height: 40vh; overflow-y: auto;
+  }
+  body.fs-mode .stats, body.fs-mode .note { display: none; }
+  /* HUD overlay elements — positioned in corners of the map container */
+  #hudCompass {
+    position: absolute; top: 16px; right: 16px; z-index: 100;
+    cursor: grab; pointer-events: auto;
+    user-select: none; -webkit-user-select: none;
+  }
+  #hudCompass:active { cursor: grabbing; }
+  #hudLegend {
+    position: absolute; top: 112px; right: 16px; z-index: 100;
+    pointer-events: none;
+    background: rgba(20,25,20,0.88); border: 1px solid #262e26; border-radius: 4px;
+    padding: 5px 8px; font-family: 'Courier New', monospace;
+  }
+  #hudScale {
+    position: absolute; bottom: 16px; left: 16px; z-index: 100;
+    pointer-events: none;
+    background: rgba(20,25,20,0.88); border: 1px solid #262e26; border-radius: 4px;
+    padding: 5px 8px; font-family: 'Courier New', monospace;
+  }
+  #hudScale .scale-lbl { pointer-events: auto; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>Site Base Map — Rancho Mastatal<span class="saved-dot" id="savedDot" title="Saved"></span></h1>
+    <p class="sub" id="subLine">PDC Design Project · Apr 2026 · 9 nodes · Elevations: Google Earth DEM (ft) · Offline</p>
+  </div>
+
+  <div class="controls" id="controls" style="position:relative">
+    <button id="btnToolbarCollapse" title="Show/hide controls">▼</button>
+    <div id="toolbarInner">
+      <button id="btnLayers">☰ Layers</button>
+      <div id="layersGroup">
+        <label class="on"><input type="checkbox" id="togLen" checked> Edge lengths</label>
+        <label class="on"><input type="checkbox" id="togElev" checked> Elevations</label>
+        <label class="on"><input type="checkbox" id="togLabels" checked> Labels</label>
+        <label class="on"><input type="checkbox" id="togInterior" checked> Interior pts</label>
+        <label class="on"><input type="checkbox" id="togContours" checked> Contours</label>
+        <label class="on"><input type="checkbox" id="togHighLow" checked> High/Low markers</label>
+      </div>
+      <div class="sep"></div>
+      <button class="btn btn-measure" id="btnMeasure">◇ Measure</button>
+      <button class="btn btn-clear" id="btnClear" style="display:none">Clear</button>
+      <button class="btn btn-add-node" id="btnAddNode">+ Node</button>
+      <button class="btn btn-add-interior" id="btnAddInterior">+ Interior</button>
+      <div class="sep"></div>
+      <div class="zoom-controls">
+        <button class="btn-sm" id="zoomOut">−</button>
+        <span class="zoom-pct" id="zoomPct">100%</span>
+        <button class="btn-sm" id="zoomIn">+</button>
+        <button class="reset-view" id="resetView">Reset</button>
+      </div>
+      <div class="sep"></div>
+      <div class="pair-tog" id="unitTog" title="Distance &amp; elevation unit">
+        <button id="btnUnitFt" class="active">ft</button>
+        <button id="btnUnitM">m</button>
+      </div>
+      <div class="pair-tog" id="scaleModeTog" title="Scale bar style">
+        <button id="btnScaleBar" class="active">bar</button>
+        <button id="btnScaleRatio">1:R</button>
+      </div>
+    </div>
+    <button class="btn-fullscreen" id="btnFullscreen" title="Toggle fullscreen">⛶</button>
+  </div>
+  <div id="hint" style="display:none" class="hint"></div>
+
+  <div class="map-wrap" id="mapWrap">
+    <svg id="map" xmlns="http://www.w3.org/2000/svg"></svg>
+    <!-- Compass HUD — top-right -->
+    <div id="hudCompass">
+      <svg id="hudCompassSvg" width="70" height="90" viewBox="-35 -40 70 90" style="display:block;overflow:visible;">
+        <circle r="24" fill="rgba(20,25,20,0.92)" stroke="#262e26"/>
+        <line x1="0" y1="-20" x2="0" y2="20" stroke="#2a352a" stroke-width=".5"/>
+        <line x1="-20" y1="0" x2="20" y2="0" stroke="#2a352a" stroke-width=".5"/>
+        <g id="compassNeedle" transform="rotate(0)">
+          <polygon points="0,-22 -5,-9 5,-9" fill="#b83838"/>
+          <polygon points="0,22 -5,9 5,9" fill="#2a352a"/>
+          <text y="-28" text-anchor="middle" fill="#b83838" font-size="12" font-weight="700" font-family="'Courier New',monospace">N</text>
+          <text x="28" dominant-baseline="middle" text-anchor="middle" fill="#3e4e38" font-size="9" font-family="'Courier New',monospace">E</text>
+          <text x="-28" dominant-baseline="middle" text-anchor="middle" fill="#3e4e38" font-size="9" font-family="'Courier New',monospace">W</text>
+          <text y="34" text-anchor="middle" fill="#3e4e38" font-size="9" font-family="'Courier New',monospace">S</text>
+        </g>
+        <text id="compassRotLabel" y="46" text-anchor="middle" fill="#607a50" font-size="7.5" font-family="'Courier New',monospace">N↑</text>
+      </svg>
+    </div>
+    <!-- Elevation Legend HUD — top-right below compass -->
+    <div id="hudLegend">
+      <div style="font-size:8.5px;font-weight:600;color:#4e5e44;text-transform:uppercase;letter-spacing:.06em;">ELEVATION</div>
+      <div id="hudLegendBar" style="width:80px;height:5px;border-radius:2px;margin:3px 0;background:linear-gradient(to right,#3898d0,#7a9a60,#e8a030);"></div>
+      <div style="display:flex;justify-content:space-between;width:80px;">
+        <span id="hudLegendMin" style="font-size:7.5px;color:#4e5e44;"></span>
+        <span id="hudLegendMax" style="font-size:7.5px;color:#4e5e44;"></span>
+      </div>
+    </div>
+    <!-- Scale Bar HUD — bottom-left -->
+    <div id="hudScale">
+      <svg id="hudScaleSvg" style="display:block;overflow:visible;"></svg>
+      <div id="hudRatioText" style="display:none;font-size:10px;color:#607a50;cursor:pointer;" class="scale-lbl"></div>
+    </div>
+  </div>
+
+  <div id="edgeInfo" class="edge-info" style="display:none"></div>
+  <div id="measPanel" class="meas-panel" style="display:none"></div>
+  <div id="editPanel" class="edit-panel" style="display:none"></div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="data-section">
+    <button class="data-toggle" id="dataToggle">▸ Data — export / import / reset</button>
+    <div class="data-body" id="dataBody">
+      <div class="data-row">
+        <button class="btn btn-data-export" id="btnExport">↓ Export JSON</button>
+        <button class="btn btn-data-import" id="btnImport">↑ Import JSON</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none">
+      </div>
+      <div class="data-row">
+        <button class="btn btn-data-reset" id="btnReset">Reset to Defaults…</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">Scroll/pinch to zoom · drag to pan · drag compass to rotate · dbl-click compass to reset north · click nodes/interior pts to edit · Measure then click two nodes · tap edges for bearing · click scale label to edit · Esc to exit placement mode</p>
+</div>
+
+<input type="number" id="scaleInlineInput" min="1" step="1">
+
+<script>
+// ── Site boundary data ────────────────────────────────────────────────────
+const SITE = [
+  { label: "W",   lon: -84.37507, lat: 9.67310, elev: 275.81 },
+  { label: "NW",  lon: -84.37478, lat: 9.67368, elev: 277.22 },
+  { label: "N",   lon: -84.37448, lat: 9.67376, elev: 277.57 },
+  { label: "NE",  lon: -84.37429, lat: 9.67363, elev: 278.08 },
+  { label: "ENE", lon: -84.37430, lat: 9.67347, elev: 278.06 },
+  { label: "E",   lon: -84.37459, lat: 9.67319, elev: 277.24 },
+  { label: "ESE", lon: -84.37460, lat: 9.67290, elev: 276.15 },
+  { label: "SE",  lon: -84.37469, lat: 9.67241, elev: 274.46 },
+  { label: "SW",  lon: -84.37509, lat: 9.67236, elev: 272.98 },
+];
+
+// ── Interior elevation points ─────────────────────────────────────────────
+const INTERIOR = [];
+
+let VA_IDX = 1;
+
+const LAT_R = 9.673, LON_R = -84.375;
+const D2M_LAT = 110574, D2M_LON = 110574 * Math.cos(LAT_R * Math.PI / 180);
+const m2ft = m => m * 3.28084;
+const ft2m = ft => ft / 3.28084;
+const loc = (lon, lat) => ({ x: (lon - LON_R) * D2M_LON, y: (lat - LAT_R) * D2M_LAT });
+const dst = (a, b) => Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+const brg = (a, b) => { let g = Math.atan2(b.x - a.x, b.y - a.y) * 180 / Math.PI; return g < 0 ? g + 360 : g; };
+function eCol(t) { return `rgb(${Math.round(60+(1-t)*150)},${Math.round(100+t*110)},${Math.round(60+(1-t)*60)})`; }
+
+// ── Label helpers ─────────────────────────────────────────────────────────
+
+function getLabelZoomDetail() {
+  if (!showElev) return 'name';
+  if (zoom >= 1.5) return 'full';
+  return 'elev';
+}
+
+function labelBbox(sx, sy, dx, dy, anchor, txt, fsize) {
+  const cw = (fsize || 10.5) * 0.62;
+  const w = txt.length * cw, h = 13;
+  let lx = sx + dx;
+  if (anchor === 'middle') lx -= w / 2;
+  else if (anchor === 'end') lx -= w;
+  return { x: lx - 2, y: sy + dy - h - 1, w: w + 4, h: h + 2 };
+}
+
+function bboxOverlap(a, b) {
+  return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+}
+
+function resolveNodeLabels() {
+  const showMarkers = showElev && zoom >= 1.5;
+  const pcx = ps.reduce((s, p) => s + p.sx, 0) / ps.length;
+  const pcy = ps.reduce((s, p) => s + p.sy, 0) / ps.length;
+
+  const items = SITE.map((s, i) => {
+    const isH = showHighLow && i === hiIdx, isL = showHighLow && i === loIdx;
+    const base = labelOffsets[i];
+    let text = '';
+    if (showLabels) text = s.label;
+    if (showElev) {
+      const elevStr = dispElevVal(s.elev) + elevSuffix();
+      const marker = showMarkers ? (isH ? ' ▲' : isL ? ' ▼' : '') : '';
+      text = text ? `${text} ${elevStr}${marker}` : `${elevStr}${marker}`;
+    }
+    return { i, sx: ps[i].sx, sy: ps[i].sy, dx: base.dx, dy: base.dy, a: base.a, text, shortened: false };
+  });
+
+  const boxOf = (it) => labelBbox(it.sx, it.sy, it.dx, it.dy, it.a, it.text);
+
+  for (let i = 0; i < items.length; i++) {
+    for (let j = i + 1; j < items.length; j++) {
+      if (!bboxOverlap(boxOf(items[i]), boxOf(items[j]))) continue;
+      const djx = items[j].sx - pcx, djy = items[j].sy - pcy;
+      const dlen = Math.sqrt(djx * djx + djy * djy) || 1;
+      const nx = djx / dlen, ny = djy / dlen;
+      const attempts = [
+        { dx: Math.round(nx * 28), dy: Math.round(ny * 28), a: nx > 0.4 ? 'start' : nx < -0.4 ? 'end' : 'middle' },
+        { dx: Math.round(-nx * 22), dy: Math.round(-ny * 22), a: nx > 0.4 ? 'end' : nx < -0.4 ? 'start' : 'middle' },
+        { dx: 0, dy: -24, a: 'middle' },
+        { dx: 0, dy: 24, a: 'middle' },
+        { dx: Math.round(nx * 36), dy: Math.round(ny * 36), a: nx > 0.4 ? 'start' : nx < -0.4 ? 'end' : 'middle' },
+      ];
+      let resolved = false;
+      for (const att of attempts) {
+        const old = { dx: items[j].dx, dy: items[j].dy, a: items[j].a };
+        Object.assign(items[j], att);
+        if (!bboxOverlap(boxOf(items[i]), boxOf(items[j]))) { resolved = true; break; }
+        Object.assign(items[j], old);
+      }
+      if (!resolved && (showLabels || showElev)) {
+        const base = labelOffsets[j];
+        // Fall back to shortest visible text: name if showing labels, else elevation only
+        const shortText = showLabels ? SITE[j].label : (dispElevVal(SITE[j].elev) + elevSuffix());
+        items[j].shortened = true;
+        items[j].text = shortText;
+        items[j].dx = base.dx; items[j].dy = base.dy; items[j].a = base.a;
+      }
+    }
+  }
+  return items;
+}
+
+// ── Mobile tooltip state ──────────────────────────────────────────────────
+let activeTooltip = null; // { type: 'node'|'interior'|'edge', idx }
+
+// ── Derived state — recomputed on every render ────────────────────────────
+let pl, elevs, minE, maxE, hiIdx, loIdx;
+let mnX, mxX, mnY, mxY, sc, ox, oy;
+let ps, edges, dists, area, perim, labelOffsets;
+let ipl, ips;
+let globalMinE, globalMaxE;
+
+const BASE_W = 600, BASE_H = 600, pad = 65;
+
+function recompute() {
+  pl = SITE.map(s => loc(s.lon, s.lat));
+  elevs = SITE.map(s => s.elev);
+  minE = Math.min(...elevs); maxE = Math.max(...elevs);
+  hiIdx = elevs.indexOf(maxE); loIdx = elevs.indexOf(minE);
+
+  const xs = pl.map(p => p.x), ys = pl.map(p => p.y);
+  mnX = Math.min(...xs); mxX = Math.max(...xs);
+  mnY = Math.min(...ys); mxY = Math.max(...ys);
+  sc = Math.min((BASE_W - pad*2) / (mxX - mnX), (BASE_H - pad*2) / (mxY - mnY));
+  ox = (BASE_W - (mxX - mnX) * sc) / 2;
+  oy = (BASE_H - (mxY - mnY) * sc) / 2;
+
+  const svgPt = p => ({ sx: ox + (p.x - mnX) * sc, sy: BASE_H - (oy + (p.y - mnY) * sc) });
+  ps = pl.map(svgPt);
+
+  edges = pl.map((_, i) => {
+    const j = (i + 1) % pl.length;
+    const dm = dst(pl[i], pl[j]);
+    return { from: ps[i], to: ps[j], distM: dm, distFt: m2ft(dm), bearing: brg(pl[i], pl[j]) };
+  });
+
+  dists = [];
+  for (let i = 0; i < pl.length; i++) {
+    dists[i] = [];
+    for (let j = 0; j < pl.length; j++) dists[i][j] = dst(pl[i], pl[j]);
+  }
+
+  area = 0;
+  for (let i = 0; i < pl.length; i++) {
+    const j = (i + 1) % pl.length;
+    area += pl[i].x * pl[j].y - pl[j].x * pl[i].y;
+  }
+  area = Math.abs(area) / 2;
+  perim = edges.reduce((s, e) => s + e.distM, 0);
+
+  const cx = ps.reduce((s, p) => s + p.sx, 0) / ps.length;
+  const cy = ps.reduce((s, p) => s + p.sy, 0) / ps.length;
+  labelOffsets = ps.map(p => {
+    const dx = p.sx - cx, dy = p.sy - cy;
+    const len = Math.sqrt(dx * dx + dy * dy) || 1;
+    const nx = dx / len, ny = dy / len;
+    const odx = Math.round(nx * 20), ody = Math.round(ny * 20);
+    const a = nx > 0.4 ? 'start' : nx < -0.4 ? 'end' : 'middle';
+    return { dx: odx, dy: ody, a };
+  });
+
+  // Interior points
+  ipl = INTERIOR.map(s => loc(s.lon, s.lat));
+  ips = ipl.map(p => ({ sx: ox + (p.x - mnX) * sc, sy: BASE_H - (oy + (p.y - mnY) * sc) }));
+
+  // Global elevation range across all points
+  const allElevs = [...elevs, ...INTERIOR.map(s => s.elev)];
+  globalMinE = Math.min(...allElevs);
+  globalMaxE = Math.max(...allElevs);
+}
+
+// ── App state ─────────────────────────────────────────────────────────────
+let showLen = true, showElev = true, showLabels = true, measureMode = false, addNodeMode = false;
+let showInterior = true, showContours = true, showHighLow = true, addInteriorMode = false;
+let toolbarCollapsed = false;
+let selNodes = [], measurements = [];
+let selectedNodeIdx = null, editOriginal = null, deleteConfirmPending = false;
+let selectedInteriorIdx = null, interiorEditOriginal = null, deleteInteriorConfirmPending = false;
+let scaleMeterVal = 20;
+let elevUnit = 'ft';
+let scaleBarMode = 'bar';
+let mapRotation = 0;
+
+// ── Unified point helpers (boundary idx >= 0; interior idx = -(i+1)) ──────
+function ptByIdx(idx) {
+  return idx >= 0 ? SITE[idx] : INTERIOR[-(idx + 1)];
+}
+function svgByIdx(idx) {
+  return idx >= 0 ? ps[idx] : ips[-(idx + 1)];
+}
+function labelByIdx(idx) {
+  return ptByIdx(idx)?.label ?? '?';
+}
+function distBetween(aIdx, bIdx) {
+  const ptA = ptByIdx(aIdx), ptB = ptByIdx(bIdx);
+  if (!ptA || !ptB) return 0;
+  return dst(loc(ptA.lon, ptA.lat), loc(ptB.lon, ptB.lat));
+}
+
+// ── Elevation display helpers ─────────────────────────────────────────────
+function dispElevVal(m) {
+  return elevUnit === 'ft' ? Math.round(m2ft(m)) : parseFloat(m.toFixed(1));
+}
+function elevSuffix() { return elevUnit === 'ft' ? "'" : 'm'; }
+function dispDistVal(m) {
+  return elevUnit === 'ft' ? Math.round(m2ft(m)) : parseFloat(m.toFixed(1));
+}
+function distSuffix() { return elevUnit === 'ft' ? 'ft' : 'm'; }
+
+// ── Scale ratio helpers ───────────────────────────────────────────────────
+function currentRatio() {
+  const W_px = svgEl.getBoundingClientRect().width;
+  if (!W_px || !sc) return 500;
+  const realMPerPx = BASE_W / (W_px * zoom * sc);
+  const screenMPerPx = 0.0254 / 96;
+  return realMPerPx / screenMPerPx;
+}
+function roundedRatio(r) {
+  if (r < 100)  return Math.round(r / 5) * 5;
+  if (r < 500)  return Math.round(r / 10) * 10;
+  if (r < 2000) return Math.round(r / 50) * 50;
+  return Math.round(r / 100) * 100;
+}
+function zoomForRatio(R) {
+  const W_px = svgEl.getBoundingClientRect().width;
+  if (!W_px || !sc) return zoom;
+  return BASE_W * 96 / (W_px * R * sc * 0.0254);
+}
+
+// ── View state ────────────────────────────────────────────────────────────
+let vbX = 0, vbY = 0, vbW = BASE_W, vbH = BASE_H;
+let zoom = 1;
+const MIN_ZOOM = 0.5, MAX_ZOOM = 4;
+
+const svgEl = document.getElementById('map');
+const mapWrap = document.getElementById('mapWrap');
+const NS = 'http://www.w3.org/2000/svg';
+
+function updateViewBox() {
+  vbW = BASE_W / zoom; vbH = BASE_H / zoom;
+  const maxPanX = BASE_W * (1 - 1/zoom);
+  const maxPanY = BASE_H * (1 - 1/zoom);
+  vbX = Math.max(-BASE_W*0.3, Math.min(vbX, maxPanX + BASE_W*0.3));
+  vbY = Math.max(-BASE_H*0.3, Math.min(vbY, maxPanY + BASE_H*0.3));
+  svgEl.setAttribute('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`);
+  document.getElementById('zoomPct').textContent = Math.round(zoom * 100) + '%';
+  renderHudScale();
+}
+
+function setZoom(newZoom, centerX, centerY) {
+  const clamped = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, newZoom));
+  if (clamped === zoom) return;
+  const cx = centerX !== undefined ? centerX : vbX + vbW/2;
+  const cy = centerY !== undefined ? centerY : vbY + vbH/2;
+  const ratio = zoom / clamped;
+  vbX = cx - (cx - vbX) * ratio;
+  vbY = cy - (cy - vbY) * ratio;
+  zoom = clamped;
+  updateViewBox();
+}
+
+function resetView() { zoom = 1; vbX = 0; vbY = 0; updateViewBox(); }
+
+mapWrap.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const rect = svgEl.getBoundingClientRect();
+  const mx = (e.clientX - rect.left) / rect.width;
+  const my = (e.clientY - rect.top) / rect.height;
+  const cx = vbX + mx * vbW, cy = vbY + my * vbH;
+  const steps = Math.max(0.5, Math.min(3, Math.abs(e.deltaY) / 100));
+  const factor = e.deltaY > 0 ? Math.pow(0.95, steps) : Math.pow(1.05, steps);
+  setZoom(zoom * factor, cx, cy);
+}, { passive: false });
+
+let lastTouchDist = 0, lastTouchAngle = null, lastTouchCenter = null, isPinching = false;
+
+mapWrap.addEventListener('touchstart', (e) => {
+  if (activeTooltip && e.touches.length === 1) {
+    activeTooltip = null;
+    render();
+  }
+  if (e.touches.length === 2) {
+    isPinching = true;
+    const t = e.touches;
+    lastTouchDist = Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+    lastTouchCenter = { x: (t[0].clientX + t[1].clientX)/2, y: (t[0].clientY + t[1].clientY)/2 };
+    lastTouchAngle = null;
+  } else if (e.touches.length === 1 && !isPinching) {
+    dragStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, vbX, vbY };
+    wasDragged = false;
+  }
+}, { passive: true });
+
+mapWrap.addEventListener('touchmove', (e) => {
+  if (e.touches.length === 2 && isPinching) {
+    e.preventDefault();
+    const t = e.touches;
+    const dist = Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+    const center = { x: (t[0].clientX + t[1].clientX)/2, y: (t[0].clientY + t[1].clientY)/2 };
+    const rect = svgEl.getBoundingClientRect();
+    const mx = (center.x - rect.left) / rect.width;
+    const my = (center.y - rect.top) / rect.height;
+    const cx = vbX + mx * vbW, cy = vbY + my * vbH;
+    const rawFactor = dist / lastTouchDist;
+    const factor = Math.max(0.97, Math.min(1.03, rawFactor));
+    setZoom(zoom * factor, cx, cy);
+    const angle = Math.atan2(t[0].clientY - t[1].clientY, t[0].clientX - t[1].clientX) * 180 / Math.PI;
+    if (lastTouchAngle !== null) {
+      let delta = angle - lastTouchAngle;
+      if (delta > 180) delta -= 360;
+      if (delta < -180) delta += 360;
+      mapRotation += delta;
+      render();
+    }
+    lastTouchAngle = angle;
+    lastTouchDist = dist;
+    lastTouchCenter = center;
+    debouncedSaveRotation();
+  } else if (e.touches.length === 1 && dragStart && !isPinching) {
+    e.preventDefault();
+    const dx = e.touches[0].clientX - dragStart.x;
+    const dy = e.touches[0].clientY - dragStart.y;
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) wasDragged = true;
+    const rect = svgEl.getBoundingClientRect();
+    vbX = dragStart.vbX - dx * (vbW / rect.width);
+    vbY = dragStart.vbY - dy * (vbH / rect.height);
+    updateViewBox();
+  }
+}, { passive: false });
+
+mapWrap.addEventListener('touchend', (e) => {
+  if (e.touches.length < 2) { isPinching = false; lastTouchAngle = null; }
+  if (e.touches.length === 0) {
+    if (!wasDragged && addNodeMode && dragStart) {
+      const touch = e.changedTouches[0];
+      addNodeAt(touch.clientX, touch.clientY);
+    } else if (!wasDragged && addInteriorMode && dragStart) {
+      const touch = e.changedTouches[0];
+      addInteriorPointAt(touch.clientX, touch.clientY);
+    }
+    dragStart = null;
+    wasDragged = false;
+  }
+});
+
+let dragStart = null, wasDragged = false;
+mapWrap.addEventListener('mousedown', (e) => {
+  if (e.button !== 0) return;
+  if (compassDragActive) return;
+  if (e.target.closest && e.target.closest('#hudCompass')) return;
+  dragStart = { x: e.clientX, y: e.clientY, vbX, vbY };
+  wasDragged = false;
+  if (!addNodeMode && !addInteriorMode) mapWrap.style.cursor = 'grabbing';
+});
+window.addEventListener('mousemove', (e) => {
+  if (compassDragActive) {
+    const angle = angleFromCompassCenter(e.clientX, e.clientY);
+    let delta = angle - compassDragStartAngle;
+    if (delta > 180) delta -= 360;
+    if (delta < -180) delta += 360;
+    mapRotation = compassDragStartRot + delta;
+    render();
+    debouncedSaveRotation();
+    return;
+  }
+  if (!dragStart) return;
+  const dx = e.clientX - dragStart.x, dy = e.clientY - dragStart.y;
+  if (Math.abs(dx) > 5 || Math.abs(dy) > 5) wasDragged = true;
+  const rect = svgEl.getBoundingClientRect();
+  vbX = dragStart.vbX - dx * (vbW / rect.width);
+  vbY = dragStart.vbY - dy * (vbH / rect.height);
+  updateViewBox();
+});
+window.addEventListener('mouseup', () => {
+  if (compassDragActive) {
+    compassDragActive = false;
+    const compassEl = document.getElementById('hudCompass');
+    if (compassEl) compassEl.style.cursor = 'grab';
+    return;
+  }
+  dragStart = null;
+  if (!addNodeMode && !addInteriorMode) mapWrap.style.cursor = '';
+});
+
+document.getElementById('zoomIn').addEventListener('click',  () => setZoom(zoom * 1.1));
+document.getElementById('zoomOut').addEventListener('click', () => setZoom(zoom / 1.1));
+document.getElementById('resetView').addEventListener('click', resetView);
+
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (k === 'textContent') e.textContent = v; else e.setAttribute(k, v);
+  }
+  if (parent) parent.appendChild(e);
+  return e;
+}
+
+function clientToSvgCoords(clientX, clientY) {
+  const rect = svgEl.getBoundingClientRect();
+  return {
+    svgX: vbX + (clientX - rect.left) / rect.width * vbW,
+    svgY: vbY + (clientY - rect.top) / rect.height * vbH
+  };
+}
+
+function svgCoordsToLatLon(svgX, svgY) {
+  const wx = (svgX - ox) / sc + mnX;
+  const wy = (BASE_H - svgY - oy) / sc + mnY;
+  return { lat: wy / D2M_LAT + LAT_R, lon: wx / D2M_LON + LON_R };
+}
+
+// Rotate a point back through the map rotation to get unrotated SVG coords
+function unrotatePoint(svgX, svgY) {
+  const cx = BASE_W / 2, cy = BASE_H / 2;
+  const rad = -mapRotation * Math.PI / 180;
+  const dx = svgX - cx, dy = svgY - cy;
+  return {
+    x: cx + dx * Math.cos(rad) - dy * Math.sin(rad),
+    y: cy + dx * Math.sin(rad) + dy * Math.cos(rad)
+  };
+}
+
+function nearestEdgeTo(svgX, svgY) {
+  let minDist = Infinity, minIdx = 0;
+  ps.forEach((p, i) => {
+    const j = (i + 1) % ps.length, q = ps[j];
+    const ex = q.sx - p.sx, ey = q.sy - p.sy;
+    const len2 = ex*ex + ey*ey;
+    const t = len2 > 0 ? Math.max(0, Math.min(1, ((svgX - p.sx)*ex + (svgY - p.sy)*ey) / len2)) : 0;
+    const dist = Math.hypot(svgX - p.sx - t*ex, svgY - p.sy - t*ey);
+    if (dist < minDist) { minDist = dist; minIdx = i; }
+  });
+  return minIdx;
+}
+
+function addNodeAt(clientX, clientY) {
+  const { svgX, svgY } = clientToSvgCoords(clientX, clientY);
+  const { x: ux, y: uy } = unrotatePoint(svgX, svgY);
+  const edgeIdx = nearestEdgeTo(ux, uy);
+  const { lat, lon } = svgCoordsToLatLon(ux, uy);
+  const elev = (SITE[edgeIdx].elev + SITE[(edgeIdx + 1) % SITE.length].elev) / 2;
+
+  const usedLabels = new Set(SITE.map(s => s.label));
+  let n = SITE.length + 1;
+  while (usedLabels.has(`P${n}`)) n++;
+
+  measurements = measurements.map(([a, b]) => [a > edgeIdx ? a+1 : a, b > edgeIdx ? b+1 : b]);
+  selNodes = selNodes.map(i => i > edgeIdx ? i+1 : i);
+  if (selectedNodeIdx !== null && selectedNodeIdx > edgeIdx) selectedNodeIdx++;
+  if (VA_IDX > edgeIdx) VA_IDX++;
+
+  SITE.splice(edgeIdx + 1, 0, { label: `P${n}`, lat, lon, elev });
+  recompute(); render(); renderStats(); updateSubLine(); autoSave();
+}
+
+function deleteNode(idx) {
+  if (SITE.length <= 3) return;
+  measurements = measurements
+    .filter(([a, b]) => a !== idx && b !== idx)
+    .map(([a, b]) => [a > idx ? a-1 : a, b > idx ? b-1 : b]);
+  selNodes = selNodes.filter(i => i !== idx).map(i => i > idx ? i-1 : i);
+  if (VA_IDX === idx) VA_IDX = 0; else if (VA_IDX > idx) VA_IDX--;
+  SITE.splice(idx, 1);
+  selectedNodeIdx = null; editOriginal = null; deleteConfirmPending = false;
+  hideEditPanel();
+  recompute(); render(); renderStats(); updateSubLine(); autoSave();
+}
+
+// ── Delaunay triangulation — Bowyer-Watson ────────────────────────────────
+
+function inCircumcircle(pts, ai, bi, ci, pi) {
+  const ax = pts[ai].x, ay = pts[ai].y;
+  const bx = pts[bi].x, by = pts[bi].y;
+  const cx = pts[ci].x, cy = pts[ci].y;
+  const px = pts[pi].x, py = pts[pi].y;
+  const D = 2 * (ax * (by - cy) + bx * (cy - ay) + cx * (ay - by));
+  if (Math.abs(D) < 1e-10) return false;
+  const a2 = ax*ax + ay*ay, b2 = bx*bx + by*by, c2 = cx*cx + cy*cy;
+  const ux = (a2*(by-cy) + b2*(cy-ay) + c2*(ay-by)) / D;
+  const uy = (a2*(cx-bx) + b2*(ax-cx) + c2*(bx-ax)) / D;
+  const r2 = (ax-ux)*(ax-ux) + (ay-uy)*(ay-uy);
+  const d2 = (px-ux)*(px-ux) + (py-uy)*(py-uy);
+  return d2 < r2 + 1e-10;
+}
+
+function bowyerWatson(inputPts) {
+  const n = inputPts.length;
+  if (n < 3) return [];
+
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const p of inputPts) {
+    if (p.x < minX) minX = p.x; if (p.x > maxX) maxX = p.x;
+    if (p.y < minY) minY = p.y; if (p.y > maxY) maxY = p.y;
+  }
+  const span = Math.max(maxX - minX, maxY - minY) * 3 + 10;
+  const midX = (minX + maxX) / 2, midY = (minY + maxY) / 2;
+
+  const pts = [
+    ...inputPts,
+    { x: midX - span * 20, y: midY - span },
+    { x: midX,             y: midY + span * 20 },
+    { x: midX + span * 20, y: midY - span }
+  ];
+  const st0 = n, st1 = n + 1, st2 = n + 2;
+  let triangles = [{ a: st0, b: st1, c: st2 }];
+
+  for (let i = 0; i < n; i++) {
+    const bad = triangles.filter(t => inCircumcircle(pts, t.a, t.b, t.c, i));
+
+    const polygon = [];
+    for (const tri of bad) {
+      for (const edge of [[tri.a, tri.b], [tri.b, tri.c], [tri.c, tri.a]]) {
+        let shared = false;
+        for (const other of bad) {
+          if (other === tri) continue;
+          if (
+            (other.a===edge[0]&&other.b===edge[1]) || (other.b===edge[0]&&other.c===edge[1]) || (other.c===edge[0]&&other.a===edge[1]) ||
+            (other.a===edge[1]&&other.b===edge[0]) || (other.b===edge[1]&&other.c===edge[0]) || (other.c===edge[1]&&other.a===edge[0])
+          ) { shared = true; break; }
+        }
+        if (!shared) polygon.push(edge);
+      }
+    }
+
+    triangles = triangles.filter(t => !bad.includes(t));
+    for (const edge of polygon) triangles.push({ a: edge[0], b: edge[1], c: i });
+  }
+
+  return triangles
+    .filter(t => t.a < n && t.b < n && t.c < n)
+    .map(t => [t.a, t.b, t.c]);
+}
+
+// ── Contour extraction ────────────────────────────────────────────────────
+
+function computeContourLevels(minElev, maxElev) {
+  const range = maxElev - minElev;
+  if (range < 0.01) return { interval: 0, levels: [] };
+  let interval;
+  if (range < 5) interval = 0.5;
+  else if (range < 15) interval = 1;
+  else if (range < 50) interval = 2;
+  else interval = 5;
+  const firstLevel = Math.ceil(minElev / interval) * interval;
+  const levels = [];
+  for (let lev = firstLevel; lev <= maxElev + 1e-9; lev += interval) {
+    levels.push(parseFloat(lev.toFixed(4)));
+  }
+  return { interval, levels };
+}
+
+function extractContourSegments(allPts, triangles, level) {
+  const segs = [];
+  for (const [ai, bi, ci] of triangles) {
+    const verts = [
+      { x: allPts[ai].sx, y: allPts[ai].sy, e: allPts[ai].elev },
+      { x: allPts[bi].sx, y: allPts[bi].sy, e: allPts[bi].elev },
+      { x: allPts[ci].sx, y: allPts[ci].sy, e: allPts[ci].elev }
+    ];
+    const crossings = [];
+    for (let i = 0; i < 3; i++) {
+      const v0 = verts[i], v1 = verts[(i+1)%3];
+      if ((v0.e < level) !== (v1.e < level)) {
+        const t = (level - v0.e) / (v1.e - v0.e);
+        crossings.push({ x: v0.x + t*(v1.x-v0.x), y: v0.y + t*(v1.y-v0.y) });
+      }
+    }
+    if (crossings.length === 2) segs.push(crossings);
+  }
+  return segs;
+}
+
+function chainSegments(segs) {
+  const EPS = 0.5;
+  const remaining = segs.map(([p1, p2]) => [{ ...p1 }, { ...p2 }]);
+  const chains = [];
+  while (remaining.length > 0) {
+    const chain = [...remaining.shift()];
+    let extended = true;
+    while (extended) {
+      extended = false;
+      for (let i = 0; i < remaining.length; i++) {
+        const [p1, p2] = remaining[i];
+        const tail = chain[chain.length - 1];
+        const head = chain[0];
+        if (Math.hypot(p1.x-tail.x, p1.y-tail.y) < EPS) {
+          chain.push(p2); remaining.splice(i,1); extended = true; break;
+        } else if (Math.hypot(p2.x-tail.x, p2.y-tail.y) < EPS) {
+          chain.push(p1); remaining.splice(i,1); extended = true; break;
+        } else if (Math.hypot(p1.x-head.x, p1.y-head.y) < EPS) {
+          chain.unshift(p2); remaining.splice(i,1); extended = true; break;
+        } else if (Math.hypot(p2.x-head.x, p2.y-head.y) < EPS) {
+          chain.unshift(p1); remaining.splice(i,1); extended = true; break;
+        }
+      }
+    }
+    chains.push(chain);
+  }
+  return chains;
+}
+
+// ── Main render ───────────────────────────────────────────────────────────
+
+function render() {
+  recompute();
+  const resolvedNodeLabels = resolveNodeLabels();
+  const nodeLabelBBoxes = resolvedNodeLabels.map(it => labelBbox(it.sx, it.sy, it.dx, it.dy, it.a, it.text));
+  svgEl.innerHTML = '';
+  svgEl.setAttribute('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`);
+
+  const pathStr = ps.map((p, i) => `${i?'L':'M'}${p.sx},${p.sy}`).join(' ') + 'Z';
+
+  const defs = el('defs', {}, svgEl);
+
+  const pat = el('pattern', {id:'g', width:40, height:40, patternUnits:'userSpaceOnUse'}, defs);
+  el('path', {d:'M40 0L0 0 0 40', fill:'none', stroke:'#181f18', 'stroke-width':'.4'}, pat);
+
+  const tg = el('linearGradient', {id:'tg', x1:'.3', y1:'0', x2:'.7', y2:'1'}, defs);
+  el('stop', {offset:'0%', 'stop-color':'#3a5a30', 'stop-opacity':'.22'}, tg);
+  el('stop', {offset:'100%', 'stop-color':'#4a3a25', 'stop-opacity':'.10'}, tg);
+
+  const elg = el('linearGradient', {id:'el', x1:'0', y1:'0', x2:'1', y2:'0'}, defs);
+  el('stop', {offset:'0%', 'stop-color':'#3898d0'}, elg);
+  el('stop', {offset:'50%', 'stop-color':'#7a9a60'}, elg);
+  el('stop', {offset:'100%', 'stop-color':'#e8a030'}, elg);
+
+  // Clip path — site boundary polygon
+  const clipEl = el('clipPath', {id:'siteClip'}, defs);
+  el('path', {d: pathStr}, clipEl);
+
+  el('rect', {x:-5000, y:-5000, width:10000, height:10000, fill:'#111511'}, svgEl);
+  el('rect', {x:-5000, y:-5000, width:10000, height:10000, fill:'url(#g)'}, svgEl);
+
+  const mapG = el('g', {
+    id: 'mapContent',
+    transform: `rotate(${mapRotation},${BASE_W/2},${BASE_H/2})`
+  }, svgEl);
+
+  // 1. Terrain gradient fill
+  el('path', {d:pathStr, fill:'url(#tg)'}, mapG);
+
+  // 2. Contour lines
+  if (showContours) {
+    const allPts = [
+      ...ps.map((p, i) => ({ sx: p.sx, sy: p.sy, elev: SITE[i].elev })),
+      ...ips.map((p, i) => ({ sx: p.sx, sy: p.sy, elev: INTERIOR[i].elev }))
+    ];
+    if (allPts.length >= 3) {
+      const { interval, levels } = computeContourLevels(globalMinE, globalMaxE);
+      if (levels.length > 0) {
+        const triPts = allPts.map(p => ({ x: p.sx, y: p.sy }));
+        const triangles = bowyerWatson(triPts);
+        if (triangles.length > 0) {
+          const contourG = el('g', { 'clip-path': 'url(#siteClip)', style: 'pointer-events:none' }, mapG);
+          // Track index contour label positions to skip redundant ones
+          const placedContourLabelBBoxes = [];
+          let lastIndexLabeledLev = null;
+          levels.forEach((lev, li) => {
+            const segs = extractContourSegments(allPts, triangles, lev);
+            if (segs.length === 0) return;
+            const chains = chainSegments(segs);
+            const stepFromFirst = Math.round((lev - levels[0]) / interval);
+            const isIndex = stepFromFirst % 5 === 0;
+            const stroke = isIndex ? '#8a9a80' : '#4a6a50';
+            const sw = isIndex ? 1.1 : 0.6;
+            const op = isIndex ? 0.60 : 0.42;
+            for (const chain of chains) {
+              const d = chain.map((p, i) => `${i===0?'M':'L'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('');
+              el('path', { d, fill:'none', stroke, 'stroke-width':sw, opacity:op, 'stroke-linecap':'round', 'stroke-linejoin':'round' }, contourG);
+            }
+            // Contour label on index contours
+            if (isIndex) {
+              // Skip if previous index contour was labeled and is too close (dense area)
+              if (lastIndexLabeledLev !== null) {
+                const prevSegs = extractContourSegments(allPts, triangles, lastIndexLabeledLev);
+                if (prevSegs.length > 0) {
+                  const prevChains = chainSegments(prevSegs);
+                  const prevMidPts = prevChains.map(c => c[Math.floor(c.length / 2)]).filter(Boolean);
+                  const curMidPts = chains.map(c => c[Math.floor(c.length / 2)]).filter(Boolean);
+                  const minDist = prevMidPts.reduce((d, pp) =>
+                    Math.min(d, curMidPts.reduce((d2, cp) => Math.min(d2, Math.hypot(cp.x-pp.x, cp.y-pp.y)), Infinity))
+                  , Infinity);
+                  if (minDist < 15 / zoom) return;
+                }
+              }
+              const longChains = chains.filter(c => c.length >= 2 && Math.hypot(c[c.length-1].x-c[0].x, c[c.length-1].y-c[0].y) > 25);
+              if (longChains.length > 0) {
+                const ch = longChains[Math.floor(longChains.length / 2)];
+                const mid = Math.floor(ch.length / 2);
+                const p0 = ch[Math.max(0, mid-1)], p1 = ch[Math.min(ch.length-1, mid+1)];
+                const mx = (p0.x+p1.x)/2, my = (p0.y+p1.y)/2;
+                // Skip if this position overlaps a node label
+                const cLblBbox = { x: mx - 16, y: my - 6, w: 32, h: 12 };
+                const overlapsNodeLabel = nodeLabelBBoxes.some(nb => bboxOverlap(nb, cLblBbox));
+                const overlapsExisting = placedContourLabelBBoxes.some(pb => bboxOverlap(pb, cLblBbox));
+                if (overlapsNodeLabel || overlapsExisting) return;
+                placedContourLabelBBoxes.push(cLblBbox);
+                lastIndexLabeledLev = lev;
+                let ang = Math.atan2(p1.y-p0.y, p1.x-p0.x)*180/Math.PI;
+                if (ang > 90) ang -= 180; if (ang < -90) ang += 180;
+                const lTxt = dispElevVal(lev) + elevSuffix();
+                el('text', {
+                  x: mx, y: my, 'text-anchor':'middle', 'dominant-baseline':'middle',
+                  transform: `rotate(${ang.toFixed(1)},${mx.toFixed(1)},${my.toFixed(1)})`,
+                  fill:'#8a9a80', 'font-size':7.5, 'font-family':"'Courier New',monospace",
+                  textContent: lTxt, 'paint-order':'stroke', stroke:'#111511', 'stroke-width':2.5
+                }, contourG);
+              }
+            }
+          });
+        }
+      }
+    }
+  }
+
+  // 3. Boundary polygon stroke
+  el('path', {d:pathStr, fill:'none', stroke:'#5a9040', 'stroke-width':'2.5', 'stroke-linejoin':'round'}, mapG);
+
+  // 4. Measurement lines
+  measurements.forEach(([a, b]) => {
+    const svgA = svgByIdx(a), svgB = svgByIdx(b);
+    if (!svgA || !svgB) return;
+    const dm = distBetween(a, b);
+    const mx = (svgA.sx+svgB.sx)/2, my = (svgA.sy+svgB.sy)/2;
+    const lblTxt = dispDistVal(dm) + distSuffix();
+    const lblW = lblTxt.length * 6 + 12;
+    el('line', {x1:svgA.sx, y1:svgA.sy, x2:svgB.sx, y2:svgB.sy, stroke:'#d0a030', 'stroke-width':'1.5', 'stroke-dasharray':'6,4', opacity:'0.8'}, mapG);
+    el('rect', {x:mx-lblW/2, y:my-10, width:lblW, height:16, rx:3, fill:'#1a1a10', 'fill-opacity':'.92', stroke:'#3a3020', 'stroke-width':'.5'}, mapG);
+    el('text', {x:mx, y:my+2, 'text-anchor':'middle', 'dominant-baseline':'middle', fill:'#d0a030', 'font-size':10, 'font-weight':700, 'font-family':"'Courier New',monospace", textContent:lblTxt, style:'pointer-events:none'}, mapG);
+  });
+
+  // Measure mode — ring around selected node
+  if (measureMode && selNodes.length === 1) {
+    const sp = svgByIdx(selNodes[0]);
+    if (sp) el('circle', {cx:sp.sx, cy:sp.sy, r:14, fill:'none', stroke:'#d0a030', 'stroke-width':2, 'stroke-dasharray':'4,3', opacity:'.7'}, mapG);
+  }
+
+  // 5. Edge labels
+  edges.forEach((e, i) => {
+    const mx = (e.from.sx+e.to.sx)/2, my = (e.from.sy+e.to.sy)/2;
+    const dx = e.to.sx-e.from.sx, dy = e.to.sy-e.from.sy;
+    let a = Math.atan2(dy, dx)*180/Math.PI;
+    if (a > 90) a -= 180; if (a < -90) a += 180;
+    const ln = Math.sqrt(dx*dx+dy*dy), nx = -dy/ln*16, ny = dx/ln*16;
+    const hit = el('line', {x1:e.from.sx, y1:e.from.sy, x2:e.to.sx, y2:e.to.sy, stroke:'transparent', 'stroke-width':12, style:'cursor:pointer'}, mapG);
+    hit.addEventListener('mouseenter', () => showEdgeInfo(i));
+    hit.addEventListener('mouseleave', hideEdgeInfo);
+    hit.addEventListener('touchstart', (ev) => { ev.stopPropagation(); showEdgeTooltip(i); });
+    if (showLen && zoom >= 0.8) {
+      el('text', {x:mx+nx, y:my+ny, 'text-anchor':'middle', 'dominant-baseline':'middle', transform:`rotate(${a},${mx+nx},${my+ny})`, fill:'#607a50', 'font-size':10, 'font-weight':400, 'font-family':"'Courier New',monospace", textContent:dispDistVal(e.distM)+distSuffix(), style:'pointer-events:none'}, mapG);
+    }
+  });
+
+  // 6. Interior points
+  if (showInterior) {
+    const intG = el('g', { 'clip-path': 'url(#siteClip)' }, mapG);
+    INTERIOR.forEach((s, i) => {
+      const p = ips[i];
+      const iCode = -(i + 1);
+      const isSel = selNodes.includes(iCode) || i === selectedInteriorIdx;
+      const t = globalMaxE === globalMinE ? 0.5 : (s.elev - globalMinE) / (globalMaxE - globalMinE);
+      const col = eCol(t);
+      const r = isSel ? 5.5 : 4;
+      const g = el('g', { style: (measureMode || addInteriorMode || addNodeMode) ? 'cursor:crosshair' : 'cursor:pointer' }, intG);
+
+      // Large transparent hit area (20px radius for mobile)
+      el('circle', {cx:p.sx, cy:p.sy, r:20, fill:'transparent'}, g);
+
+      // Diamond shape
+      el('polygon', {
+        points:`${p.sx},${p.sy-r} ${p.sx+r},${p.sy} ${p.sx},${p.sy+r} ${p.sx-r},${p.sy}`,
+        fill: col, 'fill-opacity':'.75',
+        stroke: isSel ? '#d0a030' : '#111511',
+        'stroke-width': isSel ? 2 : 1
+      }, g);
+
+      // Hover label (hidden by default; only omitted when both labels and elevations are off)
+      let lblTxt = '';
+      if (showLabels) lblTxt = s.label;
+      if (showElev) { const e = dispElevVal(s.elev) + elevSuffix(); lblTxt = lblTxt ? `${lblTxt} ${e}` : e; }
+      const lbl = lblTxt ? el('text', {
+        x: p.sx + 9, y: p.sy + 1,
+        fill: '#94a488', 'font-size': 9, 'font-weight': 500,
+        'font-family': "'Courier New',monospace",
+        textContent: lblTxt,
+        opacity: isSel ? '1' : '0',
+        style: 'pointer-events:none'
+      }, g) : null;
+
+      if (lbl) {
+        g.addEventListener('mouseenter', () => lbl.setAttribute('opacity', '1'));
+        g.addEventListener('mouseleave', () => { if (i !== selectedInteriorIdx) lbl.setAttribute('opacity', '0'); });
+      }
+
+      if (!addInteriorMode && !addNodeMode) {
+        g.addEventListener('click', (e) => { e.stopPropagation(); handleInteriorClick(i); });
+        g.addEventListener('touchend', (e) => {
+          e.preventDefault(); e.stopPropagation();
+          activeTooltip = { type: 'interior', idx: i };
+          render();
+          handleInteriorClick(i);
+        });
+      }
+    });
+  }
+
+  // 7. Boundary nodes + labels
+  ps.forEach((p, i) => {
+    const s = SITE[i];
+    const isH = showHighLow && i === hiIdx, isL = showHighLow && i === loIdx, isVA = i === VA_IDX;
+    const isSel = selNodes.includes(i) || i === selectedNodeIdx;
+    const t = globalMaxE === globalMinE ? 0.5 : (s.elev - globalMinE) / (globalMaxE - globalMinE);
+    const col = isH ? '#e8a030' : isL ? '#3898d0' : eCol(t);
+    const r = isH || isL ? 9 : isVA ? 7 : isSel ? 8 : 5.5;
+    const lbl = resolvedNodeLabels[i];
+    const g = el('g', {style: (measureMode || addNodeMode || addInteriorMode) ? 'cursor:crosshair' : 'cursor:pointer'}, mapG);
+    el('circle', {cx:p.sx, cy:p.sy, r:18, fill:'transparent'}, g);
+    el('circle', {cx:p.sx, cy:p.sy, r, fill:col, 'fill-opacity':'.8', stroke:isSel?'#d0a030':isH||isL?'#fff':'#111511', 'stroke-width':isSel?3:isH||isL?2.5:1.5}, g);
+    if (lbl.text) {
+      el('text', {x:p.sx+lbl.dx, y:p.sy+lbl.dy, 'text-anchor':lbl.a, fill:isH?'#e8a030':isL?'#3898d0':'#94a488', 'font-size':isH||isL?11.5:10.5, 'font-weight':isH||isL?700:600, 'font-family':"'Courier New',monospace", textContent:lbl.text, style:'pointer-events:none'}, g);
+    }
+    if (!addNodeMode && !addInteriorMode) {
+      g.addEventListener('click', (e) => { e.stopPropagation(); handleNodeClick(i); });
+      g.addEventListener('touchend', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        activeTooltip = { type: 'node', idx: i };
+        render();
+        handleNodeClick(i);
+      });
+    }
+  });
+
+  // 8. Vehicle access marker
+  const vp = ps[VA_IDX];
+  const vg = el('g', {style:'pointer-events:none'}, mapG);
+  el('line', {x1:vp.sx+8, y1:vp.sy-24, x2:vp.sx+8, y2:vp.sy-10, stroke:'#d0a030', 'stroke-width':1.5}, vg);
+  el('line', {x1:vp.sx, y1:vp.sy-24, x2:vp.sx+16, y2:vp.sy-24, stroke:'#d0a030', 'stroke-width':3, 'stroke-linecap':'round'}, vg);
+  el('text', {x:vp.sx+8, y:vp.sy-30, 'text-anchor':'middle', fill:'#d0a030', 'font-size':9, 'font-weight':700, 'font-family':"'Courier New',monospace", textContent:'◈ ACCESS'}, vg);
+
+  // Add-node overlay
+  if (addNodeMode) {
+    const overlay = el('rect', {x:-10000, y:-10000, width:30000, height:30000, fill:'transparent', style:'cursor:crosshair'}, mapG);
+    overlay.addEventListener('click', (e) => {
+      if (wasDragged) return;
+      e.stopPropagation();
+      addNodeAt(e.clientX, e.clientY);
+    });
+  }
+
+  // Add-interior overlay
+  if (addInteriorMode) {
+    const overlay = el('rect', {x:-10000, y:-10000, width:30000, height:30000, fill:'transparent', style:'cursor:crosshair'}, mapG);
+    overlay.addEventListener('click', (e) => {
+      if (wasDragged) return;
+      e.stopPropagation();
+      addInteriorPointAt(e.clientX, e.clientY);
+    });
+  }
+
+  // 9. Mobile tooltip
+  if (activeTooltip) {
+    let tx, ty, lines = [];
+    if (activeTooltip.type === 'node') {
+      const s = SITE[activeTooltip.idx], p = ps[activeTooltip.idx];
+      tx = p.sx; ty = p.sy;
+      lines = [s.label, `${dispElevVal(s.elev)}${elevSuffix()}`, `${s.lat.toFixed(5)}°N`, `${Math.abs(s.lon).toFixed(5)}°W`];
+    } else if (activeTooltip.type === 'interior') {
+      const s = INTERIOR[activeTooltip.idx], p = ips[activeTooltip.idx];
+      if (s && p) {
+        tx = p.sx; ty = p.sy;
+        lines = [s.label, `${dispElevVal(s.elev)}${elevSuffix()}`, `${s.lat.toFixed(5)}°N`, `${Math.abs(s.lon).toFixed(5)}°W`];
+      }
+    } else if (activeTooltip.type === 'edge') {
+      const e = edges[activeTooltip.idx];
+      tx = (e.from.sx + e.to.sx) / 2; ty = (e.from.sy + e.to.sy) / 2;
+      const fromLabel = SITE[activeTooltip.idx].label;
+      const toLabel = SITE[(activeTooltip.idx + 1) % SITE.length].label;
+      lines = [`${fromLabel}→${toLabel}`, `${dispDistVal(e.distM)}${distSuffix()}`, `Bearing ${e.bearing.toFixed(0)}°`];
+    }
+    if (lines.length > 0) {
+      const lh = 13, pad = 7, tw = Math.max(...lines.map(l => l.length)) * 6.2 + pad * 2;
+      const th = lines.length * lh + pad * 2;
+      const offY = -th - 16;
+      const tg = el('g', {style:'pointer-events:none'}, mapG);
+      el('rect', {x: tx - tw/2, y: ty + offY, width: tw, height: th, rx: 4, fill: '#1a1f1a', 'fill-opacity': '.92', stroke: '#4a6a3a', 'stroke-width': 1}, tg);
+      lines.forEach((line, li) => {
+        el('text', {x: tx, y: ty + offY + pad + lh * li + lh * 0.7, 'text-anchor': 'middle', fill: li === 0 ? '#7db860' : '#94a488', 'font-size': 9.5, 'font-weight': li === 0 ? 700 : 400, 'font-family': "'Courier New',monospace", textContent: line}, tg);
+      });
+    }
+  }
+
+  renderMeasurements();
+  renderHudCompass();
+  renderHudScale();
+  renderHudLegend();
+}
+
+// ── HUD overlay render functions ─────────────────────────────────────────
+
+function renderHudCompass() {
+  const needle = document.getElementById('compassNeedle');
+  if (needle) needle.setAttribute('transform', `rotate(${-mapRotation})`);
+  const rotLabel = document.getElementById('compassRotLabel');
+  if (rotLabel) {
+    const rotNorm = ((mapRotation % 360) + 360) % 360;
+    const label = rotNorm < 1 ? 'N↑' : rotNorm <= 180 ? `${Math.round(rotNorm)}°E` : `${Math.round(360-rotNorm)}°W`;
+    rotLabel.textContent = label;
+  }
+}
+
+function renderHudLegend() {
+  const minEl = document.getElementById('hudLegendMin');
+  const maxEl = document.getElementById('hudLegendMax');
+  if (minEl) minEl.textContent = dispElevVal(globalMinE) + elevSuffix();
+  if (maxEl) maxEl.textContent = dispElevVal(globalMaxE) + elevSuffix();
+}
+
+function renderHudScale() {
+  const svgEl2 = document.getElementById('hudScaleSvg');
+  const ratioDiv = document.getElementById('hudRatioText');
+  if (!svgEl2 || !ratioDiv) return;
+  if (scaleBarMode === 'ratio') {
+    svgEl2.style.display = 'none';
+    ratioDiv.style.display = 'block';
+    ratioDiv.textContent = `Scale 1:${roundedRatio(currentRatio())}`;
+    ratioDiv.onclick = (e) => { e.stopPropagation(); startInlineScaleEdit(ratioDiv, 'ratio'); };
+    return;
+  }
+  ratioDiv.style.display = 'none';
+  svgEl2.style.display = 'block';
+  const rect = mapWrap.getBoundingClientRect();
+  const screenPxPerSvgUnit = rect.width > 0 ? rect.width / vbW : 1;
+  const bpx = Math.max(20, Math.round(scaleMeterVal * sc * screenPxPerSvgUnit));
+  svgEl2.setAttribute('width', bpx + 'px');
+  svgEl2.setAttribute('height', '22px');
+  svgEl2.setAttribute('viewBox', `0 -6 ${bpx} 22`);
+  svgEl2.innerHTML = '';
+  const NS2 = 'http://www.w3.org/2000/svg';
+  const mkEl = (tag, attrs, parent) => {
+    const e = document.createElementNS(NS2, tag);
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (k === 'textContent') e.textContent = v; else e.setAttribute(k, v);
+    }
+    if (parent) parent.appendChild(e);
+    return e;
+  };
+  mkEl('rect', {x:0, y:-2, width:bpx, height:4, fill:'#2a352a', rx:1}, svgEl2);
+  mkEl('rect', {x:0, y:-2, width:bpx/2, height:4, fill:'#4a6a3a', rx:1}, svgEl2);
+  mkEl('line', {x1:0, y1:-6, x2:0, y2:6, stroke:'#4a6a3a', 'stroke-width':1}, svgEl2);
+  mkEl('line', {x1:bpx, y1:-6, x2:bpx, y2:6, stroke:'#4a6a3a', 'stroke-width':1}, svgEl2);
+  const scaleLbl = `${Number.isInteger(scaleMeterVal) ? scaleMeterVal : scaleMeterVal.toFixed(1)}m / ${Math.round(m2ft(scaleMeterVal))}ft`;
+  const scaleTxt = mkEl('text', {x:bpx/2, y:-10, 'text-anchor':'middle', fill:'#607a50', 'font-size':9, 'font-family':"'Courier New',monospace", textContent:scaleLbl, style:'cursor:pointer'}, svgEl2);
+  scaleTxt.addEventListener('click', (e) => { e.stopPropagation(); startInlineScaleEdit(scaleTxt, 'bar'); });
+}
+
+// ── Compass drag rotation ─────────────────────────────────────────────────
+
+let compassDragActive = false, compassDragStartAngle = 0, compassDragStartRot = 0;
+
+function getCompassCenterScreen() {
+  const compassEl = document.getElementById('hudCompass');
+  if (!compassEl) return null;
+  const r = compassEl.getBoundingClientRect();
+  return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+}
+
+function angleFromCompassCenter(clientX, clientY) {
+  const c = getCompassCenterScreen();
+  if (!c) return 0;
+  return Math.atan2(clientX - c.x, -(clientY - c.y)) * 180 / Math.PI;
+}
+
+function initCompassHandlers() {
+  const compassEl = document.getElementById('hudCompass');
+  if (!compassEl) return;
+  compassEl.addEventListener('mousedown', (e) => {
+    e.stopPropagation(); e.preventDefault();
+    compassDragActive = true;
+    compassDragStartAngle = angleFromCompassCenter(e.clientX, e.clientY);
+    compassDragStartRot = mapRotation;
+    compassEl.style.cursor = 'grabbing';
+  });
+  compassEl.addEventListener('dblclick', (e) => { e.stopPropagation(); mapRotation = 0; render(); autoSave(); });
+  compassEl.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      e.stopPropagation();
+      compassDragActive = true;
+      compassDragStartAngle = angleFromCompassCenter(e.touches[0].clientX, e.touches[0].clientY);
+      compassDragStartRot = mapRotation;
+    }
+  }, { passive: true });
+  compassEl.addEventListener('touchmove', (e) => {
+    if (compassDragActive && e.touches.length === 1) {
+      e.preventDefault(); e.stopPropagation();
+      const angle = angleFromCompassCenter(e.touches[0].clientX, e.touches[0].clientY);
+      let delta = angle - compassDragStartAngle;
+      if (delta > 180) delta -= 360; if (delta < -180) delta += 360;
+      mapRotation = compassDragStartRot + delta;
+      renderHudCompass();
+      render();
+      debouncedSaveRotation();
+    }
+  }, { passive: false });
+  compassEl.addEventListener('touchend', (e) => {
+    if (compassDragActive) { e.stopPropagation(); compassDragActive = false; compassEl.style.cursor = 'grab'; }
+  });
+}
+
+// ── Inline scale editing ──────────────────────────────────────────────────
+
+let scaleInlineActive = false;
+
+function startInlineScaleEdit(textEl, mode) {
+  if (scaleInlineActive) return;
+  scaleInlineActive = true;
+  const rect = textEl.getBoundingClientRect();
+  const inp = document.getElementById('scaleInlineInput');
+  inp.style.left   = rect.left + 'px';
+  inp.style.top    = rect.top + 'px';
+  inp.style.width  = Math.max(rect.width + 20, 60) + 'px';
+  inp.style.height = Math.max(rect.height + 4, 18) + 'px';
+  if (mode === 'bar') {
+    inp.value = Number.isInteger(scaleMeterVal) ? scaleMeterVal : parseFloat(scaleMeterVal.toFixed(1));
+    inp.min = 1; inp.max = 500; inp.step = 1;
+  } else {
+    inp.value = roundedRatio(currentRatio());
+    inp.min = 50; inp.max = 5000; inp.step = 10;
+  }
+  inp.style.display = 'block';
+  requestAnimationFrame(() => { inp.focus(); inp.select(); });
+
+  const confirm = () => {
+    if (!scaleInlineActive) return;
+    scaleInlineActive = false;
+    inp.style.display = 'none';
+    inp.onblur = null; inp.oninput = null; inp.onkeydown = null;
+    const v = parseFloat(inp.value);
+    if (!isNaN(v) && v > 0) {
+      if (mode === 'bar') { scaleMeterVal = Math.max(1, Math.min(500, v)); }
+      else { setZoom(zoomForRatio(Math.max(50, Math.min(5000, Math.round(v))))); }
+      render();
+    }
+  };
+  const cancel = () => {
+    scaleInlineActive = false;
+    inp.style.display = 'none';
+    inp.onblur = null; inp.oninput = null; inp.onkeydown = null;
+  };
+  inp.onkeydown = (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); confirm(); }
+    if (e.key === 'Escape') { e.preventDefault(); cancel(); }
+  };
+  inp.oninput = mode === 'bar' ? () => {
+    const v = parseFloat(inp.value);
+    if (!isNaN(v) && v > 0) { scaleMeterVal = Math.max(1, Math.min(500, v)); render(); }
+  } : null;
+  inp.onblur = confirm;
+}
+
+// ── Interior point placement ──────────────────────────────────────────────
+
+function addInteriorPointAt(clientX, clientY) {
+  const { svgX, svgY } = clientToSvgCoords(clientX, clientY);
+  const { x: ux, y: uy } = unrotatePoint(svgX, svgY);
+  const { lat, lon } = svgCoordsToLatLon(ux, uy);
+
+  // Auto-label: I1, I2, I3...
+  const usedLabels = new Set(INTERIOR.map(s => s.label));
+  let n = 1;
+  while (usedLabels.has(`I${n}`)) n++;
+
+  // Default elevation: average of all current points
+  const allElevs = [...SITE.map(s => s.elev), ...INTERIOR.map(s => s.elev)];
+  const defaultElev = allElevs.reduce((a, b) => a + b, 0) / allElevs.length;
+
+  INTERIOR.push({ label: `I${n}`, lat, lon, elev: parseFloat(defaultElev.toFixed(2)) });
+  const newIdx = INTERIOR.length - 1;
+
+  recompute();
+  render();
+  renderStats();
+  showInteriorEditPanel(newIdx);
+  autoSave();
+}
+
+function deleteInteriorPoint(idx) {
+  const iCode = -(idx + 1);
+  // Remove measurements referencing this interior point and adjust indices
+  measurements = measurements
+    .filter(([a, b]) => a !== iCode && b !== iCode)
+    .map(([a, b]) => {
+      const adjA = a < 0 && -(a+1) > idx ? a + 1 : a;
+      const adjB = b < 0 && -(b+1) > idx ? b + 1 : b;
+      return [adjA, adjB];
+    });
+  selNodes = selNodes
+    .filter(i => i !== iCode)
+    .map(i => (i < 0 && -(i+1) > idx) ? i + 1 : i);
+
+  INTERIOR.splice(idx, 1);
+  selectedInteriorIdx = null; interiorEditOriginal = null; deleteInteriorConfirmPending = false;
+  hideEditPanel();
+  recompute(); render(); renderStats(); updateSubLine(); autoSave();
+}
+
+// ── Boundary node click / edit ────────────────────────────────────────────
+
+function handleNodeClick(idx) {
+  if (measureMode) {
+    if (selNodes.length === 0) {
+      selNodes = [idx];
+    } else if (selNodes.length === 1) {
+      if (selNodes[0] === idx) {
+        selNodes = [];
+      } else {
+        const pair = [selNodes[0], idx];
+        const exists = measurements.some(m =>
+          (m[0]===pair[0]&&m[1]===pair[1]) || (m[0]===pair[1]&&m[1]===pair[0])
+        );
+        if (!exists) { measurements.push(pair); autoSave(); }
+        selNodes = [];
+      }
+    } else {
+      selNodes = [idx];
+    }
+    render(); updateHint(); updateClearBtn();
+    return;
+  }
+  if (selectedNodeIdx === idx) { cancelEdit(); return; }
+  showEditPanel(idx);
+  render();
+}
+
+function showEditPanel(idx) {
+  // Close interior edit if open
+  if (selectedInteriorIdx !== null) {
+    selectedInteriorIdx = null; interiorEditOriginal = null; deleteInteriorConfirmPending = false;
+  }
+  selectedNodeIdx = idx;
+  editOriginal = { ...SITE[idx] };
+  deleteConfirmPending = false;
+
+  const s = SITE[idx];
+  const elevDisplayVal = elevUnit === 'ft' ? Math.round(m2ft(s.elev)) : parseFloat(s.elev.toFixed(1));
+  const elevStep = elevUnit === 'ft' ? 1 : 0.1;
+  const elevFieldLabel = elevUnit === 'ft' ? 'Elevation (ft)' : 'Elevation (m)';
+  const elevHint = elevUnit === 'ft' ? `${s.elev.toFixed(1)} m` : `${Math.round(m2ft(s.elev))} ft`;
+  const panel = document.getElementById('editPanel');
+  panel.style.display = 'block';
+  panel.innerHTML = `
+    <div class="edit-panel-title">Edit Node — ${s.label}</div>
+    <div class="edit-fields">
+      <div class="edit-field">
+        <span class="edit-field-label">Label</span>
+        <input type="text" id="ei-label" value="${s.label}">
+      </div>
+      <div class="edit-field">
+        <span class="edit-field-label">${elevFieldLabel}</span>
+        <input type="number" id="ei-elev" value="${elevDisplayVal}" step="${elevStep}">
+        <span class="edit-elev-hint" id="ei-elev-hint">${elevHint}</span>
+      </div>
+      <div class="edit-field">
+        <span class="edit-field-label">Latitude (°)</span>
+        <input type="number" id="ei-lat" value="${s.lat}" step="0.00001">
+      </div>
+      <div class="edit-field">
+        <span class="edit-field-label">Longitude (°)</span>
+        <input type="number" id="ei-lon" value="${s.lon}" step="0.00001">
+      </div>
+    </div>
+    <div class="edit-actions">
+      <button class="btn btn-save" id="ei-save">Save</button>
+      <button class="btn btn-cancel" id="ei-cancel">Cancel</button>
+      <button class="btn btn-delete" id="ei-delete">Delete Node</button>
+    </div>
+  `;
+  document.getElementById('ei-save').addEventListener('click', saveEdit);
+  document.getElementById('ei-cancel').addEventListener('click', cancelEdit);
+  document.getElementById('ei-delete').addEventListener('click', handleDeleteClick);
+  const liveUpdate = () => applyEditInputs();
+  document.getElementById('ei-label').addEventListener('input', liveUpdate);
+  document.getElementById('ei-lat').addEventListener('input', liveUpdate);
+  document.getElementById('ei-lon').addEventListener('input', liveUpdate);
+  document.getElementById('ei-elev').addEventListener('input', () => {
+    const v = parseFloat(document.getElementById('ei-elev').value);
+    if (!isNaN(v)) {
+      const hint = elevUnit === 'ft' ? ft2m(v).toFixed(1) + ' m' : Math.round(m2ft(v)) + ' ft';
+      document.getElementById('ei-elev-hint').textContent = hint;
+    }
+    liveUpdate();
+  });
+}
+
+function applyEditInputs() {
+  const idx = selectedNodeIdx;
+  if (idx === null) return;
+  const label = document.getElementById('ei-label').value.trim() || editOriginal.label;
+  const lat = parseFloat(document.getElementById('ei-lat').value);
+  const lon = parseFloat(document.getElementById('ei-lon').value);
+  const elevInput = parseFloat(document.getElementById('ei-elev').value);
+  if (isNaN(lat) || isNaN(lon) || isNaN(elevInput)) return;
+  const elev = elevUnit === 'ft' ? ft2m(elevInput) : elevInput;
+  SITE[idx] = { label, lat, lon, elev };
+  recompute(); render(); renderStats();
+}
+
+function saveEdit() {
+  applyEditInputs();
+  editOriginal = null; selectedNodeIdx = null; deleteConfirmPending = false;
+  hideEditPanel(); render(); renderStats(); autoSave();
+}
+
+function cancelEdit() {
+  if (selectedNodeIdx !== null && editOriginal !== null) {
+    SITE[selectedNodeIdx] = { ...editOriginal };
+  }
+  selectedNodeIdx = null; editOriginal = null; deleteConfirmPending = false;
+  hideEditPanel(); recompute(); render(); renderStats();
+}
+
+function handleDeleteClick() {
+  if (SITE.length <= 3) {
+    const btn = document.getElementById('ei-delete');
+    if (btn) { btn.textContent = 'Min 3 nodes'; btn.disabled = true; }
+    return;
+  }
+  if (!deleteConfirmPending) {
+    deleteConfirmPending = true;
+    const btn = document.getElementById('ei-delete');
+    if (btn) { btn.textContent = 'Confirm Delete?'; btn.classList.add('confirm'); }
+    return;
+  }
+  deleteNode(selectedNodeIdx);
+}
+
+function hideEditPanel() {
+  const panel = document.getElementById('editPanel');
+  panel.style.display = 'none';
+  panel.innerHTML = '';
+}
+
+// ── Interior point click / edit ───────────────────────────────────────────
+
+function handleInteriorClick(idx) {
+  if (measureMode) {
+    const iCode = -(idx + 1);
+    if (selNodes.length === 0) {
+      selNodes = [iCode];
+    } else if (selNodes.length === 1) {
+      if (selNodes[0] === iCode) {
+        selNodes = [];
+      } else {
+        const a = selNodes[0], b = iCode;
+        const exists = measurements.some(m =>
+          (m[0]===a&&m[1]===b) || (m[0]===b&&m[1]===a)
+        );
+        if (!exists) { measurements.push([a, b]); autoSave(); }
+        selNodes = [];
+      }
+    } else {
+      selNodes = [iCode];
+    }
+    render(); updateHint(); updateClearBtn();
+    return;
+  }
+  if (selectedInteriorIdx === idx) { cancelInteriorEdit(); return; }
+  showInteriorEditPanel(idx);
+  render();
+}
+
+function showInteriorEditPanel(idx) {
+  // Close boundary edit if open
+  if (selectedNodeIdx !== null) {
+    selectedNodeIdx = null; editOriginal = null; deleteConfirmPending = false;
+  }
+  selectedInteriorIdx = idx;
+  interiorEditOriginal = { ...INTERIOR[idx] };
+  deleteInteriorConfirmPending = false;
+
+  const s = INTERIOR[idx];
+  const elevDisplayVal = elevUnit === 'ft' ? Math.round(m2ft(s.elev)) : parseFloat(s.elev.toFixed(1));
+  const elevStep = elevUnit === 'ft' ? 1 : 0.1;
+  const elevFieldLabel = elevUnit === 'ft' ? 'Elevation (ft)' : 'Elevation (m)';
+  const elevHint = elevUnit === 'ft' ? `${s.elev.toFixed(1)} m` : `${Math.round(m2ft(s.elev))} ft`;
+
+  const panel = document.getElementById('editPanel');
+  panel.style.display = 'block';
+  panel.innerHTML = `
+    <div class="edit-panel-title">Edit Interior Point — ${s.label}</div>
+    <div class="edit-fields">
+      <div class="edit-field">
+        <span class="edit-field-label">Label</span>
+        <input type="text" id="ei-label" value="${s.label}">
+      </div>
+      <div class="edit-field">
+        <span class="edit-field-label">${elevFieldLabel}</span>
+        <input type="number" id="ei-elev" value="${elevDisplayVal}" step="${elevStep}">
+        <span class="edit-elev-hint" id="ei-elev-hint">${elevHint}</span>
+      </div>
+      <div class="edit-field">
+        <span class="edit-field-label">Latitude (°)</span>
+        <input type="number" id="ei-lat" value="${s.lat}" step="0.00001">
+      </div>
+      <div class="edit-field">
+        <span class="edit-field-label">Longitude (°)</span>
+        <input type="number" id="ei-lon" value="${s.lon}" step="0.00001">
+      </div>
+    </div>
+    <div class="edit-actions">
+      <button class="btn btn-save" id="ei-save">Save</button>
+      <button class="btn btn-cancel" id="ei-cancel">Cancel</button>
+      <button class="btn btn-delete" id="ei-delete">Delete Point</button>
+    </div>
+  `;
+  document.getElementById('ei-save').addEventListener('click', saveInteriorEdit);
+  document.getElementById('ei-cancel').addEventListener('click', cancelInteriorEdit);
+  document.getElementById('ei-delete').addEventListener('click', handleInteriorDeleteClick);
+  const liveUpdate = () => applyInteriorEditInputs();
+  document.getElementById('ei-label').addEventListener('input', liveUpdate);
+  document.getElementById('ei-lat').addEventListener('input', liveUpdate);
+  document.getElementById('ei-lon').addEventListener('input', liveUpdate);
+  document.getElementById('ei-elev').addEventListener('input', () => {
+    const v = parseFloat(document.getElementById('ei-elev').value);
+    if (!isNaN(v)) {
+      const hint = elevUnit === 'ft' ? ft2m(v).toFixed(1) + ' m' : Math.round(m2ft(v)) + ' ft';
+      document.getElementById('ei-elev-hint').textContent = hint;
+    }
+    liveUpdate();
+  });
+}
+
+function applyInteriorEditInputs() {
+  const idx = selectedInteriorIdx;
+  if (idx === null) return;
+  const label = document.getElementById('ei-label').value.trim() || interiorEditOriginal.label;
+  const lat = parseFloat(document.getElementById('ei-lat').value);
+  const lon = parseFloat(document.getElementById('ei-lon').value);
+  const elevInput = parseFloat(document.getElementById('ei-elev').value);
+  if (isNaN(lat) || isNaN(lon) || isNaN(elevInput)) return;
+  const elev = elevUnit === 'ft' ? ft2m(elevInput) : elevInput;
+  INTERIOR[idx] = { label, lat, lon, elev };
+  recompute(); render(); renderStats();
+}
+
+function saveInteriorEdit() {
+  applyInteriorEditInputs();
+  interiorEditOriginal = null; selectedInteriorIdx = null; deleteInteriorConfirmPending = false;
+  hideEditPanel(); render(); renderStats(); autoSave();
+}
+
+function cancelInteriorEdit() {
+  if (selectedInteriorIdx !== null && interiorEditOriginal !== null) {
+    INTERIOR[selectedInteriorIdx] = { ...interiorEditOriginal };
+  }
+  selectedInteriorIdx = null; interiorEditOriginal = null; deleteInteriorConfirmPending = false;
+  hideEditPanel(); recompute(); render(); renderStats();
+}
+
+function handleInteriorDeleteClick() {
+  if (!deleteInteriorConfirmPending) {
+    deleteInteriorConfirmPending = true;
+    const btn = document.getElementById('ei-delete');
+    if (btn) { btn.textContent = 'Confirm Delete?'; btn.classList.add('confirm'); }
+    return;
+  }
+  deleteInteriorPoint(selectedInteriorIdx);
+}
+
+// ── Edge info ─────────────────────────────────────────────────────────────
+
+function showEdgeInfo(i) {
+  const info = document.getElementById('edgeInfo'), e = edges[i];
+  info.innerHTML = `<strong style="color:#7db860">${SITE[i].label} → ${SITE[(i+1)%SITE.length].label}:</strong> ${e.distM.toFixed(1)}m (${e.distFt.toFixed(0)}ft) · Bearing ${e.bearing.toFixed(0)}°`;
+  info.style.display = 'block';
+}
+function hideEdgeInfo() { document.getElementById('edgeInfo').style.display = 'none'; }
+
+function showEdgeTooltip(i) {
+  activeTooltip = { type: 'edge', idx: i };
+  render();
+  showEdgeInfo(i);
+}
+
+// ── Measurement panel ─────────────────────────────────────────────────────
+
+function renderMeasurements() {
+  const panel = document.getElementById('measPanel');
+  if (measurements.length === 0) { panel.style.display = 'none'; return; }
+  panel.style.display = 'block';
+  let html = '<div class="meas-title">Measurements</div>';
+  measurements.forEach(([a, b], mi) => {
+    const ptA = ptByIdx(a), ptB = ptByIdx(b);
+    if (!ptA || !ptB) return;
+    const dm = distBetween(a, b);
+    const elevDiff = ptB.elev - ptA.elev;
+    const dElev = dispElevVal(Math.abs(elevDiff));
+    const dElevStr = `Δ${elevDiff > 0 ? '+' : '-'}${dElev}${elevSuffix()}`;
+    html += `<div class="meas-row"><span class="meas-label">${ptA.label} ↔ ${ptB.label}</span><span class="meas-val">${dm.toFixed(1)}m (${Math.round(m2ft(dm))}ft)<span class="meas-elev">${dElevStr}</span></span><button class="meas-del" data-idx="${mi}">✕</button></div>`;
+  });
+  panel.innerHTML = html;
+  panel.querySelectorAll('.meas-del').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      measurements.splice(parseInt(e.target.dataset.idx), 1);
+      render(); updateClearBtn(); autoSave();
+    });
+  });
+}
+
+// ── UI state helpers ──────────────────────────────────────────────────────
+
+function updateHint() {
+  const hint = document.getElementById('hint');
+  if (measureMode && selNodes.length === 1) {
+    hint.textContent = `${labelByIdx(selNodes[0])} selected — tap second node`;
+    hint.style.display = 'inline-block';
+  } else if (addNodeMode) {
+    hint.textContent = 'Click map to place node on nearest edge · click "+ Node" or Esc to cancel';
+    hint.style.display = 'inline-block';
+  } else if (addInteriorMode) {
+    hint.textContent = 'Click/tap to place interior point · click "+ Interior" or Esc to cancel';
+    hint.style.display = 'inline-block';
+  } else {
+    hint.style.display = 'none';
+  }
+}
+
+function updateClearBtn() {
+  const btn = document.getElementById('btnClear');
+  btn.style.display = measurements.length > 0 ? 'inline-block' : 'none';
+  if (measurements.length > 0) btn.textContent = `Clear (${measurements.length})`;
+}
+
+function updateSubLine() {
+  const iPts = INTERIOR.length > 0 ? ` · ${INTERIOR.length} interior pt${INTERIOR.length !== 1 ? 's' : ''}` : '';
+  document.getElementById('subLine').textContent =
+    `PDC Design Project · Apr 2026 · ${SITE.length} nodes${iPts} · Elevations: Google Earth DEM (${elevUnit}) · Offline`;
+}
+
+function renderStats() {
+  const statsEl = document.getElementById('stats');
+  statsEl.innerHTML = '';
+  const hiLabel = SITE[hiIdx] ? SITE[hiIdx].label : '—';
+  const loLabel = SITE[loIdx] ? SITE[loIdx].label : '—';
+  const vaLabel = SITE[VA_IDX] ? SITE[VA_IDX].label : '—';
+  const evsuf = elevSuffix();
+  const { interval } = computeContourLevels(globalMinE, globalMaxE);
+  const cInterval = interval > 0
+    ? (elevUnit === 'ft' ? Math.round(m2ft(interval)) + 'ft' : interval + 'm')
+    : '—';
+  [
+    ['Perimeter', `${perim.toFixed(0)}m (${Math.round(m2ft(perim))}ft)`],
+    ['Area (approx)', `${area.toFixed(0)}m² (${(area/4047).toFixed(2)} ac)`],
+    ['Elev. Range', `${dispElevVal(globalMinE)}–${dispElevVal(globalMaxE)}${evsuf} (Δ${dispElevVal(globalMaxE-globalMinE)}${evsuf})`],
+    ['Highest', `${hiLabel} · ${dispElevVal(maxE)}${evsuf}`],
+    ['Lowest', `${loLabel} · ${dispElevVal(minE)}${evsuf}`],
+    ['Access', `${vaLabel} · vehicle`],
+    ['Interior Pts', `${INTERIOR.length}`],
+    ['Contour Int.', INTERIOR.length > 0 || SITE.length >= 3 ? cInterval : '—'],
+  ].forEach(([l, v]) => {
+    const d = document.createElement('div');
+    d.className = 'stat';
+    d.innerHTML = `<div class="stat-label">${l}</div><div class="stat-val">${v}</div>`;
+    statsEl.appendChild(d);
+  });
+}
+
+function updateAddNodeBtn() {
+  const btn = document.getElementById('btnAddNode');
+  btn.className = 'btn btn-add-node' + (addNodeMode ? ' active' : '');
+  btn.textContent = addNodeMode ? '✦ Adding' : '+ Node';
+}
+
+function updateAddInteriorBtn() {
+  const btn = document.getElementById('btnAddInterior');
+  btn.className = 'btn btn-add-interior' + (addInteriorMode ? ' active' : '');
+  btn.textContent = addInteriorMode ? '✦ Interior' : '+ Interior';
+}
+
+// ── localStorage persistence ──────────────────────────────────────────────
+
+let storageAvailable = false;
+try {
+  localStorage.setItem('_mastatal_test', '1');
+  localStorage.removeItem('_mastatal_test');
+  storageAvailable = true;
+} catch(e) {}
+
+const KEYS = {
+  site:         'mastatal_site',
+  interior:     'mastatal_interior',
+  vaIdx:        'mastatal_va_idx',
+  measurements: 'mastatal_measurements',
+  elevUnit:     'mastatal_elev_unit',
+  mapRotation:  'mastatal_map_rotation',
+};
+
+let savedFlashTimer = null;
+function flashSaved() {
+  const dot = document.getElementById('savedDot');
+  if (!dot) return;
+  dot.style.opacity = '1';
+  clearTimeout(savedFlashTimer);
+  savedFlashTimer = setTimeout(() => { dot.style.opacity = '0'; }, 1500);
+}
+
+function autoSave() {
+  if (!storageAvailable) return;
+  try {
+    localStorage.setItem(KEYS.site,         JSON.stringify(SITE));
+    localStorage.setItem(KEYS.interior,     JSON.stringify(INTERIOR));
+    localStorage.setItem(KEYS.vaIdx,        String(VA_IDX));
+    localStorage.setItem(KEYS.measurements, JSON.stringify(measurements));
+    localStorage.setItem(KEYS.elevUnit,     elevUnit);
+    localStorage.setItem(KEYS.mapRotation,  String(mapRotation));
+    flashSaved();
+  } catch(e) {}
+}
+
+let rotSaveTimer = null;
+function debouncedSaveRotation() {
+  clearTimeout(rotSaveTimer);
+  rotSaveTimer = setTimeout(autoSave, 600);
+}
+
+function loadFromStorage() {
+  if (!storageAvailable) return false;
+  try {
+    const siteRaw = localStorage.getItem(KEYS.site);
+    if (!siteRaw) return false;
+    const loadedSite = JSON.parse(siteRaw);
+    if (!Array.isArray(loadedSite) || loadedSite.length < 3) return false;
+
+    SITE.length = 0;
+    loadedSite.forEach(n => SITE.push(n));
+
+    const intRaw = localStorage.getItem(KEYS.interior);
+    INTERIOR.length = 0;
+    if (intRaw) {
+      const loadedInt = JSON.parse(intRaw);
+      if (Array.isArray(loadedInt)) loadedInt.forEach(n => INTERIOR.push(n));
+    }
+
+    const vaRaw = localStorage.getItem(KEYS.vaIdx);
+    if (vaRaw !== null) VA_IDX = parseInt(vaRaw, 10) || 0;
+
+    const measRaw = localStorage.getItem(KEYS.measurements);
+    if (measRaw) {
+      const loadedMeas = JSON.parse(measRaw);
+      if (Array.isArray(loadedMeas)) {
+        measurements.length = 0;
+        loadedMeas.forEach(m => measurements.push(m));
+      }
+    }
+
+    const unitRaw = localStorage.getItem(KEYS.elevUnit);
+    if (unitRaw === 'ft' || unitRaw === 'm') elevUnit = unitRaw;
+
+    const rotRaw = localStorage.getItem(KEYS.mapRotation);
+    if (rotRaw !== null) mapRotation = parseFloat(rotRaw) || 0;
+
+    return true;
+  } catch(e) { return false; }
+}
+
+// ── JSON Export ───────────────────────────────────────────────────────────
+
+function exportData() {
+  recompute();
+  const { interval } = computeContourLevels(globalMinE, globalMaxE);
+  const payload = {
+    metadata: {
+      exportDate: new Date().toISOString().slice(0, 10),
+      elevUnit,
+      mapRotation,
+      contourInterval: interval,
+    },
+    VA_IDX,
+    SITE:         SITE.map(n => ({ ...n })),
+    INTERIOR:     INTERIOR.map(n => ({ ...n })),
+    measurements: measurements.map(m => [...m]),
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = `mastatal-site-data-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ── JSON Import ───────────────────────────────────────────────────────────
+
+function importData(file) {
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (!Array.isArray(data.SITE) || data.SITE.length < 3) {
+        alert('Import failed: SITE must be an array of at least 3 nodes with lat/lon/elev/label fields.');
+        return;
+      }
+      const valid = data.SITE.every(n =>
+        typeof n.lat === 'number' && typeof n.lon === 'number' &&
+        typeof n.elev === 'number' && typeof n.label === 'string'
+      );
+      if (!valid) {
+        alert('Import failed: one or more SITE nodes are missing lat, lon, elev, or label.');
+        return;
+      }
+
+      SITE.length = 0;
+      data.SITE.forEach(n => SITE.push({ ...n }));
+
+      INTERIOR.length = 0;
+      if (Array.isArray(data.INTERIOR)) data.INTERIOR.forEach(n => INTERIOR.push({ ...n }));
+
+      if (typeof data.VA_IDX === 'number') VA_IDX = Math.max(0, Math.min(data.VA_IDX, SITE.length - 1));
+
+      measurements.length = 0;
+      if (Array.isArray(data.measurements)) data.measurements.forEach(m => measurements.push(m));
+
+      if (data.metadata) {
+        if (data.metadata.elevUnit === 'ft' || data.metadata.elevUnit === 'm') {
+          elevUnit = data.metadata.elevUnit;
+          document.getElementById('btnUnitFt').classList.toggle('active', elevUnit === 'ft');
+          document.getElementById('btnUnitM').classList.toggle('active', elevUnit === 'm');
+        }
+        if (typeof data.metadata.mapRotation === 'number') mapRotation = data.metadata.mapRotation;
+      }
+
+      autoSave();
+      recompute(); render(); renderStats(); updateSubLine(); updateClearBtn();
+
+      const hintEl = document.getElementById('hint');
+      hintEl.textContent = `Imported ${SITE.length} boundary node${SITE.length !== 1 ? 's' : ''}, ${INTERIOR.length} interior point${INTERIOR.length !== 1 ? 's' : ''}.`;
+      hintEl.style.display     = 'inline-block';
+      hintEl.style.color       = '#7db860';
+      hintEl.style.background  = '#1a2a1a';
+      hintEl.style.borderColor = '#2a4a2a';
+      setTimeout(() => {
+        hintEl.style.display = 'none';
+        hintEl.style.color = hintEl.style.background = hintEl.style.borderColor = '';
+      }, 3000);
+    } catch(err) {
+      alert('Import failed: could not parse JSON file.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+// ── Data panel controls ───────────────────────────────────────────────────
+
+document.getElementById('dataToggle').addEventListener('click', () => {
+  const open = document.getElementById('dataBody').classList.toggle('open');
+  document.getElementById('dataToggle').textContent =
+    open ? '▾ Data — export / import / reset' : '▸ Data — export / import / reset';
+});
+
+document.getElementById('btnExport').addEventListener('click', exportData);
+
+document.getElementById('btnImport').addEventListener('click', () => {
+  document.getElementById('importFileInput').click();
+});
+
+document.getElementById('importFileInput').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) importData(file);
+  e.target.value = '';
+});
+
+document.getElementById('btnReset').addEventListener('click', () => {
+  if (confirm('Reset all data to original defaults? This will erase all changes.')) {
+    if (storageAvailable) {
+      try { Object.values(KEYS).forEach(k => localStorage.removeItem(k)); } catch(e) {}
+    }
+    location.reload();
+  }
+});
+
+// ── Controls ──────────────────────────────────────────────────────────────
+
+document.getElementById('togLen').addEventListener('change', (e) => {
+  showLen = e.target.checked; e.target.parentElement.className = showLen ? 'on' : 'off'; render();
+});
+document.getElementById('togElev').addEventListener('change', (e) => {
+  showElev = e.target.checked; e.target.parentElement.className = showElev ? 'on' : 'off'; render();
+});
+document.getElementById('togLabels').addEventListener('change', (e) => {
+  showLabels = e.target.checked; e.target.parentElement.className = showLabels ? 'on' : 'off'; render();
+});
+document.getElementById('togInterior').addEventListener('change', (e) => {
+  showInterior = e.target.checked; e.target.parentElement.className = showInterior ? 'on' : 'off'; render();
+});
+document.getElementById('togContours').addEventListener('change', (e) => {
+  showContours = e.target.checked; e.target.parentElement.className = showContours ? 'on' : 'off'; render();
+});
+document.getElementById('togHighLow').addEventListener('change', (e) => {
+  showHighLow = e.target.checked; e.target.parentElement.className = showHighLow ? 'on' : 'off'; render();
+});
+
+document.getElementById('btnMeasure').addEventListener('click', () => {
+  measureMode = !measureMode;
+  if (measureMode) {
+    addNodeMode = false; updateAddNodeBtn();
+    addInteriorMode = false; updateAddInteriorBtn();
+    hideEditPanel(); selectedNodeIdx = null; selectedInteriorIdx = null;
+  }
+  selNodes = [];
+  const btn = document.getElementById('btnMeasure');
+  btn.className = 'btn btn-measure' + (measureMode ? ' active' : '');
+  btn.textContent = measureMode ? '✦ Measuring' : '◇ Measure';
+  updateHint(); render();
+});
+
+document.getElementById('btnClear').addEventListener('click', () => {
+  measurements = []; selNodes = []; render(); updateClearBtn(); updateHint(); autoSave();
+});
+
+document.getElementById('btnAddNode').addEventListener('click', () => {
+  addNodeMode = !addNodeMode;
+  if (addNodeMode) {
+    measureMode = false; selNodes = [];
+    addInteriorMode = false; updateAddInteriorBtn();
+    document.getElementById('btnMeasure').className = 'btn btn-measure';
+    document.getElementById('btnMeasure').textContent = '◇ Measure';
+    hideEditPanel(); selectedNodeIdx = null; selectedInteriorIdx = null;
+    mapWrap.style.cursor = 'crosshair';
+  } else {
+    mapWrap.style.cursor = '';
+  }
+  updateAddNodeBtn(); updateHint(); render();
+});
+
+document.getElementById('btnAddInterior').addEventListener('click', () => {
+  addInteriorMode = !addInteriorMode;
+  if (addInteriorMode) {
+    measureMode = false; selNodes = [];
+    addNodeMode = false; updateAddNodeBtn();
+    document.getElementById('btnMeasure').className = 'btn btn-measure';
+    document.getElementById('btnMeasure').textContent = '◇ Measure';
+    hideEditPanel(); selectedNodeIdx = null; selectedInteriorIdx = null;
+    mapWrap.style.cursor = 'crosshair';
+  } else {
+    mapWrap.style.cursor = '';
+  }
+  updateAddInteriorBtn(); updateHint(); render();
+});
+
+// Escape exits placement modes
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  if (addInteriorMode) {
+    addInteriorMode = false; updateAddInteriorBtn(); updateHint();
+    mapWrap.style.cursor = ''; render();
+  } else if (addNodeMode) {
+    addNodeMode = false; updateAddNodeBtn(); updateHint();
+    mapWrap.style.cursor = ''; render();
+  }
+});
+
+// Unit toggle
+document.getElementById('btnUnitFt').addEventListener('click', () => {
+  if (elevUnit === 'ft') return;
+  elevUnit = 'ft';
+  document.getElementById('btnUnitFt').classList.add('active');
+  document.getElementById('btnUnitM').classList.remove('active');
+  if (selectedNodeIdx !== null) showEditPanel(selectedNodeIdx);
+  else if (selectedInteriorIdx !== null) showInteriorEditPanel(selectedInteriorIdx);
+  updateSubLine(); render(); renderStats(); autoSave();
+});
+document.getElementById('btnUnitM').addEventListener('click', () => {
+  if (elevUnit === 'm') return;
+  elevUnit = 'm';
+  document.getElementById('btnUnitM').classList.add('active');
+  document.getElementById('btnUnitFt').classList.remove('active');
+  if (selectedNodeIdx !== null) showEditPanel(selectedNodeIdx);
+  else if (selectedInteriorIdx !== null) showInteriorEditPanel(selectedInteriorIdx);
+  updateSubLine(); render(); renderStats(); autoSave();
+});
+
+// Scale bar mode toggle
+document.getElementById('btnScaleBar').addEventListener('click', () => {
+  if (scaleBarMode === 'bar') return;
+  scaleBarMode = 'bar';
+  document.getElementById('btnScaleBar').classList.add('active');
+  document.getElementById('btnScaleRatio').classList.remove('active');
+  render();
+});
+document.getElementById('btnScaleRatio').addEventListener('click', () => {
+  if (scaleBarMode === 'ratio') return;
+  scaleBarMode = 'ratio';
+  document.getElementById('btnScaleRatio').classList.add('active');
+  document.getElementById('btnScaleBar').classList.remove('active');
+  render();
+});
+
+// ── Layers dropdown ───────────────────────────────────────────────────────
+
+document.getElementById('btnLayers').addEventListener('click', (e) => {
+  e.stopPropagation();
+  const group = document.getElementById('layersGroup');
+  const isOpen = group.classList.toggle('layers-open');
+  document.getElementById('btnLayers').textContent = isOpen ? '☰ Layers ▾' : '☰ Layers';
+});
+
+document.addEventListener('click', (e) => {
+  const group = document.getElementById('layersGroup');
+  if (!group.classList.contains('layers-open')) return;
+  const clickedInside = group.contains(e.target) || document.getElementById('btnLayers').contains(e.target);
+  if (!clickedInside) {
+    group.classList.remove('layers-open');
+    document.getElementById('btnLayers').textContent = '☰ Layers';
+  }
+});
+
+// ── Fullscreen ────────────────────────────────────────────────────────────
+
+let isFullscreen = false;
+
+function enterFullscreen() {
+  const t = document.documentElement;
+  if      (t.requestFullscreen)       t.requestFullscreen();
+  else if (t.webkitRequestFullscreen) t.webkitRequestFullscreen();
+  else if (t.mozRequestFullScreen)    t.mozRequestFullScreen();
+  else if (t.msRequestFullscreen)     t.msRequestFullscreen();
+}
+
+function exitFullscreen() {
+  if      (document.exitFullscreen)       document.exitFullscreen();
+  else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+  else if (document.mozCancelFullScreen)  document.mozCancelFullScreen();
+  else if (document.msExitFullscreen)     document.msExitFullscreen();
+}
+
+function onFullscreenChange() {
+  isFullscreen = !!(
+    document.fullscreenElement       ||
+    document.webkitFullscreenElement ||
+    document.mozFullScreenElement    ||
+    document.msFullscreenElement
+  );
+  document.body.classList.toggle('fs-mode', isFullscreen);
+  if (!isFullscreen) {
+    // Reset collapsed state when leaving fullscreen
+    toolbarCollapsed = false;
+    document.body.classList.remove('toolbar-collapsed');
+    document.getElementById('btnToolbarCollapse').textContent = '▼';
+  }
+  const btn = document.getElementById('btnFullscreen');
+  if (btn) {
+    btn.classList.toggle('active', isFullscreen);
+  }
+  if (!isFullscreen) render();
+}
+
+document.getElementById('btnToolbarCollapse').addEventListener('click', () => {
+  toolbarCollapsed = !toolbarCollapsed;
+  document.body.classList.toggle('toolbar-collapsed', toolbarCollapsed);
+  document.getElementById('btnToolbarCollapse').textContent = toolbarCollapsed ? '≡' : '▼';
+});
+
+document.addEventListener('fullscreenchange',       onFullscreenChange);
+document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+document.addEventListener('mozfullscreenchange',    onFullscreenChange);
+document.addEventListener('MSFullscreenChange',     onFullscreenChange);
+
+document.getElementById('btnFullscreen').addEventListener('click', () => {
+  if (isFullscreen) exitFullscreen(); else enterFullscreen();
+});
+
+// ── Initial render ────────────────────────────────────────────────────────
+
+// Load persisted state (falls back to hardcoded defaults if nothing stored)
+loadFromStorage();
+
+// Sync unit toggle buttons to loaded state
+document.getElementById('btnUnitFt').classList.toggle('active', elevUnit === 'ft');
+document.getElementById('btnUnitM').classList.toggle('active', elevUnit === 'm');
+
+// Warn once if storage is unavailable
+if (!storageAvailable) {
+  const hintEl = document.getElementById('hint');
+  hintEl.textContent = "Storage unavailable — changes won't persist across refresh. Use Export to save your work.";
+  hintEl.style.display = 'inline-block';
+}
+
+recompute();
+render();
+renderStats();
+updateSubLine();
+if (measurements.length > 0) updateClearBtn();
+renderHudCompass();
+renderHudScale();
+renderHudLegend();
+initCompassHandlers();
+</script>
+</body>
+</html>
