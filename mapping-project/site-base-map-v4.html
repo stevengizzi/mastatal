@@ -1236,9 +1236,9 @@ function render() {
 
       // SVG arc flags: sweep/large depend on winding and reflex status.
       // In SVG Y-down: sweep=1 is clockwise on screen, sweep=0 is counterclockwise.
-      // CW polygon interior: convex vertex → CCW arc (sweep=0); reflex → CW large arc (sweep=1).
-      // CCW polygon interior: convex vertex → CW arc (sweep=1); reflex → CCW large arc (sweep=0).
-      const sweepFlag = isCWPoly ? (isReflex ? 1 : 0) : (isReflex ? 0 : 1);
+      // CW polygon interior: convex vertex → CW arc (sweep=1); reflex → CCW large arc (sweep=0).
+      // CCW polygon interior: convex vertex → CCW arc (sweep=0); reflex → CW large arc (sweep=1).
+      const sweepFlag = isCWPoly ? (isReflex ? 0 : 1) : (isReflex ? 1 : 0);
       const largeFlag = isReflex ? 1 : 0;
 
       el('path', {

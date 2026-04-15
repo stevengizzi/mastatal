@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Site Base Map — Rancho Mastatal PDC</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>Site Base Map — Rancho Mastatal<span class="saved-dot" id="savedDot" title="Saved"></span></h1>
+    <p class="sub" id="subLine">PDC Design Project · Apr 2026 · 9 nodes · Elevations: Google Earth DEM (ft) · Offline</p>
+  </div>
+
+  <div class="controls" id="controls" style="position:relative">
+    <button id="btnToolbarCollapse" title="Show/hide controls">≡</button>
+    <div id="toolbarInner">
+      <button id="btnLayers">☰ Layers</button>
+      <div id="layersGroup">
+        <label class="on"><input type="checkbox" id="togLen" checked> Edge lengths</label>
+        <label class="on"><input type="checkbox" id="togElev" checked> Elevations</label>
+        <label class="on"><input type="checkbox" id="togLabels" checked> Labels</label>
+        <label class="on"><input type="checkbox" id="togInterior" checked> Interior pts</label>
+        <label class="on"><input type="checkbox" id="togContours" checked> Contours</label>
+        <label class="on" id="togContourLabelsLabel"><input type="checkbox" id="togContourLabels" checked> Contour labels</label>
+        <label class="on"><input type="checkbox" id="togHighLow" checked> High/Low markers</label>
+        <label class="off"><input type="checkbox" id="togAngles"> Angles</label>
+      </div>
+      <div class="sep"></div>
+      <button class="btn btn-measure" id="btnMeasure">◇ Measure</button>
+      <button class="btn btn-clear" id="btnClear" style="display:none">Clear</button>
+      <button class="btn btn-add-node" id="btnAddNode">+ Node</button>
+      <button class="btn btn-add-interior" id="btnAddInterior">+ Interior</button>
+      <div class="sep"></div>
+      <div class="zoom-controls">
+        <button class="btn-sm" id="zoomOut">−</button>
+        <span class="zoom-pct" id="zoomPct">100%</span>
+        <button class="btn-sm" id="zoomIn">+</button>
+        <button class="reset-view" id="resetView">Reset</button>
+      </div>
+      <div class="sep"></div>
+      <div class="pair-tog" id="unitTog" title="Distance &amp; elevation unit">
+        <button id="btnUnitFt" class="active">ft</button>
+        <button id="btnUnitM">m</button>
+      </div>
+      <div class="pair-tog" id="scaleModeTog" title="Scale bar style">
+        <button id="btnScaleBar" class="active">bar</button>
+        <button id="btnScaleRatio">1:R</button>
+      </div>
+    </div>
+    <button class="btn-fullscreen" id="btnFullscreen" title="Toggle fullscreen">⛶</button>
+  </div>
+  <div id="hint" style="display:none" class="hint"></div>
+
+  <!-- Elevation Legend — shown in normal flow above map; repositioned as fixed HUD in fullscreen -->
+  <div id="hudLegend">
+    <div style="font-size:11px;font-weight:600;color:#5a7a50;text-transform:uppercase;letter-spacing:.06em;">ELEVATION</div>
+    <div id="hudLegendBar" style="width:100px;height:6px;border-radius:2px;margin:4px 0;background:linear-gradient(to right,#3898d0,#7a9a60,#e8a030);"></div>
+    <div style="display:flex;justify-content:space-between;width:100px;">
+      <span id="hudLegendMin" style="font-size:10px;color:#5a7a50;"></span>
+      <span id="hudLegendMax" style="font-size:10px;color:#5a7a50;"></span>
+    </div>
+  </div>
+
+  <div class="map-wrap" id="mapWrap">
+    <svg id="map" xmlns="http://www.w3.org/2000/svg"></svg>
+    <!-- Compass HUD — top-right -->
+    <div id="hudCompass">
+      <svg id="hudCompassSvg" width="70" height="90" viewBox="-35 -40 70 90" style="display:block;overflow:visible;">
+        <circle r="24" fill="rgba(20,25,20,0.92)" stroke="#262e26"/>
+        <line x1="0" y1="-20" x2="0" y2="20" stroke="#2a352a" stroke-width=".5"/>
+        <line x1="-20" y1="0" x2="20" y2="0" stroke="#2a352a" stroke-width=".5"/>
+        <g id="compassNeedle" transform="rotate(0)">
+          <polygon points="0,-22 -5,-9 5,-9" fill="#b83838"/>
+          <polygon points="0,22 -5,9 5,9" fill="#2a352a"/>
+          <text y="-28" text-anchor="middle" fill="#b83838" font-size="12" font-weight="700" font-family="'Courier New',monospace">N</text>
+          <text x="28" dominant-baseline="middle" text-anchor="middle" fill="#6a7a60" font-size="9" font-family="'Courier New',monospace">E</text>
+          <text x="-28" dominant-baseline="middle" text-anchor="middle" fill="#6a7a60" font-size="9" font-family="'Courier New',monospace">W</text>
+          <text y="34" text-anchor="middle" fill="#6a7a60" font-size="9" font-family="'Courier New',monospace">S</text>
+        </g>
+        <text id="compassRotLabel" y="46" text-anchor="middle" fill="#607a50" font-size="7.5" font-family="'Courier New',monospace">N</text>
+      </svg>
+    </div>
+    <!-- Scale Bar HUD — bottom-left -->
+    <div id="hudScale">
+      <svg id="hudScaleSvg" style="display:block;overflow:visible;"></svg>
+      <div id="hudRatioText" style="display:none;font-size:10px;color:#607a50;cursor:pointer;" class="scale-lbl"></div>
+    </div>
+  </div>
+
+  <div id="edgeInfo" class="edge-info" style="display:none"></div>
+  <div id="measPanel" class="meas-panel" style="display:none"></div>
+  <div id="editPanel" class="edit-panel" style="display:none"></div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="data-section">
+    <button class="data-toggle" id="dataToggle">▸ Data — export / import / reset</button>
+    <div class="data-body" id="dataBody">
+      <div class="data-row">
+        <button class="btn btn-data-export" id="btnExport">↓ Export JSON</button>
+        <button class="btn btn-data-import" id="btnImport">↑ Import JSON</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none">
+      </div>
+      <div class="data-row">
+        <button class="btn btn-data-reset" id="btnReset">Reset to Defaults…</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">Scroll/pinch to zoom · drag to pan · drag compass to rotate · dbl-click compass to reset north · click nodes/interior pts to edit · Measure then click two nodes · tap edges for bearing · click scale label to edit · Esc to exit placement mode</p>
+</div>
+
+<input type="number" id="scaleInlineInput" min="1" step="1">
+
+<!-- Scripts loaded in dependency order. Plain <script> tags — no bundler, works offline. -->
+<script src="js/config.js"></script>
+<script src="js/state.js"></script>
+<script src="js/geo.js"></script>
+<script src="js/labels.js"></script>
+<script src="js/compute.js"></script>
+<script src="js/delaunay.js"></script>
+<script src="js/contours.js"></script>
+<script src="js/render.js"></script>
+<script src="js/hud.js"></script>
+<script src="js/interactions.js"></script>
+<script src="js/edit-panels.js"></script>
+<script src="js/ui-controls.js"></script>
+<script src="js/persistence.js"></script>
+<script src="js/io.js"></script>
+<script>
+// ── Initial render ────────────────────────────────────────────────────────
+App.loadFromStorage();
+
+// Sync unit toggle buttons to loaded state
+document.getElementById('btnUnitFt').classList.toggle('active', App.elevUnit === 'ft');
+document.getElementById('btnUnitM').classList.toggle('active', App.elevUnit === 'm');
+
+// Warn once if storage is unavailable
+if (!App.storageAvailable) {
+  const hintEl = document.getElementById('hint');
+  hintEl.textContent = "Storage unavailable — changes won't persist across refresh. Use Export to save your work.";
+  hintEl.style.display = 'inline-block';
+}
+
+App.recompute();
+App.render();
+App.renderStats();
+App.updateSubLine();
+if (App.measurements.length > 0) App.updateClearBtn();
+App.renderHudCompass();
+App.renderHudScale();
+App.renderHudLegend();
+App.initCompassHandlers();
+</script>
+</body>
+</html>
