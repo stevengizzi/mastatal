@@ -199,6 +199,7 @@
         <label class="on"><input type="checkbox" id="togLabels" checked> Labels</label>
         <label class="on"><input type="checkbox" id="togInterior" checked> Interior pts</label>
         <label class="on"><input type="checkbox" id="togContours" checked> Contours</label>
+        <label class="on" id="togContourLabelsLabel"><input type="checkbox" id="togContourLabels" checked> Contour labels</label>
         <label class="on"><input type="checkbox" id="togHighLow" checked> High/Low markers</label>
         <label class="off"><input type="checkbox" id="togAngles"> Angles</label>
       </div>
@@ -506,7 +507,7 @@ function recompute() {
 
 // ── App state ─────────────────────────────────────────────────────────────
 let showLen = true, showElev = true, showLabels = true, measureMode = false, addNodeMode = false;
-let showInterior = true, showContours = true, showHighLow = true, showAngles = false, addInteriorMode = false;
+let showInterior = true, showContours = true, showContourLabels = true, showHighLow = true, showAngles = false, addInteriorMode = false;
 let toolbarCollapsed = false;
 let selNodes = [], measurements = [];
 let selectedNodeIdx = null, editOriginal = null, deleteConfirmPending = false;
@@ -940,6 +941,17 @@ function render() {
   recompute();
   const resolvedNodeLabels = resolveNodeLabels();
   const nodeLabelBBoxes = resolvedNodeLabels.map(it => labelBbox(it.sx, it.sy, it.dx, it.dy, it.a, it.text));
+  // Pre-compute edge label bboxes for contour label collision avoidance
+  const edgeLblBBoxes = (showLen && zoom >= 0.8) ? edges.map(e => {
+    if (e.distM < 20 / zoom) return null;
+    const emx = (e.from.sx + e.to.sx) / 2, emy = (e.from.sy + e.to.sy) / 2;
+    const edx = e.to.sx - e.from.sx, edy = e.to.sy - e.from.sy;
+    const eln = Math.sqrt(edx*edx + edy*edy) || 1;
+    const elx = emx + (-edy/eln)*16, ely = emy + (edx/eln)*16;
+    const eLblTxt = dispDistVal(e.distM) + distSuffix();
+    const eLblW = eLblTxt.length * 7 + 4;
+    return { x: elx - eLblW/2, y: ely - 7, w: eLblW, h: 14 };
+  }).filter(Boolean) : [];
   svgEl.innerHTML = '';
   svgEl.setAttribute('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`);
 
@@ -987,9 +999,8 @@ function render() {
         const triangles = bowyerWatson(triPts);
         if (triangles.length > 0) {
           const contourG = el('g', { 'clip-path': 'url(#siteClip)', style: 'pointer-events:none' }, mapG);
-          // Track index contour label positions to skip redundant ones
+          // Track placed contour label bboxes for collision avoidance
           const placedContourLabelBBoxes = [];
-          let lastIndexLabeledLev = null;
           levels.forEach((lev, li) => {
             const segs = extractContourSegments(allPts, triangles, lev);
             if (segs.length === 0) return;
@@ -997,49 +1008,64 @@ function render() {
             const stepFromFirst = Math.round((lev - levels[0]) / interval);
             const isIndex = stepFromFirst % 5 === 0;
             const stroke = isIndex ? '#8a9a80' : '#4a6a50';
-            const sw = isIndex ? 1.1 : 0.6;
-            const op = isIndex ? 0.60 : 0.42;
+            const sw = isIndex ? 1.2 : 0.7;
+            const op = isIndex ? 0.60 : 0.35;
             for (const chain of chains) {
               const d = chain.map((p, i) => `${i===0?'M':'L'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('');
               el('path', { d, fill:'none', stroke, 'stroke-width':sw, opacity:op, 'stroke-linecap':'round', 'stroke-linejoin':'round' }, contourG);
             }
             // Contour label on index contours
-            if (isIndex) {
-              // Skip if previous index contour was labeled and is too close (dense area)
-              if (lastIndexLabeledLev !== null) {
-                const prevSegs = extractContourSegments(allPts, triangles, lastIndexLabeledLev);
-                if (prevSegs.length > 0) {
-                  const prevChains = chainSegments(prevSegs);
-                  const prevMidPts = prevChains.map(c => c[Math.floor(c.length / 2)]).filter(Boolean);
-                  const curMidPts = chains.map(c => c[Math.floor(c.length / 2)]).filter(Boolean);
-                  const minDist = prevMidPts.reduce((d, pp) =>
-                    Math.min(d, curMidPts.reduce((d2, cp) => Math.min(d2, Math.hypot(cp.x-pp.x, cp.y-pp.y)), Infinity))
-                  , Infinity);
-                  if (minDist < 15 / zoom) return;
+            if (isIndex && showContourLabels) {
+              const lTxt = dispElevVal(lev) + elevSuffix();
+              const lFsz = 7.5;
+              const lW = lTxt.length * lFsz * 0.6 + 4;
+              const lH = lFsz + 4;
+
+              const arcLenOf = (ch) => ch.reduce((sum, pt, k) =>
+                k === 0 ? 0 : sum + Math.hypot(pt.x - ch[k-1].x, pt.y - ch[k-1].y), 0);
+
+              const tryPlaceAt = (ch, fracAlong) => {
+                const total = arcLenOf(ch);
+                if (total < 20) return false;
+                const target = total * fracAlong;
+                let accumulated = 0, idx = 1;
+                for (let k = 1; k < ch.length; k++) {
+                  accumulated += Math.hypot(ch[k].x - ch[k-1].x, ch[k].y - ch[k-1].y);
+                  if (accumulated >= target) { idx = k; break; }
                 }
-              }
-              const longChains = chains.filter(c => c.length >= 2 && Math.hypot(c[c.length-1].x-c[0].x, c[c.length-1].y-c[0].y) > 25);
-              if (longChains.length > 0) {
-                const ch = longChains[Math.floor(longChains.length / 2)];
-                const mid = Math.floor(ch.length / 2);
-                const p0 = ch[Math.max(0, mid-1)], p1 = ch[Math.min(ch.length-1, mid+1)];
-                const mx = (p0.x+p1.x)/2, my = (p0.y+p1.y)/2;
-                // Skip if this position overlaps a node label
-                const cLblBbox = { x: mx - 16, y: my - 6, w: 32, h: 12 };
-                const overlapsNodeLabel = nodeLabelBBoxes.some(nb => bboxOverlap(nb, cLblBbox));
-                const overlapsExisting = placedContourLabelBBoxes.some(pb => bboxOverlap(pb, cLblBbox));
-                if (overlapsNodeLabel || overlapsExisting) return;
-                placedContourLabelBBoxes.push(cLblBbox);
-                lastIndexLabeledLev = lev;
-                let ang = Math.atan2(p1.y-p0.y, p1.x-p0.x)*180/Math.PI;
-                if (ang > 90) ang -= 180; if (ang < -90) ang += 180;
-                const lTxt = dispElevVal(lev) + elevSuffix();
-                el('text', {
-                  x: mx, y: my, 'text-anchor':'middle', 'dominant-baseline':'middle',
-                  transform: `rotate(${ang.toFixed(1)},${mx.toFixed(1)},${my.toFixed(1)})`,
-                  fill:'#8a9a80', 'font-size':7.5, 'font-family':"'Courier New',monospace",
-                  textContent: lTxt, 'paint-order':'stroke', stroke:'#111511', 'stroke-width':2.5
-                }, contourG);
+                for (let offset = 0; offset <= Math.min(4, Math.floor(ch.length / 4)); offset++) {
+                  for (const dir of [0, 1, -1]) {
+                    const mid = Math.max(1, Math.min(ch.length - 2, idx + dir * offset));
+                    const p0 = ch[mid - 1], p1 = ch[mid + 1] || ch[mid];
+                    const px = (p0.x + p1.x) / 2, py = (p0.y + p1.y) / 2;
+                    let ang = Math.atan2(p1.y - p0.y, p1.x - p0.x) * 180 / Math.PI;
+                    if (ang > 90) ang -= 180; if (ang < -90) ang += 180;
+                    const bbox = { x: px - lW / 2, y: py - lH / 2, w: lW, h: lH };
+                    const collides = nodeLabelBBoxes.some(nb => bboxOverlap(nb, bbox)) ||
+                                     edgeLblBBoxes.some(eb => bboxOverlap(eb, bbox)) ||
+                                     placedContourLabelBBoxes.some(pb => bboxOverlap(pb, bbox));
+                    if (collides) continue;
+                    placedContourLabelBBoxes.push(bbox);
+                    const grp = el('g', { transform: `rotate(${ang.toFixed(1)},${px.toFixed(1)},${py.toFixed(1)})`, style: 'pointer-events:none' }, contourG);
+                    el('rect', { x: (px - lW / 2).toFixed(1), y: (py - lH / 2).toFixed(1), width: lW.toFixed(1), height: lH.toFixed(1), fill: '#111511' }, grp);
+                    el('text', { x: px.toFixed(1), y: py.toFixed(1), 'text-anchor': 'middle', 'dominant-baseline': 'middle', fill: '#8a9a80', 'font-size': lFsz, 'font-family': "'Courier New',monospace", textContent: lTxt }, grp);
+                    return true;
+                  }
+                }
+                return false;
+              };
+
+              // Sort chains longest-first; long chains get 2 labels, shorter ones get 1
+              const sortedChains = [...chains].sort((a, b) => arcLenOf(b) - arcLenOf(a));
+              for (const ch of sortedChains) {
+                const total = arcLenOf(ch);
+                if (total < 20) continue;
+                if (total > 100 / zoom) {
+                  tryPlaceAt(ch, 0.25);
+                  tryPlaceAt(ch, 0.75);
+                } else {
+                  tryPlaceAt(ch, 0.5);
+                }
               }
             }
           });
@@ -1208,8 +1234,11 @@ function render() {
       const p2x = p.sx + arcR * v2x / len2;
       const p2y = p.sy + arcR * v2y / len2;
 
-      // SVG arc flags: sweep/large depend on winding and reflex status
-      const sweepFlag = isCWPoly ? (isReflex ? 0 : 1) : (isReflex ? 1 : 0);
+      // SVG arc flags: sweep/large depend on winding and reflex status.
+      // In SVG Y-down: sweep=1 is clockwise on screen, sweep=0 is counterclockwise.
+      // CW polygon interior: convex vertex → CCW arc (sweep=0); reflex → CW large arc (sweep=1).
+      // CCW polygon interior: convex vertex → CW arc (sweep=1); reflex → CCW large arc (sweep=0).
+      const sweepFlag = isCWPoly ? (isReflex ? 1 : 0) : (isReflex ? 0 : 1);
       const largeFlag = isReflex ? 1 : 0;
 
       el('path', {
@@ -2138,7 +2167,13 @@ document.getElementById('togInterior').addEventListener('change', (e) => {
   showInterior = e.target.checked; e.target.parentElement.className = showInterior ? 'on' : 'off'; render();
 });
 document.getElementById('togContours').addEventListener('change', (e) => {
-  showContours = e.target.checked; e.target.parentElement.className = showContours ? 'on' : 'off'; render();
+  showContours = e.target.checked; e.target.parentElement.className = showContours ? 'on' : 'off';
+  const clLabel = document.getElementById('togContourLabelsLabel');
+  if (clLabel) clLabel.style.opacity = showContours ? '' : '0.35';
+  render();
+});
+document.getElementById('togContourLabels').addEventListener('change', (e) => {
+  showContourLabels = e.target.checked; e.target.parentElement.className = showContourLabels ? 'on' : 'off'; render();
 });
 document.getElementById('togHighLow').addEventListener('change', (e) => {
   showHighLow = e.target.checked; e.target.parentElement.className = showHighLow ? 'on' : 'off'; render();
