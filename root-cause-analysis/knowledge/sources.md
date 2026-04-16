@@ -152,6 +152,223 @@ Citation keys used throughout the `knowledge/` files. Format: `[AuthorYear]` or 
 - **URL:** https://www.mdpi.com/2223-7747/14/19/3076
 - **Notes:** Recent review of root exudate composition diversity and ecological functions. Oscillation hypothesis for self/non-self recognition. Dual physical/chemical signaling pathways.
 
+### [Lee2020_NewPhyt]
+- **Title:** Auxin guides roots to avoid obstacles during gravitropic growth
+- **Authors:** Lee HJ, et al.
+- **Published:** New Phytologist, 2020
+- **URL:** https://pmc.ncbi.nlm.nih.gov/articles/PMC6972528/
+- **Notes:** Key paper showing thigmotropism is active signal transduction (not passive deformation). PIN-mediated auxin redistribution during obstacle avoidance. Compares gravitropism and thigmotropism mechanisms. Notes it's still unknown which part of root senses touch.
+
+### [MassaGilroy2003]
+- **Title:** Touch modulates gravity sensing to regulate the growth of primary roots of Arabidopsis thaliana
+- **Published:** ResearchGate / Plant Physiology (original), 2003
+- **URL:** https://www.researchgate.net/publication/10905852
+- **Notes:** Shows touch stimulation of root cap cells inhibits amyloplast sedimentation in columella. Gravitropic re-setting after touch. Touch and gravity signaling interact to direct growth around obstacles while maintaining downward trajectory.
+
+### [GalvanAmpudia2013]
+- **Title:** Halotropism is a response of plant roots to avoid a saline environment
+- **Authors:** Galvan-Ampudia CS, Julkowska MM, et al.
+- **Published:** Current Biology, 2013
+- **URL:** https://www.sciencedirect.com/science/article/pii/S0960982213010488
+- **Notes:** Foundational halotropism paper. Demonstrated in Arabidopsis, tomato, and sorghum. Sodium-specific (not K+, Li+, or osmotic). PIN2 internalization via phospholipase D / clathrin-mediated endocytosis. PIN2 is internalized but NOT degraded.
+
+### [NatComms_SMB2024]
+- **Title:** A root cap-localized NAC transcription factor controls root halotropic response to salt stress in Arabidopsis
+- **Published:** Nature Communications, 2024
+- **URL:** https://www.nature.com/articles/s41467-024-46482-7
+- **Notes:** Identified SOMBRERO (SMB) transcription factor in root cap as required for halotropism. SMB controls AUX1 expression in lateral root cap. Spatiotemporally modulates auxin redistribution.
+
+### [PNAS_ABA_Halotropism2025]
+- **Title:** Abscisic acid signaling gates salt-induced responses of plant roots
+- **Published:** PNAS, February 2025
+- **URL:** https://www.pnas.org/doi/10.1073/pnas.2406373122
+- **Notes:** Shows core ABA signaling is essential for halotropism. ABA biosynthesis and signaling mutants had significantly reduced halotropic response. Sodium-induced gene expression is repressed by endogenous ABA. Halotropism requires both auxin AND ABA pathways.
+
+### [Frontiers_Halotropism2020]
+- **Title:** Halotropism: Phytohormonal Aspects and Potential Applications
+- **Published:** Frontiers in Plant Science, 2020
+- **URL:** https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2020.571025/full
+- **Notes:** Halotropism review. SOS pathway role. Halophytes may need optimal salt for growth. Sodium-specific tropism. Exact sodium concentration ranges differ between glycophytes and halophytes. Polyamines and phosphatidic acid as mediators.
+
+### [VanDenBerg2016_model]
+- **Title:** Modeling halotropism: a key role for root tip architecture and reflux loop remodeling in redistributing auxin
+- **Published:** Development, 2016
+- **Notes:** Computational model showing PIN2 localization change plays dominant role in auxin asymmetry during halotropism, enhanced by AUX1 and transient PIN1 upregulation.
+
+### [Yu2022_via_Insights2023]
+- **Title:** (Referenced in) Insights into plant salt stress signaling and tolerance
+- **Published:** Journal of Integrative Plant Biology / ScienceDirect, 2023
+- **URL:** https://www.sciencedirect.com/science/article/pii/S1673852723001790
+- **Notes:** ABA-activated SnRK2.6 phosphorylates SP2L → cortical microtubule reorientation → cellulose microfibril pattern changes → root twisting determines halotropism direction.
+
+### [Wang2025_NatPlants]
+- **Title:** The apoplastic pH is a key determinant in the hypocotyl growth response to auxin dosage and light
+- **Published:** Nature Plants, February 2025
+- **URL:** https://www.nature.com/articles/s41477-025-01910-4
+- **Notes:** Shows biphasic auxin effect is caused by biphasic response of cells to decreasing apoplastic pH. Moderate acidification promotes growth; excessive acidification inhibits it. Explains why auxin dose-response is bell-shaped.
+
+### [Evans1994]
+- **Title:** (Referenced in) Cellular Responses to Auxin: Division versus Expansion
+- **Published:** PMC, various
+- **URL:** https://pmc.ncbi.nlm.nih.gov/articles/PMC2857164/
+- **Notes:** Auxin dose-response curve: response-maxima varies by organ. Shoots and roots differ in sensitivity by several orders of magnitude. Application of >10⁻⁹ to 10⁻⁸ M auxin inhibits root cell elongation.
+
+### [Thimann1939]
+- **Title:** Auxins and the Inhibition of Plant Growth
+- **Authors:** Thimann KV
+- **Published:** Biological Reviews, 1939
+- **URL:** https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1469-185X.1939.tb00937.x
+- **Notes:** Classic paper establishing auxin's inhibitory role at high concentrations. Root response to auxin is an optimum curve with peak at very low concentration. Historical foundation for understanding auxin dose-response.
+
+### [Han2021]
+- **Title:** PIN-mediated polar auxin transport regulations in plant tropic responses
+- **Published:** New Phytologist, 2021
+- **URL:** https://nph.onlinelibrary.wiley.com/doi/10.1111/nph.17617
+- **Notes:** LAZY/NGR proteins bridge gap between statolith sedimentation and PIN polarization. LAZY-RLD complex guides PIN3/PIN7 to lower membrane. Lateral root gravitropic set-point angles.
+
+### [NatCommsPIN2024]
+- **Title:** Over 25 years of decrypting PIN-mediated plant development
+- **Published:** Nature Communications, November 2024
+- **URL:** https://www.nature.com/articles/s41467-024-54240-y
+- **Notes:** 25-year perspective on PIN research. Acid trap mechanism. PIN polarity establishment. Comprehensive overview of PIN roles in development and tropisms.
+
+### [Liscum2014]
+- **Title:** Phototropism: Growing towards an Understanding of Plant Movement
+- **Published:** PMC / Plant Cell, 2014
+- **URL:** https://pmc.ncbi.nlm.nih.gov/articles/PMC3963583/
+- **Notes:** Comprehensive phototropism review. Cholodny-Went hypothesis history. Six photoreceptors linked to phototropic responses. Flavin in phototropins absorbs blue light.
+
+### [Pang2023_JXB]
+- **Title:** Link between hydrotropism and phototropism in Arabidopsis roots
+- **Published:** Journal of Experimental Botany, 2023
+- **URL:** https://academic.oup.com/jxb/article/74/17/4892/7272512
+- **Notes:** MIZ1 and GNOM required for BOTH hydrotropism and phototropism. Same tissues (EZ cortex) control both tropisms. Mutations eliminating hydrotropism also dramatically reduce phototropism.
+
+### [PMC_TouchResponse2025]
+- **Title:** Response of Plants to Touch Stress at Morphological, Physiological and Molecular Levels
+- **Published:** PMC, 2025
+- **URL:** https://pmc.ncbi.nlm.nih.gov/articles/PMC12652795/
+- **Notes:** Comprehensive thigmomorphogenesis review. TCH gene family. Prolonged mechanical stress suppresses auxin biosynthesis (not just transport). Interdependencies between thigmostimulation, gibberellin biosynthesis, and flowering.
+
+### [Nakajima2017]
+- **Title:** Auxin transport and response requirements for root hydrotropism differ between plant species
+- **Published:** Journal of Experimental Botany, 2017
+- **URL:** https://academic.oup.com/jxb/article/68/13/3441/3868380
+- **Notes:** Hydrotropism mechanism differs between species. Rice and pea: auxin-dependent. Lotus japonicus: auxin-independent. Key evidence against a universal hydrotropism mechanism.
+
+### [GalvanAmpudia2013]
+- **Title:** Halotropism is a response of plant roots to avoid a saline environment
+- **Authors:** Galvan-Ampudia CS, Julkowska MM, et al.
+- **Published:** Current Biology, 2013
+- **URL:** https://www.sciencedirect.com/science/article/pii/S0960982213010488
+- **Notes:** Foundational halotropism paper. Demonstrated in Arabidopsis, tomato, and sorghum. PIN2 internalization via phospholipase D / clathrin-mediated endocytosis. Sodium-specific (not K+, Li+, or osmotic). PIN2 internalized but NOT degraded.
+
+### [NatComms_SMB2024]
+- **Title:** A root cap-localized NAC transcription factor controls root halotropic response to salt stress in Arabidopsis
+- **Published:** Nature Communications, March 2024
+- **URL:** https://www.nature.com/articles/s41467-024-46482-7
+- **Notes:** Identified SOMBRERO (SMB) transcription factor in root cap as required for halotropism. Effect is through AUX1-dependent auxin redistribution in lateral root cap, not through amyloplast alteration.
+
+### [PNAS_ABA_Halotropism2025]
+- **Title:** Abscisic acid signaling gates salt-induced responses of plant roots
+- **Published:** PNAS, February 2025
+- **URL:** https://www.pnas.org/doi/10.1073/pnas.2406373122
+- **Notes:** Core ABA signaling is essential for halotropism. ABA biosynthesis and receptor mutants showed significantly reduced halotropic response. Sodium-specific transcriptional responses are induced earlier than general osmotic responses and are negatively regulated by ABA.
+
+### [Frontiers_Halotropism2020]
+- **Title:** Halotropism: Phytohormonal Aspects and Potential Applications
+- **Published:** Frontiers in Plant Science, 2020
+- **URL:** https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2020.571025/full
+- **Notes:** Review of halotropism mechanisms and phytohormonal involvement. SOS pathway role. Sodium-specific. Some halophytes may show positive halotropism toward moderate salt. Polyamines as potential mediators.
+
+### [VanDenBerg2016_model]
+- **Title:** Modeling halotropism: a key role for root tip architecture and reflux loop remodeling in redistributing auxin
+- **Published:** Development, 2016
+- **Notes:** Computational model showing PIN2 relocalization plays dominant role in auxin asymmetry during halotropism, enhanced by AUX1 and transient PIN1 upregulation.
+
+### [Lee2020_NewPhyt]
+- **Title:** Auxin guides roots to avoid obstacles during gravitropic growth (commentary on Lee et al.)
+- **Published:** New Phytologist, 2020
+- **URL:** https://pmc.ncbi.nlm.nih.gov/articles/PMC6972528/
+- **Notes:** Key paper showing thigmotropic bending is active signal transduction (not passive deformation). PIN-mediated auxin redistribution confirmed during obstacle avoidance. Unknown which part of root senses touch or which organelles trigger PIN redistribution.
+
+### [MassaGilroy2003]
+- **Title:** Touch modulates gravity sensing to regulate the growth of primary roots of Arabidopsis thaliana
+- **Notes:** Shows touch stimulation of root cap cells inhibits gravitropic growth and amyloplast sedimentation in columella. Touch-gravity interaction directs root growth around obstacles while maintaining overall downward growth.
+
+### [PMC_TouchResponse2025]
+- **Title:** Response of Plants to Touch Stress at Morphological, Physiological and Molecular Levels
+- **Published:** PMC, 2025
+- **URL:** https://pmc.ncbi.nlm.nih.gov/articles/PMC12652795/
+- **Notes:** Comprehensive review. Prolonged mechanical stress suppresses auxin biosynthesis (not just transport). TCH gene family. Calmodulin-GH3.1 mechanistic link. Thigmomorphogenesis effects on hormonal balance.
+
+### [Wikipedia_Thigmo]
+- **URL:** https://en.wikipedia.org/wiki/Thigmotropism
+- **Notes:** Used for ethylene role in thigmotropism (down-regulation permits bending). Calcium channel mechanism. Reference only — cross-checked against primary sources.
+
+### [Wang2025_NatPlants]
+- **Title:** The apoplastic pH is a key determinant in the hypocotyl growth response to auxin dosage and light
+- **Published:** Nature Plants, February 2025
+- **URL:** https://www.nature.com/articles/s41477-025-01910-4
+- **Notes:** Explains the biphasic auxin dose-response. Auxin acidifies the apoplast; moderate acidification promotes growth, excessive acidification inhibits. Light-grown tissues have higher apoplastic pH, counteracting over-acidification.
+
+### [Evans1994]
+- **Notes:** Referenced for auxin dose-response curve differences between organs (roots vs. shoots differ by orders of magnitude in sensitivity). Cited in PMC2857164.
+
+### [Thimann1939]
+- **Title:** Auxins and the Inhibition of Plant Growth
+- **Published:** Biological Reviews, 1939
+- **URL:** https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1469-185X.1939.tb00937.x
+- **Notes:** Classic paper establishing auxin bell-curve dose response in roots. Root growth represented by optimum curve with peak at very low concentration.
+
+### [Han2021]
+- **Title:** PIN-mediated polar auxin transport regulations in plant tropic responses
+- **Published:** New Phytologist, 2021
+- **URL:** https://nph.onlinelibrary.wiley.com/doi/10.1111/nph.17617
+- **Notes:** LAZY/NGR protein → RLD complex → PIN3/PIN7 relocalization pathway in gravitropism. Gravitropic set-point angles in lateral roots. PIN polarity and expression temporally controlled.
+
+### [NatCommsPIN2024]
+- **Title:** Over 25 years of decrypting PIN-mediated plant development
+- **Published:** Nature Communications, November 2024
+- **URL:** https://www.nature.com/articles/s41467-024-54240-y
+- **Notes:** 25-year retrospective on PIN protein research. Acid trap mechanism. PIN polarity establishment. PIN as first polarly localized integral membrane proteins identified in plants.
+
+### [Liscum2014]
+- **Title:** Phototropism: Growing towards an Understanding of Plant Movement
+- **Published:** Plant Cell, 2014
+- **URL:** https://pmc.ncbi.nlm.nih.gov/articles/PMC3963583/
+- **Notes:** Comprehensive phototropism review. Cholodny-Went history (Went 1926, Cholodny 1927). Six photoreceptors linked to phototropic responses. Flavin chromophore in phototropins explains blue-light specificity.
+
+### [Pang2023_JXB]
+- **Title:** Link between hydrotropism and phototropism in Arabidopsis roots
+- **Published:** Journal of Experimental Botany, 2023
+- **URL:** https://academic.oup.com/jxb/article/74/17/4892/7272512
+- **Notes:** MIZ1 and GNOM required for BOTH hydrotropism AND phototropism. Same tissues in elongation zone cortex control both. Mutations that eliminate hydrotropism also dramatically reduce phototropism.
+
+### [Nakajima2017]
+- **Title:** Auxin transport and response requirements for root hydrotropism differ between plant species
+- **Published:** Journal of Experimental Botany, 2017
+- **URL:** https://academic.oup.com/jxb/article/68/13/3441/3868380
+- **Notes:** Species differences in hydrotropism mechanisms. Auxin involved in rice and pea but NOT in Lotus japonicus. Key evidence that different plant lineages evolved different solutions to water-finding.
+
+### [Yu2022_via_Insights2023]
+- **Notes:** ABA-activated SnRK2.6 phosphorylates SP2L, inducing cortical microtubule reorientation that guides cellulose microfibril patterns. ABA-mediated root twisting determines halotropism. Referenced in ScienceDirect Insights into plant salt stress 2023.
+
+### [Vaia_Gravitropism]
+- **Title:** Gravitropism (educational resource)
+- **URL:** https://www.vaia.com/en-us/explanations/biology/plant-biology/gravitropism/
+- **Notes:** Corn seedling example: 20-30 minutes for visible bending after displacement. Used for timing context.
+
+### [BotanyParul_Thigmo]
+- **Title:** Responses of Plants to Touch: Thigmotropism
+- **URL:** https://botanywithparul.com/responses-of-plants-to-touch-thigmotropism/
+- **Notes:** Root cap columella cells as mechanosensitive cells that perceive physical barriers. Calcium ion influx mechanism.
+
+### [SciDirect_Thigmo]
+- **Title:** Thigmotropism (ScienceDirect Topics overview)
+- **URL:** https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/thigmotropism
+- **Notes:** Circumnutation as scanning behavior. Negative thigmotropism combined with gravitropism for obstacle avoidance. Root growth shows waving/coiling/skewing patterns on tilted surfaces.
+
 ---
 
 ## General References and Reviews
@@ -233,8 +450,13 @@ Citation keys used throughout the `knowledge/` files. Format: `[AuthorYear]` or 
 ## Sources to Find / Verify
 
 - [ ] Pages et al. — "Potential and actual root growth variations" — full citation and URL needed
-- [ ] Shkolnik & Fromm 2016 — hydrotropism auxin distribution findings
+- [x] Shkolnik & Fromm 2016 — hydrotropism auxin distribution findings (referenced via Vandenbrink2020)
 - [ ] Dudley & File 2007 — kin recognition in plants
 - [ ] Simard S — foundational mycorrhizal network papers
 - [ ] Karst J — meta-analysis questioning mycorrhizal network evidence
 - [ ] Wohlleben P — *The Hidden Life of Trees* (for popular framing, not primary science)
+- [x] Galvan-Ampudia et al. 2013 — halotropism foundational paper (added as GalvanAmpudia2013)
+- [x] Lee et al. 2020 — thigmotropism active signaling (added as Lee2020_NewPhyt)
+- [x] Massa & Gilroy 2003 — touch modulates gravity sensing (added as MassaGilroy2003)
+- [x] Han et al. 2021 — PIN-mediated tropism regulation (added as Han2021)
+- [x] Nakajima et al. 2017 — species differences in hydrotropism (added as Nakajima2017)

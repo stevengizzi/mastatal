@@ -139,130 +139,149 @@ This means there is NOT a single universal mechanism for hydrotropism. Different
 
 ## 4. Thigmotropism (response to touch/mechanical contact)
 
-**Direction:** Variable — roots grow around obstacles, then often return to their original growth direction.
+**Direction:** Negative in roots — roots grow *away* from obstacles. (Positive in climbing tendrils/vines, which grow *toward* contact surfaces.)
 
-**Sensor:** Likely a mechanically sensitive ion channel (specific identity unknown). Triggers a Ca2+-related signaling network [Gilroy2008_CurrentBio].
+Thigmotropism is the root's obstacle-avoidance system. In engineering terms, it's collision detection and rerouting.
 
-**Mechanism:** Probably follows the Cholodny-Went model via asymmetrical distribution of the auxin transporter PIN2, but the molecular connections are still being worked out [Vandenbrink2020]. Mechanical stimulation represses gravitropism, but through a different mechanism than hydrotropism — NOT through starch degradation [Gilroy2008_CurrentBio].
+### Detection: only on contact, but with a scanning trick
 
-**Key detail:** Maple tree roots have been observed to curve back to their original growth direction after passing an obstacle [Wilson_via_Patino2020]. This suggests a "memory" of prior growth direction, possibly maintained by internal hormone gradients.
+Roots do NOT sense obstacles before physical contact. There's no sonar, no field detection, no "seeing ahead." The root must physically touch the obstacle before responding [Lee2020_NewPhyt].
 
-**Status:** Partially characterized. The sensor is unknown and the signaling pathway from touch to PIN2 redistribution needs clarification [Vandenbrink2020].
+However, roots have a workaround: most roots exhibit **circumnutation** — a natural helical/wobbling growth pattern where the root tip traces small circles as it advances. This creates a scanning motion. The root doesn't detect obstacles from afar, but its constant spiraling means it encounters obstacles from multiple angles, giving it directional information about the obstacle's shape [SciDirect_Thigmo].
 
-**Confidence:** [confidence: established] for the phenomenon; [confidence: inferred] for mechanism details.
+### The step-by-step mechanism
+
+**Step 1: Contact detection (milliseconds to seconds)**
+When the root tip contacts a rigid obstacle, mechanosensitive ion channels in the plasma membrane are physically deformed. These stretch-activated channels open, allowing calcium ions (Ca²⁺) to rush into the cell — a rapid alarm signal [Wikipedia_Thigmo, BotanyParul_Thigmo].
+
+**Step 2: Signal cascade (seconds to minutes)**
+The calcium influx triggers secondary messengers: reactive oxygen species (ROS), membrane depolarization, and calcium-dependent protein kinase activation. Touch-responsive genes (TCH gene family) are activated, altering cell wall properties and growth patterns [PMC_TouchResponse2025].
+
+**Step 3: Ethylene suppression and auxin redistribution (minutes)**
+Under normal conditions, the hormone ethylene maintains high concentrations in the root tip, promoting straight growth. On obstacle contact, ethylene production is *down-regulated*, permitting bending [Wikipedia_Thigmo]. Simultaneously, auxin is redistributed asymmetrically via PIN proteins (likely PIN2), creating differential growth [Lee2020_NewPhyt].
+
+**Key finding (Lee et al., 2020):** The first bending during obstacle avoidance is NOT just the root passively crumpling against a barrier — it involves *active* signal transduction through PIN-mediated auxin transport. This confirmed thigmotropism is a true tropism, not mechanical deformation [Lee2020_NewPhyt].
+
+**Step 4: Gravitropism suppression (during obstacle engagement)**
+Touch stimulation of root cap cells directly inhibits amyloplast sedimentation in the columella — the statoliths can't settle properly while the touch signal is active. This is a third distinct gravitropism-suppression mechanism: hydrotropism *degrades* statoliths, halotropism *degrades* them too, but thigmotropism temporarily *immobilizes* them without destroying them. When contact is lost, statoliths resume settling and gravitropism reasserts itself [MassaGilroy2003]. [confidence: established for phenomenon; the molecular pathway from touch → statolith immobilization is inferred]
+
+**Step 5: Return to original trajectory (after losing contact)**
+After passing the obstacle, ethylene production resumes (promoting straight growth) and gravitropism reactivates. This explains why maple tree roots curve back to their original direction after passing obstacles [Wilson_via_Patino2020].
+
+**Is this "memory" or just gravitropism reasserting?** The return to original direction is most likely gravitropism kicking back in — not a separate memory system. The root doesn't "remember" where it was going; it defaults back to its gravitropic set-point angle. For a primary root, that's straight down. For a lateral root, it's whatever oblique angle is genetically programmed. So the "memory" IS the gravitropic set-point — a hardcoded default, not a recall of the specific pre-obstacle path. [confidence: inferred]
+
+### What we still don't know
+
+- Which part of the root senses touch? Root cap is plausible but unproven [Lee2020_NewPhyt]
+- The full molecular pathway from "ion channel opens" to "PIN2 redistributes" is unmapped [Vandenbrink2020]
+- How thigmotropism weighs against hydrotropism, halotropism, etc. is unknown
+- Prolonged mechanical stress (compacted soil) suppresses auxin *biosynthesis* itself — not just transport — suggesting deeper adaptation to continuous resistance [PMC_TouchResponse2025] [confidence: established]
 
 ---
 
 ## 5. Halotropism (response to salt concentration)
 
-**Direction:** Negative — roots grow away from high salt.
+**Direction:** Negative — roots grow away from high salt. (Some halophytes may grow *toward* moderate salt [Frontiers_Halotropism2020].)
 
-**Sensor:** Unknown, but the mechanism involves degradation of amyloplasts (the same structures used for gravity sensing), which attenuates gravitropism to allow the salt-avoidance response [Vandenbrink2020].
+### Why do roots avoid salt?
 
-**Mechanism:** Likely a Cholodny-Went tropism operating through the elongation zone [Vandenbrink2020].
+Salt (specifically sodium, Na⁺) is toxic to most plants for three compounding reasons:
 
-**Status:** Relatively recently characterized. Interesting because it shares the strategy of disabling gravitropism (like hydrotropism does), but through a different molecular pathway.
+1. **Osmotic stress:** High external salt pulls water OUT of root cells. The root can't absorb water in salty soil — it actually loses water. Salty environments cause drought-like symptoms even in wet soil.
+2. **Ionic toxicity:** Na⁺ disrupts cellular enzymes, damages membranes, and blocks potassium uptake.
+3. **Oxidative damage:** Salt stress triggers reactive oxygen species (ROS) that damage proteins and DNA.
 
-**Confidence:** [confidence: established] for the phenomenon; [confidence: inferred] for mechanism.
+Most crop plants suffer at sodium concentrations above 50-100 mM. Halophytes (mangroves, quinoa, saltgrass) have evolved tolerance mechanisms [Frontiers_Halotropism2020].
+
+### The step-by-step mechanism
+
+Characterized in 2013 by Galvan-Ampudia et al. in Arabidopsis, tomato, and sorghum:
+
+**Step 1: Sodium detection.** The sensor is still unknown, but it's sodium-specific — K⁺, Li⁺, and osmotic stress alone don't trigger it [GalvanAmpudia2013]. The SOS (Salt Overly Sensitive) pathway is involved. A 2024 study identified a root-cap transcription factor (SOMBRERO/SMB) required for halotropism [NatComms_SMB2024].
+
+**Step 2: PIN2 internalization on the salt-facing side.** Salt triggers phospholipase D activity → phosphatidic acid (PA) → clathrin-mediated endocytosis pulls PIN2 proteins *inside* the cell on the salt-facing side. Critically, PIN2 is NOT degraded (unlike in gravitropism) — just temporarily removed from the membrane surface [GalvanAmpudia2013].
+
+**Step 3: Auxin accumulation on the non-salt side.** Without PIN2 on the salt-facing side, auxin builds up on the opposite side. AUX1 upregulation and transient PIN1 increases amplify the asymmetry [VanDenBerg2016_model].
+
+**Step 4: Differential growth → bending away from salt.** Standard Cholodny-Went bending via the elongation zone.
+
+**Step 5: Gravitropism suppression.** Salt also causes amyloplast degradation and affects PIN2 cycling. A February 2025 PNAS paper showed core ABA signaling is essential for halotropism — ABA biosynthesis mutants had significantly reduced response [PNAS_ABA_Halotropism2025]. ABA also mediates microtubule reorientation that alters cell-wall structure during bending [Yu2022_via_Insights2023].
+
+### Where halotropism fits on the "bracket"
+
+Halotropism is a **hybrid**: it uses PIN2/auxin machinery (like gravitropism) for execution, but requires ABA signaling (like hydrotropism) for activation. It sits between the two main groups. See `04-decision-system.md` for the full bracket model. [confidence: established]
 
 ---
 
 ## 6. Chemotropism (response to chemical gradients)
 
-**Direction:** Variable — toward nutrients, away from toxins.
+**Direction:** Variable — toward nutrients (positive), away from toxins (negative).
 
-**Sensor:** Unknown.
+### True tropism vs. damage/avoidance response — what's the difference?
 
-**Mechanism:** Unknown. This is a controversial category — researchers caution that some directional responses to chemicals may be damage/avoidance responses rather than true tropisms [Vandenbrink2020].
+This distinction comes up repeatedly, so let's define it clearly:
 
-**Status:** Listed as a possible tropism in many publications, but mechanisms are far less clear than gravitropism or phototropism [Vandenbrink2020].
+**True tropism:** The root actively detects a *gradient* and redirects growth through hormone-mediated differential elongation. Operates at sub-damaging stimulus levels. Proportional to gradient steepness. Involves active signal transduction.
 
-**Confidence:** [confidence: inferred] for existence as a true tropism.
+**Damage/avoidance response:** Cells on the exposed side are injured or killed. They stop growing. The undamaged side keeps growing. The root appears to "bend away," but there's no active signaling — it's just one side dying. Only operates at damaging stimulus levels.
 
----
+The difference matters: a tropism can work as an early-warning system (detecting gradients before damage occurs), while a damage response only kicks in after harm has happened.
 
-## 7. Thermotropism (response to temperature gradients)
+### Is chemotropism meaningfully different from halotropism?
 
-**Direction:** Variable — generally toward optimal temperature.
+Yes. Halotropism is sodium-specific, has an identified molecular mechanism (phospholipase D → PIN2 internalization), and is confirmed as a true tropism. General chemotropism is a catch-all category where most proposed responses haven't been proven to involve active directional signaling versus differential damage [Vandenbrink2020].
 
-**Sensor:** Unknown.
+Some documented phenomena that may be chemotropic:
+- Root proliferation in phosphorus-rich or nitrogen-rich soil patches — established, but is this gradient-following (tropism) or just "roots grow better where nutrients are" (differential growth)? Not fully resolved.
+- Root avoidance of allelopathic chemicals from competing plants — true tropism or damage? Debated.
+- Root growth toward symbiotic partners (rhizobial bacteria for legumes) — some evidence for active chemotactic signaling.
 
-**Mechanism:** Unknown. Philippe Van Tieghem noted that plants exposed to optimal temperature on one side grew faster on that side [WorldAtlas_Tropisms].
-
-**Status:** Poorly characterized. Needs further investigation to determine if this is a true tropism [Lucini2021].
-
-**Confidence:** [confidence: inferred]
-
----
-
-## 8. Magnetotropism (response to magnetic fields)
-
-**Direction:** Variable.
-
-**Sensor:** Unknown.
-
-**Mechanism:** Unknown. Some apparent directional responses to magnetic fields may be damage responses rather than tropisms [Vandenbrink2020].
-
-**Status:** Poorly characterized. Whether this qualifies as a bona fide tropism is debated [Lucini2021].
-
-**Confidence:** [confidence: speculative]
+Over time, some chemotropic responses may get "promoted" to named tropisms as their mechanisms are characterized — halotropism itself was once part of chemotropism before being separated [Vandenbrink2020]. [confidence: established for distinctions; inferred for specific chemotropic mechanisms]
 
 ---
 
-## 9. Electrotropism (response to electric fields)
+## 7-11. The Less-Characterized Tropisms
 
-**Direction:** Variable.
+### 7. Thermotropism (response to temperature gradients)
 
-**Sensor:** Unknown.
+First described by Van Tieghem in the 1800s. Roots show directional responses to temperature gradients, growing toward optimal temperature. No thermosensor identified. Temperature affects enzyme activity, membrane fluidity, and auxin metabolism — differential temperature across a root could create growth asymmetry through direct biophysical effects.
 
-**Mechanism:** Unknown. Same concerns as magnetotropism — may be damage response rather than true directional growth [Vandenbrink2020].
+**Permaculture relevance:** Soil temperature gradients from mulch vs. bare soil (5-10°C difference) might influence root direction if thermotropism is functional. [confidence: speculative]
 
-**Status:** The capacity of plant roots to sense electric fields remains an open issue [Lucini2021].
+### 8. Magnetotropism (response to magnetic fields)
 
-**Confidence:** [confidence: speculative]
+Some reports of directional root growth in magnetic fields, but evidence is weak and inconsistent. Concern: strong fields may damage cells asymmetrically (damage response, not tropism). No magnetoreceptor identified in plants. One of the most contested proposed tropisms [Vandenbrink2020]. [confidence: speculative]
 
----
+### 9. Electrotropism (response to electric fields)
 
-## 10. Oxytropism (response to oxygen gradients)
+Roots and fungal hyphae respond to electric fields, requiring external calcium for the response [SciDirect_Thigmo]. Natural electric fields exist in soil from mineral gradients and microbial activity. But the sensing mechanism is unknown and distinguishing tropism from damage is unresolved [Vandenbrink2020]. [confidence: speculative]
 
-**Direction:** Variable — presumably toward higher oxygen availability.
+### 10. Oxytropism (response to oxygen gradients)
 
-**Sensor:** Unknown.
+Ecologically plausible — waterlogged soils are hypoxic and roots need oxygen. Some roots grow toward better-aerated zones. Unclear if this is active gradient-following or differential growth. Soil compaction and aeration management directly affect the oxygen landscape roots navigate. [confidence: speculative]
 
-**Mechanism:** Unknown.
+### 11. Phonotropism (response to sound)
 
-**Status:** Poorly characterized [Lucini2021].
+The most provocative: maize roots produce clicking sounds at ~220 Hz and lean toward sounds in water [Frontiers_KidsPlantsTalk]. Plants emit ultrasonic sounds (20-150 kHz) when stressed. No mechanoreceptor for airborne sound identified in roots. If real, it would imply distance-sensing without chemical diffusion — sound propagates through soil water faster than chemical signals. Poorly replicated and highly speculative [Lucini2021]. [confidence: speculative]
 
-**Confidence:** [confidence: speculative]
+### Where do tropisms 7-11 fit on the "bracket"?
 
----
-
-## 11. Phonotropism (response to sound)
-
-**Direction:** Toward sound source (based on limited evidence).
-
-**Sensor:** Unknown.
-
-**Mechanism:** Unknown, but the phenomenon is suggestive. Young maize roots were found to make tiny clicking sounds at approximately 220 Hz, and when suspended in water so they could move freely, they leaned toward these sounds [Frontiers_KidsPlantsTalk]. Chili seedlings grow differently in the presence of different neighboring species, and researchers speculate that cellular vibrations may serve as inter-plant communication signals [Frontiers_KidsPlantsTalk].
-
-**Status:** Recently proposed. Very preliminary evidence. Whether this qualifies as a tropism sensu stricto is uncertain [Lucini2021].
-
-**Confidence:** [confidence: speculative]
+We don't know — none have characterized molecular pathways, so we can't place them in the auxin-based or ABA-based competition groups. They're candidates for future bracket expansion. For the presentation: *the system might have even more input channels than we've mapped.*
 
 ---
 
-## Summary: Tropism Status Table
+## Summary Table
 
-| Tropism | Stimulus | Direction (roots) | Sensor Known? | Mechanism Known? | Follows Cholodny-Went? |
-|---|---|---|---|---|---|
-| Gravitropism | Gravity | Positive (toward) | Yes — statoliths | Mostly — auxin/PIN | Yes |
-| Phototropism | Light | Negative (away) | Yes — phototropins | Mostly — auxin/PIN | Yes |
-| Hydrotropism | Water gradient | Positive (toward) | Partially — RLKs | Partially — ABA | **No** |
-| Thigmotropism | Touch | Variable | No | Partially — PIN2 | Probably |
-| Halotropism | Salt | Negative (away) | No | Partially | Probably |
-| Chemotropism | Chemicals | Variable | No | No | Unknown |
-| Thermotropism | Temperature | Variable | No | No | Unknown |
-| Magnetotropism | Magnetic field | Variable | No | No | Unknown |
-| Electrotropism | Electric field | Variable | No | No | Unknown |
-| Oxytropism | Oxygen | Variable | No | No | Unknown |
-| Phonotropism | Sound | Toward (?) | No | No | Unknown |
+| Tropism | Stimulus | Direction (roots) | Sensor Known? | Mechanism | Follows Cholodny-Went? | Bracket Group |
+|---|---|---|---|---|---|---|
+| Gravitropism | Gravity | Positive (toward) | Yes — statoliths/LAZY | Auxin/PIN redistribution | Yes | Auxin-based (Tier 1) |
+| Phototropism | Light (blue) | Negative (away) | Yes — phototropins | Auxin/PIN redistribution | Yes | Auxin-based (Tier 4) |
+| Hydrotropism | Water gradient | Positive (toward) | Partially — RLKs/PIPs | ABA signaling (NOT auxin) | **No** | ABA-based (Tier 2) |
+| Thigmotropism | Touch | Negative (away) | No — likely ion channel | Ethylene + auxin/PIN2 | Partially | Auxin-based (Tier 3) |
+| Halotropism | Salt | Negative (away) | Partially — SOS/SMB | PIN2 internalization + ABA | Hybrid | Hybrid (Tier 2) |
+| Chemotropism | Chemicals | Variable | No | Unknown (may be damage) | Unknown | Unplaced |
+| Thermotropism | Temperature | Toward optimal | No | Unknown | Unknown | Unplaced |
+| Magnetotropism | Magnetic field | Variable | No | Unknown (may be damage) | Unknown | Unplaced |
+| Electrotropism | Electric field | Variable | No | Unknown | Unknown | Unplaced |
+| Oxytropism | Oxygen | Toward O₂ (?) | No | Unknown | Unknown | Unplaced |
+| Phonotropism | Sound | Toward (?) | No | Unknown | Unknown | Unplaced |

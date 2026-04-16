@@ -17,6 +17,20 @@ Claims in knowledge files use `[AuthorYear]` keys. Some claims carry a confidenc
 - `[confidence: inferred]` — extrapolated or synthesized from multiple sources
 - `[confidence: speculative]` — author's (Steven's or Claude's) interpretation, flagged for fact-checking
 
+## Writing Protocol
+
+See `knowledge-report-protocol.md` for detailed rules on how knowledge files should be written. Key principles:
+- Every technical term defined in plain language on first use
+- Every causal chain walked through step by step (no "triggers" or "leads to" bridging unexplained gaps)
+- Every number given everyday context
+- Every claim scoped to species/applicability
+- Logical contradictions resolved immediately
+- Cross-references explicit between files
+
+## Presentation Framing
+
+The project is framed as a **reverse-engineering exercise**: "If you were an engineering team tasked with designing an underground navigation system, what would you need?" Each design requirement maps to a tropism or system feature. Nature is the senior engineer who already shipped the product. This framing is used in the presentation script and should inform how knowledge is structured.
+
 ## Current Status
 
 Initial knowledge capture complete from first research session. All files need:

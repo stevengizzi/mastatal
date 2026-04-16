@@ -42,7 +42,39 @@ This is the foundational theory of plant tropisms, proposed independently by Nik
 3. In roots, high auxin concentration *inhibits* cell elongation — so the lower side (with more auxin) elongates more slowly
 4. Slower growth on the lower side → the root bends downward
 
-**The crucial insight:** Auxin has *opposite effects* in stems vs. roots. In stems, more auxin = more growth. In roots, more auxin = less growth (at high concentrations). This is because root cells are much more sensitive to auxin than stem cells — concentrations that stimulate stem growth are high enough to inhibit root growth.
+**The crucial insight — the auxin bell curve:**
+
+Auxin does NOT simply "promote growth in stems and inhibit growth in roots." The truth is more nuanced and more interesting.
+
+ALL plant cells — whether in stems, roots, or anywhere else — respond to auxin on a **bell-shaped dose-response curve**. At low concentrations, adding more auxin increases cell elongation. At the *peak* of the curve, elongation is maximized. Beyond the peak, adding MORE auxin *inhibits* elongation — the growth rate actually drops.
+
+The difference between stems and roots is where their bell curves sit on the concentration axis. Root cells are roughly **1,000 times more sensitive** to auxin than stem cells [Evans1994, Thimann1939]. This means:
+
+- Root cells hit their growth peak at around 10⁻¹⁰ to 10⁻⁸ M (molar) auxin concentration
+- Stem cells hit their growth peak at around 10⁻⁶ to 10⁻⁵ M auxin concentration
+
+So a concentration of, say, 10⁻⁶ M is:
+- Right in the sweet spot for stems → maximum growth promotion
+- Way past the peak for roots → deep into the inhibitory zone
+
+Think of it like audio volume: both speakers (roots and stems) have the same bell-curve response, but the root speaker has its volume knob turned WAY up. What sounds perfect to the stem speaker is distorting badly in the root speaker.
+
+Why does too much auxin inhibit growth? A 2025 study in *Nature Plants* showed the mechanism: auxin works partly by acidifying the space between cells (the apoplast). Moderate acidification loosens cell walls, allowing cells to expand. But *excessive* acidification — caused by too much auxin — actually inhibits the wall-loosening machinery and blocks expansion [Wang2025_NatPlants]. It's like adding too much yeast to bread dough — a little makes it rise, too much kills the process.
+
+This bell curve is why the Cholodny-Went model works for gravitropism: the auxin that accumulates on the lower side of a displaced root pushes those cells past their growth peak into the inhibitory zone, while the upper-side cells (with less auxin) remain on the growth-promoting slope of the curve. [confidence: established]
+
+**Does the Cholodny-Went model apply to stems too?**
+
+Yes — tropisms apply to ALL plant organs (roots, stems, leaves, flowers), not just roots. The same molecular machinery (auxin, PIN proteins) is shared. But stems and roots often respond in *opposite directions* to the same stimulus:
+
+| Stimulus | Root response | Stem response |
+|---|---|---|
+| Gravity | Positive (grows toward) | Negative (grows away) |
+| Light | Negative (grows away) | Positive (grows toward) |
+
+The opposite responses arise directly from the bell curve: when auxin accumulates on the lower side of a horizontally displaced organ, root cells there are *inhibited* (past their peak), causing the root to bend down, while stem cells there are *promoted* (still below their peak), causing the stem to bend up. Same auxin redistribution, opposite growth outcome [Vandenbrink2020].
+
+For this project, we're focused on root tropisms, but the engineering parallel is nice: it's the same protocol stack with different configuration parameters for different organ types.
 
 **Status:** The Cholodny-Went model has held up remarkably well for nearly 100 years and remains the central framework for understanding most tropisms. However, it's now clear that it doesn't apply to ALL tropisms — notably, hydrotropism appears to work through a different mechanism entirely (see `01-tropisms.md`, Section 3) [Vandenbrink2020, Lucini2021].
 
