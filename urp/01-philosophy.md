@@ -113,9 +113,13 @@ Most of what matters in this design requires zero permission from anyone. The bi
 
 The ethic: **it's easier to ask forgiveness than permission, and easier still when what you've done clearly improved things.** A landlord who comes home to find a thriving garden and a rain barrel is a different conversation than a landlord being asked hypothetically about "modifications."
 
+> Coyne and Knutzen frame the same idea tactically in *The Urban Homestead*: start by surreptitiously tucking herbs, radishes, and green onions around whatever the landlord already planted — usually a spindly shrub or uninspired ground cover. The incremental aesthetic approach widens what's possible without ever staging a confrontation. Their own parkway vegetable garden (technically illegal) ran two years without any friction from neighbors or the city — neighbors brought their kids over to see carrots growing. "We've come to consider front-yard gardening a key to our own community involvement." [*The Urban Homestead*, Ch. 1, "First Steps Toward An Edible Landscape"]
+
 ### How Far Can We Stretch It?
 
 Very far. Most permaculture actions fall into a regulatory gray zone that nobody enforces because nobody is harmed. A rain barrel on a downspout, a worm bin on a patio, a container garden on a porch, a shared meal with neighbors, a skill share in your living room, a bike ride to the farmer's market, a batch of soap in your kitchen — none of these require permission from anyone.
+
+- **Parkway / median / alley planting:** Public land; the law in most jurisdictions says fruit growing in a parkway strip or on branches hanging over a sidewalk or alley is in public space and fair game. Coyne & Knutzen's LA parkway vegetable beds went two years without any municipal or neighbor friction. [*The Urban Homestead*, Ch. 1]
 
 The places where you genuinely need to slow down and check:
 - **Chickens:** legal in many Atlanta neighborhoods but with specific restrictions (setback distances, number limits, no roosters). Check your specific address.

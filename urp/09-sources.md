@@ -40,6 +40,16 @@ Consolidated bibliography. All claims in the other documents trace back to these
 - UGA CAES Field Report, "Home Garden Blueberries" (Jan 2026) — rabbiteye variety guide
 - Edible Landscaping (ediblelandscaping.com) — zone 8 plant sourcing
 - Permies.com forum threads on zone 7b/8a perennials and middle Georgia permaculture
+- Hemenway, Toby. *Gaia's Garden: A Guide to Home-Scale Permaculture.* Chelsea Green. Cited in *The Urban Homestead* as the source for the polycultural-bed design and the Ianto Evans bed plan.
+- Fukuoka, Masanobu. *The One Straw Revolution.* Origin of seed balls ("earth dumplings," *tsuchi dango*).
+
+---
+
+## Foraging
+
+- Thayer, Samuel. *Forager's Harvest.* Cited in *The Urban Homestead* as the source for the berry-hook tool; broader foraging methodology.
+- Fallen Fruit — fallenfruit.org — art/activist collective mapping free urban fruit in Los Angeles. Direct conceptual ancestor of Atlanta's Concrete Jungle.
+- Hoffman, John. *The Art and Science of Dumpster Diving.* Cited in *The Urban Homestead* as the definitive primer on urban foraging of surplus.
 
 ---
 
@@ -65,6 +75,8 @@ Consolidated bibliography. All claims in the other documents trace back to these
 - UpCodes, Georgia State Plumbing Code Chapter 15: up.codes
 - Atlanta Department of Watershed Management — stormwater ordinance (2013 and updates)
 - Turner Environmental Law Clinic — small-scale composting regulations in Georgia
+- Ludwig, Art. *Create an Oasis with Greywater.* Companion site: oasisdesign.net. Cited in *The Urban Homestead* as "the most informative source on greywater" — covers simple to complex systems, with perspectives ranging from renter-compatible to owner-occupant-with-permits.
+- Lancaster, Brad. *Rainwater Harvesting for Drylands.* Cited in *The Urban Homestead* for the "water budget" concept and the top-of-yard to bottom-of-yard observation framework.
 
 ---
 
@@ -76,6 +88,8 @@ Consolidated bibliography. All claims in the other documents trace back to these
 - EnergySage, "2026 Georgia Power Net Metering"
 - Drawdown Georgia Home Efficiency Toolkit (info.drawdownga.org)
 - RMI, "Is Georgia Power's New Plan Enough to Reach Net Zero by 2050?"
+- Fodor, Eben. *The Solar Food Dryer: How to Make Your Own Low Cost, High-Performance, Sun-Powered Food Dehydrator.* Includes both a half-size Appalachian Solar Food Dryer design and an alternative single-box design.
+- *Home Power Magazine* issues 57 (Feb/Mar 1997) and 69 (Feb/Mar 1999). Original and refined plans for the Appalachian Solar Food Dryer. PDF archive at homepower.com.
 
 ---
 
@@ -89,6 +103,8 @@ Consolidated bibliography. All claims in the other documents trace back to these
 - Food Well Alliance Compost Resources: foodwellalliance.org/compost
 - Turner Environmental Law Clinic fact sheet on small-scale composting
 - Goodr (goodr.co) — food recovery in Atlanta
+- Terre Vivant, Gardeners & Farmers of. *Preserving Food Without Freezing or Canning.* Chelsea Green Publishing. Old-World preservation methods; one of *The Urban Homestead*'s two most-recommended preservation references.
+- Katz, Sandor Ellix. *Wild Fermentation.* "As much a manifesto against lifeless food as it is a cookbook." The other of *The Urban Homestead*'s two most-recommended preservation references. **Strong candidate for future mining.**
 
 ---
 
@@ -152,12 +168,12 @@ Consolidated bibliography. All claims in the other documents trace back to these
 
 ---
 
-## Books (To Be Mined)
+## Books
 
-*Notes from these will be integrated into relevant topic files; full notes preserved in book-notes/*
+*Full notes preserved in book-notes/*
 
-- Kelly Coyne & Erik Knutzen, *The Urban Homestead* (EPUB)
-- Dave Wann, *Superbia! 31 Ways to Create Sustainable Neighborhoods* (PDF)
+- **Coyne, Kelly & Erik Knutzen.** *The Urban Homestead: Your Guide to Self-Sufficient Living in the Heart of the City* (Expanded & Revised Edition). Process Media, 2010. Authored from Echo Park, Los Angeles. The single closest-match book in the bibliography for the URP's urban, rental, low-budget framing. Strongest chapters for URP purposes: Ch. 2 (essential projects — composter, worm bin, mulch, raised bed, self-watering container), Ch. 3 (foraging and dumpster diving), Ch. 5 (home economics — preservation, cheese, sourdough, cleaners), Ch. 6 (six rainwater techniques, greywater methodology, energy breakdown). Ch. 4 (livestock) and most of Ch. 5's brewing section are out of scope for the first 3–5 rental years. Blog: homegrownevolution.com. *See `book-notes/urban-homestead-notes.md` for detailed extraction.*
+- Dave Wann, *Superbia! 31 Ways to Create Sustainable Neighborhoods* (PDF) — to be mined
 
 Recommended by TheLastFarm:
 - Ben Falk, *The Resilient Farm and Homestead*

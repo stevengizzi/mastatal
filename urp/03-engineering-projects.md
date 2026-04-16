@@ -20,6 +20,8 @@ TheLastFarm on Substack reinforces this with a permaculture framing: "Permacultu
 
 *HVAC is 40-50% of a Southern home's energy bill. How do you dramatically reduce this as a renter?*
 
+Coyne and Knutzen report the rough split for a typical American household: heating 49%, cooling 49%, water heater 13%, lighting 10%, cooking 8%, electronics 7%, laundry 6%, refrigerator 5%, dishwasher 2% [*The Urban Homestead*, Ch. 6]. The heating/cooling percentages don't sum to 100 with the others because they're climate-alternating dominants — in any given home, one or the other is the main load depending on region. In Atlanta's cooling-dominated climate the cooling fraction is the real lever. **Reducing cooling load does more than every other household energy intervention combined.**
+
 ### Renter-Compatible Approaches (No Building Modification)
 
 **Thermal curtains** on all windows (especially south and west-facing). Heavy, insulated curtains reduce heat gain 33% in summer and heat loss 25% in winter.
@@ -162,6 +164,22 @@ A profoundly simple technology: bring food to a boil on the stove, then transfer
 **Historical note.** This is ancient technology. Traditional hay-insulated cooking boxes were used across Europe and Asia for centuries. Low-tech Magazine has published guides for building modern versions, including solar-powered variants that heat a heat-storage element directly from a solar collector.
 
 **Why it matters for this project:** the haybox is a perfect example of the "ancestral skill + modern knowledge" synthesis. Simple, effective, zero-cost, zero permissions required, portable, and it closes a loop (reduces energy consumption for cooking, which means less grid dependence, which means the portable solar system covers more of household needs).
+
+---
+
+## The Appalachian Solar Food Dryer
+
+Coyne and Knutzen describe a DIY solar dehydrator known as the Appalachian Solar Food Dryer — a two-stage design with a shallow glass-covered collection box lined with black absorber material, which heats air that rises into a drying cabinet above. "It takes about a day and a half to dry tomatoes." Plans: *Home Power Magazine* issue 57 (Feb/Mar 1997) with refinements in issue 69 (Feb/Mar 1999); PDF from homepower.com ~$5. Eben Fodor's *The Solar Food Dryer* offers both a half-size Appalachian and an alternative one-box design. A cardboard-box version works for a single summer.
+
+Atlanta's long, hot, sunny summers make this viable for drying tomatoes, peppers, okra, herbs, fruit leathers, and (with extra caution per FDA guidance, or using a commercial dehydrator instead) jerky — all without energy input. This is the cooking-side companion to the haybox: both close loops by substituting sunlight or retained heat for grid energy.
+
+**Reference:** *The Urban Homestead*, Ch. 5, "The Appalachian Solar Food Dryer"; BuildItSolar.com for further plans.
+
+---
+
+## Nuclear-Option Disinfection
+
+Spray the target surface with straight hydrogen peroxide. Immediately follow with straight white vinegar. Either order works; **never combine in one bottle** (creates peracetic acid). Developed by Susan Sumner at Virginia Polytechnic Institute; tested on heavily contaminated surfaces; eliminates virtually all salmonella, shigella, and E. coli. Nontoxic, rinses with water, leaves no flavor — originally developed as a food-surface treatment. [*The Urban Homestead*, Ch. 5, "The Nuclear Option"]
 
 ---
 

@@ -30,6 +30,12 @@ Loops that operate entirely within your own home. Zero coordination required.
 
 **Perpetual cultures.** Sourdough starter → bread → never buy bread again. Kombucha SCOBY → kombucha → never buy kombucha again. Kefir grains, yogurt starter, vinegar mother — each is a living culture that reproduces indefinitely. Once you have them, the upstream purchasing stops permanently.
 
+**Day-old bread cycle.** Rather than throwing out stale bread, mist lightly (or dip under running tap for 1 second; spray pastries to preserve toppings) and revive in a 350°F oven for 5–10 min. Restored bread goes into croutons, French toast, bread pudding, bread crumbs, bruschetta, panzanella (stale bread cubes + chopped ripe tomatoes + onion + parsley + basil + 1:3 vinegar:olive oil, rested 10 min). Pre-industrial kitchens never discarded bread. [*The Urban Homestead*, Ch. 3, "Revive Day-Old Bread"]
+
+**Edible-weed bed.** Intentionally cultivated weed patches (amaranth, chickweed, purslane, dandelion, plantain) produce nutrient-dense greens with zero care and no watering. "Keep on top of your weeds by eating them for dinner." [*The Urban Homestead*, Ch. 1, "Cultivate A Positive Relationship With Weeds"]
+
+**Yogurt whey → recipe water.** Draining yogurt to make labaneh produces protein-rich whey. Use in place of water in smoothies, bread recipes, or anything else that calls for water. Keeps about as long as milk. [*The Urban Homestead*, Ch. 5, "Making Labaneh"]
+
 ---
 
 ## Inter-Household Loops
@@ -75,6 +81,10 @@ Loops that connect local businesses and households in mutually beneficial flows.
 **Construction site scrap lumber → raised bed frames, compost bin construction.** Active construction sites often have usable lumber scrap headed for the dumpster. Ask the site foreman.
 
 **Restaurant grease → soap making.** Some restaurants will give away used fryer oil. A cooperative ring member who makes soap could provide value back in the form of bar soap.
+
+**Bakery day-old → home pantry.** Many Atlanta bakeries — independents especially — discard day-old bread at close. A standing relationship (drop in at closing) converts what goes to the landfill into a week of bread pudding, croutons, or stuffing. A cooperative-ring member who bakes regularly can also barter fresh bread back. [*The Urban Homestead*, Ch. 3, "Dumpster Diving"]
+
+**Nursery damaged-bag soil → garden infrastructure.** Ripped bags of potting mix, compost, or mulch can't be sold but are perfectly usable. Nursery dumpsters and sometimes "please take" piles yield bed-filling quantities for free.
 
 ---
 

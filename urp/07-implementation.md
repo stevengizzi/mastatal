@@ -29,9 +29,11 @@ The phased rollout from pre-arrival through year 5, with specific actions across
 - [ ] Fermentation station: start sourdough starter, kombucha SCOBY, first batch of sauerkraut
 - [ ] Windowsill herbs: basil, parsley, chives, mint
 - [ ] Energy audit: inventory all appliances. Acquire Kill-A-Watt meter. Set baseline for monthly kWh.
+- [ ] Start the compost-bin-from-garbage-can (*Urban Homestead* Essential Project 1) and the two-tote worm bin (Essential Project 2) on arrival week — both are same-day projects. [Ch. 2]
 
 ### Zone 1 (Doorstep/Patio)
 - [ ] Container garden: herbs, salad greens, cherry tomatoes (if arriving spring/summer)
+- [ ] Build 2–3 DIY self-watering containers from salvaged 5-gallon buckets as the first outdoor-growing infrastructure. One hour each; $0 if buckets are scavenged from restaurants, ~$15 if purchased. Initial plantings: basil, patio cherry tomato, Italian parsley. [*The Urban Homestead*, Ch. 2, Essential Project 5]
 - [ ] Start worm bin
 - [ ] Research vertical systems — pick one to install in month 2
 
@@ -58,6 +60,7 @@ The phased rollout from pre-arrival through year 5, with specific actions across
 ### Observe
 - [ ] Map sun exposure in yard (take photos at 9am, noon, 3pm, 6pm)
 - [ ] Note soil conditions, drainage patterns
+- [ ] **Soil lead test at move-in** if growing anything in ground (Zone 2) at an older rental. Lead is the main Atlanta-renter concern given housing stock that predates the 1978 lead-paint ban. ~$30 through county health department. High-lead results aren't game-over — fruiting crops (tomatoes, peppers, squash, fig) stay safe, root veg is scrubbed and peeled, leafy greens move to raised beds or containers with imported soil. Heavy organic matter (compost, mulch) *reduces* lead plant uptake. Wash all produce in 1% vinegar water (University of Minnesota Extension) to remove surface lead. [*The Urban Homestead*, Ch. 2, "Why You Might Test Your Soil"]
 - [ ] Initial conversation with landlord about garden potential (just planting the idea)
 - [ ] Local sourcing: identify the first 5 purchases to redirect to local sources (coffee, bread, eggs, produce, soap)
 
@@ -66,7 +69,7 @@ The phased rollout from pre-arrival through year 5, with specific actions across
 ## Phase 2: Month 3-6 (Establish)
 
 ### Zone 2 (Yard — if landlord agrees)
-- [ ] Sheet mulch one bed
+- [ ] **Sheet-mulch a section of lawn as the first intervention.** No dig, no till. Wet cardboard or 4–6 sheets of newspaper as weed barrier, plus 5 inches of organic matter on top. Plant directly through by cutting X-slits through the barrier and tucking plants into the soil below. Lower-labor than digging and *improves* the ground rather than stripping it — strong for landlord triple-win framing. [*The Urban Homestead*, Ch. 2, "Sheet Mulching"]
 - [ ] Plant first fast perennials (fig, blueberry, elderberry)
 - [ ] Install rain barrel on existing downspout
 - [ ] Muscadine on fence/trellis for vertical food production
@@ -95,7 +98,7 @@ The phased rollout from pre-arrival through year 5, with specific actions across
 ### Water
 - [ ] Rain barrel installed and functional
 - [ ] Mulch all garden soil
-- [ ] Begin manual greywater practice (shower bucket, kitchen water to plants)
+- [ ] Begin manual greywater practice: bucket in the shower catches warm-up water; kitchen vegetable-wash water goes to house plants; pasta/rice water to outdoor plants. **Critical safety note for households with young children: approximately 25 US kids drown in buckets each year. Don't leave any water-filled bucket unattended. Dump immediately after each use or store inverted when not actively filling.** [*The Urban Homestead*, Ch. 6, "Non-Invasive Greywater Methodologies"]
 
 ### Waste
 - [ ] Worm bin mature and productive
@@ -236,6 +239,9 @@ Quantitative metrics keep the transition honest. Track quarterly:
 | Skill shares hosted/attended | 12 | 24+ | ongoing rhythm |
 | Cooperative ring size | 2-4 families | 8-15 families | stable + expanding network |
 | Documented knowledge shared | 1 public resource | 3+ public resources | active teaching |
+| Sourdough starter age | Baking-ready (~2 weeks of daily feedings) | Established culture | Local-terroir character; portable multi-year asset |
+
+**Sourdough starter age.** A new starter can be baking-ready in two weeks of daily feedings. By Month 3, a healthy culture is established; by Year 1, the starter has local-terroir character. A starter is a portable multi-year asset: bring it to Atlanta, maintain through the rental period, carry it to the eventual owned property.
 
 The numbers are approximate. The direction is the point.
 

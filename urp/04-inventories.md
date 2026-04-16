@@ -36,6 +36,8 @@ Exhaustive lists of what can be permaculture-ified: household goods, utilities, 
 | Coffee filters | Reusable metal or cloth filter, or French press | Already common |
 | Tea bags | Loose leaf tea + reusable infuser. Grow mint, lemongrass, chamomile, holy basil | Garden-to-cup pipeline |
 
+**Acorn flour as wild staple.** White oak acorns (rounded leaves) harvested in September; soft-shell peeled, blended with water into a mash, leached through cheesecloth in multiple cold-water changes over a day until tannin mouth-pucker is gone, then used fresh or dried into acorn meal. Blends into cornbread, pancakes, any baked good at up to ⅓ ratio. Atlanta's "city in a forest" makes this an annual multi-pound harvest accessible on free public time. Refrigerate after processing — keeps poorly at room temperature. [*The Urban Homestead*, Ch. 3, "How To Eat Acorns"]
+
 ### Medicine Cabinet
 
 Direct application of PDC KIS Botanicals training. Note that this supplements, not replaces, modern medicine for anything serious.
@@ -86,7 +88,24 @@ Skills humans practiced for millennia before industrialization, categorized by c
 
 **Bread baking.** Sourdough requires no commercial yeast — just flour, water, time. The starter is a family heirloom you can pass down.
 
+**Fil, piima, and viila: Scandinavian perpetual dairy cultures.** Unlike yogurt, these mesophilic cultures need no heating. Add 2 tsp of any previous batch into a quart of fresh milk or cream and leave on the counter 24 hours; refrigerate when thickened. In milk: texture between buttermilk and yogurt, mild with faint lemon sourness. In cream: a *crème fraîche* analog. Excellent for baking anything that wants buttermilk. One culture replaces the need to buy buttermilk, sour cream, or *crème fraîche* — another perpetual culture alongside sourdough starter and kombucha SCOBY. Source via mail from G.E.M. Cultures or from a local ferment-swap group. [*The Urban Homestead*, Ch. 5, "Fil, Piima And Viila"]
+
 **Foraging.** Identifying and harvesting wild food. Concrete Jungle's Fruit Tree Map is a modern foraging tool. Atlanta-specific species to learn: pawpaw, persimmon, muscadine, pecan, elderberry, plantain, dandelion, chickweed, violets.
+
+**Foraging methodology.** Identify by scientific name, not common name (there are about 100 "chickweeds"; only *Stellaria media* is the edible one). Learn your local *poisonous* plants before any others — poison ivy in all four seasons, including dead winter stalks which still cause rash. Harvest no more than ⅓ of any single plant. Don't forage roadsides, golf courses, former gas stations, or ground with dog-pee or vehicle-exhaust loading. *The Urban Homestead*'s Six Things To Know About Eating Wild [Ch. 3] is a good orientation before Concrete Jungle fruit picks or park plant walks.
+
+**Atlanta-specific feral edibles worth knowing:**
+- **Kudzu** (*Pueraria lobata*) — "the scourge of the South"; roots make arrowroot substitute, leaves edible steamed, plentiful livestock fodder. Ubiquitous in the Atlanta bioregion.
+- **Amaranth / pigweed** — heat-tough native; leaves spinach-like when steamed; fall seed heads edible in cereals and baked goods.
+- **Chickweed** (*Stellaria media*) — beginner-friendly salad green, high in vitamin C.
+- **Wild blackberry** — fast colonizer of construction aftermath; watch for poison ivy lookalike.
+- **Spearmint / peppermint** — home-foraged and dried mint tea exceeds supermarket tea. Hang upside down in bunches indoors out of direct sunlight to dry.
+- **Nasturtium** — all parts edible; seed pods pickle into "poor man's capers."
+- **Prickly pear cactus** — *nopalitos* if found; fruit (*tunas*) tastes like watermelon.
+
+**Foraging tools.** Commercial fruit picker — wire cage with claws on a long pole, ~$20 at any garden center. **Berry hook** (from Samuel Thayer, *Forager's Harvest*): a stick with a hook on one end and rope on the other. Hook a flexible branch, draw it down, stand on the rope tail to free both hands. DIY from a broomstick and a large hook screw. Doubles as a dumpster-diving retrieval tool. [*The Urban Homestead*, Ch. 3, "Tools For The Fruit Harvester"]
+
+**Dumpster diving (urban foraging of surplus).** Bakeries discard day-olds daily. Markets discard crate-quantity bruised produce. Nurseries discard ripped-but-full bags of soil. The US Supreme Court ruled in *California v. Greenwood* (1988) that discarded materials carry no common-law expectation of privacy — so this is legal everywhere except where specifically prohibited, across locks, or past "No Trespassing" signs. Etiquette: be tidy, don't strew trash, don't break locks; building owners fear *dumping* more than *diving*. A food-preservation kitchen amplifies the value enormously — a crate of bruised tomatoes becomes a year of sauce. Reference: John Hoffman, *The Art and Science of Dumpster Diving*. [*The Urban Homestead*, Ch. 3, "Dumpster Diving"]
 
 **Natural dyeing.** Plant-based dyes from garden and foraged plants. Turmeric, onion skins, black walnut hulls, pokeweed berries. Connects to fiber arts.
 

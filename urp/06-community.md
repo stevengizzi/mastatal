@@ -34,6 +34,8 @@ Beyond your intentional circle — the ambient community. Know your neighbors' n
 
 **Permaculture connection:** your front yard garden is a conversation starter and a demonstration site.
 
+**Pirate / guerrilla gardening in medians, parkways, and vacant lots.** The parkway strip between sidewalk and street is public land; anything grown there is legally public food. Coyne and Knutzen report their own two-year parkway vegetable garden (square raised beds on the public median) drew "nothing but pleasant comments from our neighbors, and no interaction with the city, though technically what we have done is illegal" [*The Urban Homestead*, Ch. 1]. Neighbors brought their kids over to see carrots growing. This became a key vector for community involvement. For Atlanta's front-yard culture, parkway planting is a concrete, low-stakes first move in building Layer 4 (the neighborhood web) after arrival — it turns a commute into a conversation.
+
 ### Layer 5: The Movement Ecosystem (city-wide)
 Plug into existing organizations: Food Well Alliance, Georgia Organics, Cooperative Atlanta, local mutual aid networks, Atlanta timebank. Contribute to the commons: volunteer at Browns Mill Food Forest, mentor at Truly Living Well, join AgLanta network.
 
@@ -142,6 +144,8 @@ Mapping Atlanta's existing organizations against a fully closed-loop permacultur
 
 6. **No regular repair café.** Common in Europe and Pacific Northwest US but absent in Atlanta. Powerful addition to the skill share circle.
 
+**Concrete Jungle's Fruit Tree Map has direct LA-based lineage.** Fallen Fruit (fallenfruit.org) — an LA activist art collective contemporary with Coyne & Knutzen — began mapping free public fruit and advocating that cities only plant fruit-bearing trees in public parks. Concrete Jungle extended the same model to Atlanta and Athens with 4,200+ mapped trees. Naming this lineage clarifies that Atlanta's fruit-tree commons isn't idiosyncratic but part of a national movement of "fruit-as-public-good" activism. [*The Urban Homestead*, Ch. 3, "Fruit Foraging"]
+
 ---
 
 ## Landlord Negotiation: The Triple-Win Frame
@@ -220,6 +224,10 @@ Reframe as "community participation" — not charity, but mutual aid:
 - Herbal medicine practice for minor ailments (reduces pharmacy trips)
 - Farmers market and community garden visits contribute to physical and mental health — often replacing gym trips
 - Walking/biking to errands is embedded exercise
+
+### Housing Location as First Errand Decision
+
+Coyne and Knutzen make this a lease-decision criterion: "When you site your urban homestead, one of the first things you should consider is its proximity to mass transit. The more transit options the better, and the less likely it is that you'll have to rely on a car. Get out the local transit map, and check times and frequency before signing that lease or deed." [*The Urban Homestead*, Ch. 7, "Mass Transit"] Translated to the Atlanta context: the neighborhood walk-score + MARTA map + Beltline access are effectively the first three filters in the apartment search.
 
 ---
 

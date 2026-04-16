@@ -13,6 +13,8 @@ Traditional permaculture zones (0 = home, 5 = wild) assume ownership and permane
 
 **Yields:** fermentation station (kombucha, kimchi, sauerkraut, sourdough), sprouting, indoor herb windowsill garden, medicine cabinet (tinctures, salves from KIS Botanicals training), food preservation pantry, energy monitoring and efficiency baseline.
 
+Gateway herbs in windowsills: chives, parsley, cilantro, thyme are the most reliable indoor starters. Basil and rosemary prefer outdoors but can be coerced inside with part-time balcony rotation. Supplemental light does not require grow lights — a compact fluorescent bulb positioned close to the plants extends production through short winter days [*The Urban Homestead*, Ch. 1]. Sprouting garlic cloves pointy-side-up in a pot, harvested as green shoots like chives, is an excellent winter Zone 0 crop when other herbs go dormant.
+
 **Baby compatibility:** HIGH. All indoors, all safe, all portable.
 
 **Portability:** 100%. Everything moves with you.
@@ -22,12 +24,18 @@ Traditional permaculture zones (0 = home, 5 = wild) assume ownership and permane
 
 **Yields:** culinary herbs (rosemary, basil, thyme, oregano, mint, lemongrass), salad greens, cherry tomatoes, peppers, strawberries, worm bin, vertical wall planters, herb spiral.
 
+**In-window vertical growing with monofilament:** Transparent fishing line strung between window frame and ceiling hook creates a near-invisible trellis for pole beans climbing a south-facing window — a "living curtain" that's fully reversible on move-out [*The Urban Homestead*, Ch. 1, "A Window Garden"].
+
+**Bean teepee:** Six or more 6-foot poles (bamboo, salvaged branches, PVC, or lathe) lashed at the top and sunk 6"+ into the ground in a circle, with one gap left as a door. Three bean seeds at the base of each pole. The grown teepee is simultaneously a bean crop, a shaded play-fort for young children, and a visually striking Zone 1/2 structure. Fully removable on move-out. Runner beans often flower red and attract hummingbirds. [*The Urban Homestead*, Ch. 2, "How To Make A Bean Teepee"] **Exceptional baby compatibility** — it is by construction a child-scale space.
+
 **Baby compatibility:** HIGH — containers at toddler height become sensory gardens.
 
 **Portability:** 90%. Containers move; soil stays or composts into Zone 2.
 
 ### Zone 2 — The Yard (Landlord Negotiation Zone)
 **What you control:** depends entirely on landlord relationship (see 06-community.md).
+
+Coyne & Knutzen's "four general strategies" taxonomy — Container / Edible Landscape / Community Garden / Guerrilla — overlays cleanly on the renter's zone map: container and vertical systems dominate Zones 0–1; edible landscaping is the landlord-permission conversation for Zone 2; the community garden plot is Zone 3; guerrilla or pirate gardening of parkway strips, alleys, and vacant land is a Zone 4 tactic that requires zero ownership. [*The Urban Homestead*, Ch. 1]
 
 **Yields if permission granted:** sheet mulch over lawn converts to annual beds. Fast perennials: figs (fruit year 1-2 from nursery stock), blueberries (rabbiteye, fruit year 2-3, native to Georgia), muscadine grapes on fence/trellis (fruit year 2-3), elderberry (fruit year 2), blackberries (fruit year 1-2). Annual production: tomatoes, peppers, squash, beans, greens, sweet potatoes, okra. Rain barrel on existing downspout.
 
@@ -103,6 +111,18 @@ Vertical systems multiply production without modifying property. Ranked by rente
 
 **Loofah sponges.** Growing your own dish sponge on a vertical trellis. Luffa aegyptiaca is a vigorous vine — perfect for vertical growing in Atlanta's long season.
 
+#### Self-Watering Containers: The Renter's Missing Infrastructure
+
+The single most impactful container-gardening upgrade: a self-watering container (SWC) holds a water reservoir at the bottom, from which water wicks upward into the soil through a perforated wicking chamber. A plastic lid or film over the top reduces evaporation. Result: a week between fill-ups even in summer, and *no overwatering or underwatering*. Container gardening's two biggest failure modes — drought stress and root rot — both disappear.
+
+**DIY from scavenged materials:** two food-grade 5-gallon buckets (commonly free from restaurants and donut shops), a yogurt container or basket as the wicking chamber, 17" of 1" PVC or bamboo as the fill tube, a drill, and about an hour. Drill ventilation holes throughout the inner bucket's bottom and cut a central hole for the wicking chamber plus an edge hole for the fill tube. Drill an overflow hole in the outer bucket just below where the inner bucket's base sits. Use potting mix only — closed systems require the drainage characteristics of potting mix, not garden soil.
+
+**Never use fertilizer tea or liquid fertilizer in an SWC** — the closed system accumulates. Apply dry organic fertilizer in a shallow surface trench near the plant's perimeter, lightly covered; water leaches it down gradually.
+
+**Commercial alternative:** Earthbox (~$40), if DIY is not appealing.
+
+Ideal SWC crops: basil, Italian parsley, patio/basket cherry tomatoes (not full-size — deep-rooted tomatoes will find the reservoir and waterlog), Swiss chard, lettuce, strawberries, blueberries (which need acidic soil and so are nearly better in containers anyway). [*The Urban Homestead*, Ch. 2, Essential Project 5]
+
 #### Atlanta Food Sourcing Web
 
 Build a web, not a single point of failure:
@@ -118,6 +138,10 @@ Build a web, not a single point of failure:
 ---
 
 ### Water System
+
+Typical American household water use breaks down roughly: landscaping 58.7%, toilet 10.8%, clothes washer 8.7%, shower 6.8%, faucet 6.3%, hidden leaks 5.5%, dishwasher 0.6% [*The Urban Homestead*, Ch. 6]. The landscaping fraction — over half of household water — is why a rain barrel on a downspout is the single highest-leverage water intervention: it lets outdoor watering exit the municipal potable-water loop entirely.
+
+For an Atlanta-specific sense of scale: a 992 sq ft asphalt shingle roof, at Atlanta's average 48.6" annual rainfall, theoretically sheds about 26,034 gallons of water per year. The rainwater budget far exceeds any household's outdoor irrigation needs; the only real question is storage sizing to bridge dry gaps between storms.
 
 #### Georgia's Regulatory Landscape
 
@@ -143,6 +167,10 @@ Rainwater harvesting is legal and supported in Georgia. Key facts:
 **Reuse (manual greywater):** kitchen greywater reuse is zero-infrastructure. Save pasta water, rice water, vegetable washing water in a bucket, use directly on garden plants. Shower bucket catches warm-up water while waiting for hot water (2-5 gallons per shower). Laundry to landscape: if the washing machine drain is accessible and you use plant-safe detergent (no boron, no sodium), redirect the drain hose to an outdoor container during the wash cycle, then hand-carry to plants. None of this modifies plumbing. One important exclusion: blueberries. Greywater is alkaline from soap residues, and blueberries require acidic soil (pH 4.5–5.2) — greywater will kill them. Route blueberries to rainwater or tap water only. Greywater is fine for alkaline-tolerant plants: citrus, figs, blackberries, elderberries, and most other fruit and nut trees [*The Urban Homestead*, Ch. 6].
 
 **Safety note for households with young children:** Standing water in buckets is a drowning hazard for toddlers — approximately 25 US children drown in buckets each year. Keep greywater buckets covered, elevated, or emptied immediately after use; never leave a water-filled bucket unattended on the floor [*The Urban Homestead*, Ch. 6].
+
+**Mulch basins** where rainwater or greywater outlets into the garden. Shallow trenches with raised walls, filled with wood chips. Hold runoff until it can sink. The mulch prevents stink, evaporation, and mosquito breeding. Anything planted in a mulch basin receives a deep watering every storm. **Atlanta-specific: red clay soils absorb water slowly, so size basins wider and shallower than you would in loamy soil, and add an upside-down bucket with holes inside the basin to speed infiltration.** [*The Urban Homestead*, Ch. 6, Rainwater Harvesting Technique 4]
+
+**Depaving.** Where there's broken concrete in an alley edge, patio corner, or driveway that the landlord has no plans for, removing it converts an impermeable surface back into a rain-absorbing one. Coyne and Knutzen call it the first rainwater-harvesting technique because the harvested water never leaves the site — it goes directly into the ground [*The Urban Homestead*, Ch. 6]. Renter feasibility depends entirely on landlord negotiation, and frames best as a "we'll improve drainage" project rather than demolition.
 
 **Cycle:** rain → barrel → garden → food → kitchen scraps → compost → soil → garden. The loop closes.
 
