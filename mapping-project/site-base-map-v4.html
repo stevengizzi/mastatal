@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Site Base Map — Rancho Mastatal PDC</title>
+<title>Site Base Map — Zoobie Land PDC</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #171c17; color: #b8c8b0; font-family: 'Courier New', monospace; padding: 16px; min-height: 100vh; -webkit-user-select: none; user-select: none; }
@@ -185,8 +185,8 @@
 <body>
 <div class="wrap">
   <div class="header">
-    <h1>Site Base Map — Rancho Mastatal<span class="saved-dot" id="savedDot" title="Saved"></span></h1>
-    <p class="sub" id="subLine">PDC Design Project · Apr 2026 · 9 nodes · Elevations: Google Earth DEM (ft) · Offline</p>
+    <h1>Site Base Map — Zoobie Land<span class="saved-dot" id="savedDot" title="Saved"></span></h1>
+    <p class="sub" id="subLine">PDC Design Project · Apr 2026</p>
   </div>
 
   <div class="controls" id="controls" style="position:relative">
@@ -1899,7 +1899,7 @@ function updateClearBtn() {
 function updateSubLine() {
   const iPts = INTERIOR.length > 0 ? ` · ${INTERIOR.length} interior pt${INTERIOR.length !== 1 ? 's' : ''}` : '';
   document.getElementById('subLine').textContent =
-    `PDC Design Project · Apr 2026 · ${SITE.length} nodes${iPts} · Elevations: Google Earth DEM (${elevUnit}) · Offline`;
+    `PDC Design Project · Apr 2026`;
 }
 
 function renderStats() {
