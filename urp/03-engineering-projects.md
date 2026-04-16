@@ -97,6 +97,8 @@ A bucket in the shower catches warm-up water while waiting for hot water. 2-5 ga
 
 These manual approaches aren't glamorous, but they collectively redirect significant water from the sewer to the garden — closing a loop without touching any plumbing. Call it "bucket greywater" — the engineering is ancient.
 
+**Safety note for households with young children:** Standing water in buckets is a drowning hazard for toddlers — approximately 25 US children drown in buckets each year. Keep greywater buckets covered, elevated, or emptied immediately after use; never leave a water-filled bucket unattended on the floor [*The Urban Homestead*, Ch. 6].
+
 ---
 
 ## Problem 4: Stand-Alone Solar for a Renter

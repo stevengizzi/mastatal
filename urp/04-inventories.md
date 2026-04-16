@@ -19,7 +19,7 @@ Exhaustive lists of what can be permaculture-ified: household goods, utilities, 
 | Sunscreen | Harder to replace fully. Zinc oxide + carrier oil for mild exposure. Hats and clothing are the real answer | Hard | Clothing is the permaculture sunscreen |
 | Menstrual products | Reusable cloth pads, menstrual cups, period underwear | Easy (one-time purchase) | Fully portable, dramatic waste reduction |
 | Cleaning products (all-purpose) | Vinegar + water + citrus peels (infuse peels in vinegar for 2 weeks). Castile soap + water. Baking soda for scrubbing | Easy | Recipes portable, ingredients everywhere |
-| Laundry detergent | Soap nuts (natural, compostable). Or grated bar soap + washing soda + borax. Plant-safe formulas enable laundry-to-landscape greywater | Easy | Recipe portable |
+| Laundry detergent | Soap nuts (natural, compostable). Or grated bar soap + washing soda. Borax is fine for sewer-routed laundry but omit it if routing wash water to the garden — borax causes salt buildup that kills plants [*The Urban Homestead*, Ch. 6]. Plant-safe formulas enable laundry-to-landscape greywater | Easy | Recipe portable |
 | Dish soap | Castile soap. Or homemade base similar to laundry soap | Easy | Recipe portable |
 | Tissues/paper towels | "Unpaper towels" — reusable cloth squares. Old t-shirts cut up. Handkerchiefs | Easy | One-time switch |
 | Toilet paper | Bidet attachment ($30-50, installs in minutes, no plumber needed, removes when you leave). Reduces TP use 80%+ | Easy | Portable bidet attachment |

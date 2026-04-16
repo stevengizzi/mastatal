@@ -140,7 +140,9 @@ Rainwater harvesting is legal and supported in Georgia. Key facts:
 
 **Conserve:** mulch all container and garden soil to reduce evaporation 50-70%. Drip irrigation from rain barrel using gravity (simple timer and hose). Drought-tolerant native plantings.
 
-**Reuse (manual greywater):** kitchen greywater reuse is zero-infrastructure. Save pasta water, rice water, vegetable washing water in a bucket, use directly on garden plants. Shower bucket catches warm-up water while waiting for hot water (2-5 gallons per shower). Laundry to landscape: if the washing machine drain is accessible and you use plant-safe detergent (no boron, no sodium), redirect the drain hose to an outdoor container during the wash cycle, then hand-carry to plants. None of this modifies plumbing.
+**Reuse (manual greywater):** kitchen greywater reuse is zero-infrastructure. Save pasta water, rice water, vegetable washing water in a bucket, use directly on garden plants. Shower bucket catches warm-up water while waiting for hot water (2-5 gallons per shower). Laundry to landscape: if the washing machine drain is accessible and you use plant-safe detergent (no boron, no sodium), redirect the drain hose to an outdoor container during the wash cycle, then hand-carry to plants. None of this modifies plumbing. One important exclusion: blueberries. Greywater is alkaline from soap residues, and blueberries require acidic soil (pH 4.5–5.2) — greywater will kill them. Route blueberries to rainwater or tap water only. Greywater is fine for alkaline-tolerant plants: citrus, figs, blackberries, elderberries, and most other fruit and nut trees [*The Urban Homestead*, Ch. 6].
+
+**Safety note for households with young children:** Standing water in buckets is a drowning hazard for toddlers — approximately 25 US children drown in buckets each year. Keep greywater buckets covered, elevated, or emptied immediately after use; never leave a water-filled bucket unattended on the floor [*The Urban Homestead*, Ch. 6].
 
 **Cycle:** rain → barrel → garden → food → kitchen scraps → compost → soil → garden. The loop closes.
 
