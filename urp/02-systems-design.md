@@ -55,6 +55,22 @@ Atlanta has 200+ community gardens via Food Well Alliance (supports 300+ sites).
 ### Zone 4 — Neighborhood & Urban Commons
 Your participation, reputation, and organizing energy within the city. See 06-community.md for the full Atlanta organization ecosystem.
 
+**Neighborhood literacy via the Kevin Lynch framework.** Every neighborhood has five feature types — **paths** (streets, sidewalks, bike paths, alleys, wildlife corridors), **edges** (creeks, high-traffic avenues, transition zones), **nodes** (a pocket park, a corner store, a community building — anywhere activity clusters), **landmarks** (a stately tree, a sculpture, an unmistakable building), and **districts** (a region with distinct character). Chiras & Wann [*Superbia!*, Ch. 4, "How to Remodel a Neighborhood"] recommend walking a new neighborhood and naming its instances of each. The output is a shared mental map with your eventual cooperative-ring partners and a prioritization of where Layer-4 (Neighborhood Web) work wants to concentrate — *nodes* are where it wants to happen. Pair this walk with the asset inventory (`04-inventories.md`) and the bioregional quiz below.
+
+> **First-year bioregional literacy questions,** adapted by *Superbia!* [Ch. 3, p. 39] from Bill Devall and George Sessions, *Deep Ecology*:
+>
+> 1. Trace the water you drink from precipitation to tap.
+> 2. Describe the soil around your home.
+> 3. Name the primary subsistence techniques of the cultures that lived in your area before you.
+> 4. Name five native edible plants in your bioregion and their seasons of availability.
+> 5. Where does your garbage go?
+> 6. Name five resident and any migratory birds in your area.
+> 7. What animal species have become extinct in your area?
+> 8. What spring wildflower is consistently among the first to bloom where you live?
+> 9. What kinds of rocks and minerals are found in your bioregion?
+>
+> All nine have concrete Atlanta answers. Answering them over the first year moves the household from occupying the geography to *inhabiting* it.
+
 Key Atlanta assets: Urban Food Forest at Browns Mill (largest public food forest in US, 7.1 acres, free foraging), Truly Living Well (urban farm on Westside), Atlanta ToolBank, Metro Atlanta Mutual Aid Fund (includes timebanking), Cooperative Atlanta, Concrete Jungle (urban fruit foraging + Fruit Tree Map of 4,200+ trees), Wylde Center, Global Growers Network, Georgia Organics, MARTA, Atlanta Beltline (Southside Trail opening 2026).
 
 ### Zone 5 — The Bioregion
@@ -249,6 +265,10 @@ Protected bike lanes debuting 2026: Midtown (Juniper Complete Street Project), A
 
 #### E-cargo Bikes
 Potentially transformative for a family with young children — replacing a second car for grocery runs, community garden trips, library visits, neighborhood errands. Atlanta's relatively flat ITP terrain makes e-biking practical. Combine with MARTA for longer trips. Ideal candidate for cooperative ring sharing (see 06-community.md).
+
+#### The Five-Minute Walk as a Lease-Decision Filter
+
+Chiras & Wann identify five-minute-walk accessibility as a core sustainable-neighborhood design principle [*Superbia!*, Ch. 4, "Ten Basic Design Principles"], and ask: *what destinations should lie within five minutes of your front door?* Practical Atlanta ITP translation: grocery / corner market, coffee or café, green space / park, MARTA or frequent-bus stop, and at least one other household from the incipient cooperative ring. An apartment search that only considers three of these five is already a compromise worth naming.
 
 #### The Permaculture Transportation Design Principle
 Choose housing location first based on proximity to: MARTA station, community garden, grocery access, and key community nodes. **The most sustainable transportation decision is a short trip or no trip at all.** When evaluating ITP neighborhoods, map walking and biking distances to the resources that matter most.
