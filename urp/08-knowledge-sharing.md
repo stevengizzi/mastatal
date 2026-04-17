@@ -76,6 +76,18 @@ A structured input template (questionnaire that captures the 20-30 most importan
 
 ---
 
+## Scaling Templates
+
+### The Northwest Earth Institute Discussion-Group Model
+
+The **Northwest Earth Institute** (northwestearth.org) has seeded 300+ discussion groups nationally — participants meet in homes with printed curricula covering voluntary simplicity, sense of place, sustainable living, and related themes [cited *Superbia!*, Ch. 8, Suggestion 5]. The curriculum is the infrastructure; the hosts provide the venue; the Institute handles coordination. This is a template for scaling the URP's Cooperative Ring methodology — if the URP becomes shareable as a set of discussion-group curricula (perhaps "The Renter's Permaculture Path," "Building a Cooperative Ring," "The Four Ethics in Practice"), the NWEI model shows how distributed seeding can work.
+
+### The Citizen-Planner Training Track
+
+Many localities offer citizen-planner certificate programs that qualify graduates to serve on planning commissions [*Superbia!*, Ch. 10, "Citizen Planning"]. This is a knowledge-transfer pattern where expertise flows *into* local governance rather than out of it — professional urban planners teach residents enough urban-design literacy to participate authoritatively in zoning, traffic, and comprehensive-plan decisions. Atlanta equivalent: the NPU structure + Georgia Tech's extension programs + the Atlanta Regional Commission's occasional workshops. The URP's eventual shareability should include a pointer toward this track for households that want their contribution to land at the Movement Ecosystem layer (`06-community.md` Layer 5).
+
+---
+
 ## BASHO Integration (Noted for Future)
 
 BASHO is flagged as outside the scope of this project's initial phase but worth keeping in mind. If/when a bioregional assessment and shared household observation platform becomes available, this project's data structures should integrate cleanly. Specifically:
