@@ -19,6 +19,8 @@ For Steven and Jessie specifically: settling in Atlanta as renters with young ch
 
 The transition ethic also addresses a common failure mode in permaculture: the all-or-nothing mindset that leads to paralysis. If the only "real" permaculture is a self-sufficient homestead, then nothing a renter does counts, and they never start. Transition rejects this. It says: the renter who composts, grows herbs, shares meals with neighbors, and rides MARTA to work is practicing permaculture — just at a different scale and a different point in the journey.
 
+> **Schulz's eight-point sustainability checklist.** A useful cross-check on whether a neighborhood is shifting toward sustainability, from systems engineer Jon Schulz (Sustainable Futures Society, cited in *Superbia!* Ch. 3): (1) develop a way of learning and acting together to deliberately redevelop the neighborhood for the common good; (2) celebrate diversity and actively promote inclusion; (3) community-wide energy conservation with renewable sources; (4) community-wide water conservation with known watershed and rain/storm water put to use; (5) paths, pocket parks, picnic areas, bike storage, community gardens safe for children; (6) income-generating community businesses that treat all wastes as resources; (7) value individual and collective learning and adaptation; (8) evaluate ways of reducing transportation and its impacts. This is an independent 2003 pre-figuration of the URP's dependency-radius framing and is useful as a periodic audit instrument.
+
 ---
 
 ## Investment vs. Portability
@@ -62,6 +64,14 @@ This is import substitution at the household scale, applied to your entire econo
 ### Measuring Progress
 
 Track the dependency radius quarterly. A simple metric: what percentage of your household spending stays within each circle? The goal isn't 100% local — it's a steady, measurable shift inward over time.
+
+---
+
+## Design Principles for the Cooperative Ring
+
+Chiras and Wann, writing about remodeling existing suburban neighborhoods in *Superbia! 31 Ways to Create Sustainable Neighborhoods*, offer ten design principles worth adopting as a shared vocabulary for the Cooperative Ring (`06-community.md` Layer 3) and any future owned-land work. The principles: **Human Scale** (cohousing research identifies 25–40 households as optimum for a mutually-knowable, common-building-supporting community; 450 feet is the distance at which individuals remain recognizable), **Resource Responsibility** (neighborhood-scale efficiency dominates individual-scale efficiency), **Walkability** (the five-minute walk as a standard — what destinations should lie within five minutes of the front door?), **Open Spaces**, **Public Facilities**, **Streetscapes** ("the best time to plant a shade tree is 15 years ago; the second best is now"), **Variety** (achieved via edible landscape, garden, orchard, removed fences — not just house color), **Mixed Uses**, **Coordination**, **Maintenance** (materials and species that don't eat future capital). [*Superbia!*, Ch. 4, "Ten Basic Design Principles for Remodeling Neighborhoods"]
+
+Principle 1 gives the Cooperative Ring's 8–15-family target its upper horizon: as the ring grows past 15, it will want to consolidate further, and 25–40 households is where a common physical facility becomes viable. Principle 3 is the apartment-search filter already used in `02-systems-design.md`. Principles 9 and 10 matter at the eventual owned-land phase.
 
 ---
 
