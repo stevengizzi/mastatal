@@ -6,6 +6,10 @@ Consolidated bibliography. All claims in the other documents trace back to these
 
 ## Philosophy and Ethics
 
+- Devall, Bill, and George Sessions. *Deep Ecology.* The source of the bioregional quiz adapted in *Superbia!* Ch. 3.
+- Duany, Andres, Elizabeth Plater-Zyberk, and Jeff Speck. *Suburban Nation: The Rise of Sprawl and the Decline of the American Dream.* North Point Press, 2001. The diagnosis of the American postwar suburb; cited throughout *Superbia!* Ch. 1.
+- Lynch, Kevin. *The Image of the City.* MIT Press, 1960. The paths / edges / nodes / landmarks / districts framework applied in *Superbia!* Ch. 4.
+- Van der Ryn, Sim, and Peter Calthorpe. *Sustainable Communities: A New Design Synthesis for Cities, Suburbs, and Towns.* Definition of sustainable community as one that "exacts less of its inhabitants in time, wealth and maintenance, and demands less of its environment in land, water, soil, and fuel" (cited *Superbia!* Ch. 3).
 - TheLastFarm, *Adapt : Survive : Prevail* (Substack) — eco-socialism, permaculture, homesteading
   - "Welcome to Adapt: Survive: Prevail" (Mar 2023) — on luxurious subsistence and decommodifying homesteading knowledge
   - "5 Ways Permaculture Must Change" (Jul 2024) — on permaculture as design philosophy vs. formula, critique of invasive species advocacy
@@ -42,6 +46,7 @@ Consolidated bibliography. All claims in the other documents trace back to these
 - Permies.com forum threads on zone 7b/8a perennials and middle Georgia permaculture
 - Hemenway, Toby. *Gaia's Garden: A Guide to Home-Scale Permaculture.* Chelsea Green. Cited in *The Urban Homestead* as the source for the polycultural-bed design and the Ianto Evans bed plan.
 - Fukuoka, Masanobu. *The One Straw Revolution.* Origin of seed balls ("earth dumplings," *tsuchi dango*).
+- American Community Gardening Association (acga.org). Cited in *Superbia!* Ch. 8: 550+ local community-gardening programs. Canonical reference for starting a community garden, including their "Starting a Community Garden" fact sheet.
 
 ---
 
@@ -149,6 +154,32 @@ Consolidated bibliography. All claims in the other documents trace back to these
 
 ---
 
+## Community and Cooperative Organizing
+
+- Kretzmann, John P., and John L. McKnight. *Building Communities from the Inside Out: A Path Toward Finding and Mobilizing Community Assets.* ACTA Publications, 1997. Cited throughout *Superbia!* as the canonical methodology reference for asset-based community development. The origin of the asset-inventory practice.
+- Diers, Jim. *Neighbor Power: Building Community the Seattle Way.* University of Washington Press, 2004. The long-form account of the Seattle Department of Neighborhoods model — Neighborhood Matching Fund, 2,000+ funded projects, the municipal / grassroots interface. Cited heavily in *Superbia!* Ch. 10.
+- Shaffer, Carolyn R., Kristin Anundsen, M. Scott Peck, and Patricia Backlar. *Creating Community Anywhere: Finding Support and Connection in a Fragmented World.* Perigee, 1993.
+- Wheatley, Margaret J. *Turning to One Another: Simple Conversations to Restore Hope to the Future.* Berrett-Koehler, 2002. Cited in *Superbia!* as a foundation text for why communication matters at the core of community. Complement to NVC training.
+
+---
+
+## Cohousing and Intentional Community
+
+- *Cohousing Journal*, available from The Cohousing Network (cohousing.org). Cited in *Superbia!* as the best source for day-to-day cohousing life; regular coverage of common meals.
+- *Communities Magazine*, issue 96 (Fall 1997) — special issue on common meals in cohousing communities. Cited in *Superbia!*.
+- The Cohousing Association of the United States (cohousing.org) — clearinghouse for US cohousing communities, including Atlanta-area and Georgia-area listings.
+
+---
+
+## Organizations and Tools
+
+- Green Map System (greenmap.org). Nonprofit since the early 1990s. Provides a framework for community-green-map creation — mapping cultural and environmental assets (organic food stores, farmers' markets, nature centers, hiking trails). Cited in *Superbia!* Ch. 8.
+- Center for Understanding the Built Environment (CUBE). Provides school curricula ("Walk Around the Block") that engage kids in neighborhood asset inventory. Cited in *Superbia!* Ch. 8.
+- Northwest Earth Institute (northwestearth.org). Seeded 300+ discussion groups nationally on voluntary simplicity, sense of place, sustainable living. Potential scaling model for URP knowledge-sharing.
+- Community Greens (communitygreens.org). Nonprofit advocating shared-backyard and neighborhood-green-space projects. Cited in *Superbia!* Ch. 8 re: fence removal and shared common greens.
+
+---
+
 ## Cooperative Childcare
 
 - Inman Park Cooperative Preschool: ipcp.org
@@ -173,7 +204,10 @@ Consolidated bibliography. All claims in the other documents trace back to these
 *Full notes preserved in book-notes/*
 
 - **Coyne, Kelly & Erik Knutzen.** *The Urban Homestead: Your Guide to Self-Sufficient Living in the Heart of the City* (Expanded & Revised Edition). Process Media, 2010. Authored from Echo Park, Los Angeles. The single closest-match book in the bibliography for the URP's urban, rental, low-budget framing. Strongest chapters for URP purposes: Ch. 2 (essential projects — composter, worm bin, mulch, raised bed, self-watering container), Ch. 3 (foraging and dumpster diving), Ch. 5 (home economics — preservation, cheese, sourdough, cleaners), Ch. 6 (six rainwater techniques, greywater methodology, energy breakdown). Ch. 4 (livestock) and most of Ch. 5's brewing section are out of scope for the first 3–5 rental years. Blog: homegrownevolution.com. *See `book-notes/urban-homestead-notes.md` for detailed extraction.*
-- Dave Wann, *Superbia! 31 Ways to Create Sustainable Neighborhoods* (PDF) — to be mined
+- **Chiras, Dan & Dave Wann.** *Superbia! 31 Ways to Create Sustainable Neighborhoods.* New Society Publishers (Gabriola Island, BC), 2003. Sustainable Suburbs Project / The Sustainable Futures Society. ISBN 978-0-86571-4908. The single strongest source in this bibliography for the social / coordination layer above the household — the layer *The Urban Homestead* ignores. Where Coyne & Knutzen stay inside the house and yard, Chiras & Wann work the space *between* houses. The 31 Ways are organized as a narrative trajectory through three stages (Germination → Leafing Out → Blossoms) modeled on a fictional suburban neighborhood "Fox Run" retrofitting toward cohousing. Strongest chapters for URP purposes: Chapter 4 (ten design principles + paths/edges/nodes/landmarks/districts literacy), Chapters 5–6 (Ways 1–21, the Kitchen Table / Skill Share Circle / Cooperative Ring layer), Chapter 8 (field case studies by Way), Chapter 10 (governance and municipal-partnership patterns — Seattle Department of Neighborhoods, Blue Tulip, "why have a meeting when you can have a party"). Chapter 7 + Chapter 9 (Ways 22–31) are mostly owned-land / cohousing-scale and deferred to the URP's long-horizon phase. *See `book-notes/superbia-notes.md` for detailed extraction.*
+- Wann, Dave, John de Graaf, and Thomas Naylor. *Affluenza: The All-Consuming Epidemic.* Berrett-Koehler. Co-authored by Dave Wann. Referenced in *Superbia!* as the book that has sparked town-wide discussion groups.
+- Wann, Dave. *Reinventing Community: Stories from the Walkways of Cohousing.* Fulcrum Publishing, 2017. The sequel update to *Superbia!* — likely the next Wann-lineage target if Chiras/Wann's thinking is worth further mining.
+- Chiras, Daniel D. *The Natural House: A Complete Guide to Healthy, Energy-Efficient, Environmental Homes.* Chelsea Green, 2000. Dan Chiras's companion book on the single-household side of sustainable building.
 
 Recommended by TheLastFarm:
 - Ben Falk, *The Resilient Farm and Homestead*
