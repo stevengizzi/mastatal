@@ -8,14 +8,24 @@ The social permaculture layer: the village blueprint, Atlanta's organizational e
 
 The "village" doesn't form by accident. It requires the same design thinking as a food forest: identify needs and yields, create beneficial connections, stack functions, and invest in the system over time. The difference is the "soil" is trust, and the "plants" are relationships.
 
+An independent 2003 precedent for this blueprint exists in Chiras and Wann's *Superbia! 31 Ways to Create Sustainable Neighborhoods* — a book about retrofitting existing suburban neighborhoods rather than urban rentals, but whose five stages (Germination → Leafing Out → Your Neighborhood Blossoms, plus a prior community-building phase and a subsequent maintenance phase) map closely onto the five layers here. That two traditions working from opposite ends — suburban ownership and urban rental — arrive at the same village architecture is evidence the architecture is real and not particular to either starting point. [*Superbia!*, Ch. 5–6]
+
 ### Layer 1: The Kitchen Table (2-4 families)
 Start with regular shared meals (weekly or biweekly). Rotate hosting. Simple food. The meal IS the infrastructure. This is Zone 0 of social permaculture — it happens in your home.
+
+**The single-host rotation insight.** The N Street Neighborhood in Davis, California, began in 1979 with five students in a *rental* house hosting potluck dinners. Over 24 years they grew to 17 households sharing meals regularly, eventually retrofitting into formal cohousing. In 1979 they switched from potluck to single-host meals because per-household cooking burden compounds at scale: "The problem with potluck meals is everyone has to devote time to it. Having a single person responsible for each meal was the way to go. That way, you come home from school, work, or other activities of the day, and you just show up" (Kevin Wolf, quoted [*Superbia!*, Ch. 8, Suggestion 1]). Start with potluck while the Kitchen Table is 2–4 families; consider shifting to single-host rotation once it passes 5–6 families. The N Street story is the strongest single precedent for this project's situation — a renter-originated potluck evolved over decades into cohousing.
+
+**The "Blue Tulip" rotating ritual object.** In Elgin, Illinois, someone scavenged a four-foot wooden tulip at a garage sale and left it on a neighbor's lawn as a prank. The tulip became a rotating ritual object: whoever found it on their lawn was obligated to host a Friday-night party. "Painted Lady" parties in another Elgin neighborhood use a colorful mannequin for the same purpose [*Superbia!*, Ch. 10, "Having Fun"]. A physical object transforms "we should get together more often" into an automatic scheduler with zero coordination overhead. Adaptable to any cooperative ring — pick a weird object (a garden gnome, a flamingo, a papier-mâché anything), agree on the rule, release it, let it rotate. Especially useful for sustaining energy between formal monthly dinners.
 
 **Stacked functions:** shared meal = childcare cooperation + food sharing + relationship building.
 **Permaculture connection:** this is where you share garden surplus, swap ferments, taste each other's preserves.
 
 ### Layer 2: The Skill Share Circle (6-10 people)
 Monthly skill exchanges: one person teaches, others learn. Skills from PDC that are immediately shareable: composting, fermentation, seed saving, plant propagation, herbal medicine making, NVC. Add: repair, food preservation, energy auditing, soap making, basic sewing.
+
+**Discussion groups as action infrastructure.** Harmony Village (Golden, Colorado) runs a monthly breakfast-and-sustainability discussion group that also takes action: members have written letters to politicians, proposed solar panels and LED outdoor lighting for the community, and saved a nearby parcel of land from development [*Superbia!*, Ch. 8, Suggestion 5]. The Olde Hillcrest neighborhood (Milwaukee) runs a book club and a mother-daughter book club. The Northwest Earth Institute (northwestearth.org) has seeded over 300 discussion groups nationally on voluntary simplicity, sense of place, and sustainable living — a template the cooperative ring could adopt or form an Atlanta chapter of. Pairs naturally with the NVC practice already embedded from PDC training. Reference: Margaret Wheatley, *Turning to One Another: Simple Conversations to Restore Hope to the Future*.
+
+**Neighborhood clubs as cooperative-economics entry points.** Beyond book clubs and investment clubs (see `05-consumption-loops.md`), Chiras and Wann identify the pocket-park / theme-area pattern: Goss Grove (Boulder) converted three pocket parks at closed street-ends into themed neighborhood amenities — a bocce ball court, a bench-conversation corner, and a community-garden conversion [*Superbia!*, Ch. 8, Suggestion 4]. The theme-area move translates to Atlanta via cooperative-ring stewardship of a specific public space — an unused corner of a community garden, an adopted alleyway, a median strip.
 
 **Stacked functions:** education + community bonding + capacity building.
 **Permaculture connection:** propagation swaps, seed library, shared tool collection.
@@ -26,6 +36,8 @@ Formal or semi-formal cooperative structures:
 - **Buying club:** bulk purchasing from farmers/wholesalers, split among members. Can operate through Fresh Harvest or directly.
 - **Tool/equipment share:** lawn mower, pressure canner, dehydrator, power tools, e-cargo bike.
 - **Governance:** sociocratic/consent-based decision making (from PDC NVC training).
+
+**Babysitting co-op as the core use case for Layer 3.** Ranges from informal reciprocal care among 3–5 families (Dominique and Vivian Getliffe in Boulder share with 8 families) to formal hour-credit systems ("babysitting bucks"). "One of the most common forms of community participation we've uncovered in our research. In fact, we found them just about everywhere we looked" [*Superbia!*, Ch. 8, Suggestion 6]. This directly fills the infant/toddler cooperative-care gap named in the gap analysis below — GPCP accepts from 3 months and Inman Park / Oakhurst from similar ages, but a pre-institutional 0–24-month care layer is what the cooperative ring provides. Extends naturally to pet sitting, plant watering, mail pickup. Starting mechanism: bring it up at a shared dinner, name the interest, start small, let it formalize.
 
 **Stacked functions:** economic solidarity + childcare + food security + community resilience.
 
@@ -40,6 +52,10 @@ Beyond your intentional circle — the ambient community. Know your neighbors' n
 
 ### Layer 5: The Movement Ecosystem (city-wide)
 Plug into existing organizations: Food Well Alliance, Georgia Organics, Cooperative Atlanta, local mutual aid networks, Atlanta timebank. Contribute to the commons: volunteer at Browns Mill Food Forest, mentor at Truly Living Well, join AgLanta network.
+
+**Citizen planner / NPU participation as contribution.** Harrison Rue (cited [*Superbia!*, Ch. 10, "Citizen Planning"]): "Time and again I've seen average citizens 'get' and embrace sophisticated concepts far quicker than educated professionals stuck in 'the way we've always done it' mode." Atlanta's NPU (Neighborhood Planning Unit) system — 25 NPUs citywide, each with a planning committee that reviews zoning variances, development applications, and comprehensive-plan updates — is the local analogue of the citizen-planner pattern. Serving on an NPU planning committee is a direct Layer-5 contribution move: you bring cooperative-ring values into the formal planning decisions that shape what's possible for future rings. A one-to-two-year commitment with real influence. Search "Atlanta NPU [neighborhood name]" to find yours.
+
+**The Seattle Department of Neighborhoods / Neighborhood Matching Fund as advocacy target.** Jim Diers directed Seattle's Department of Neighborhoods from 1988 (4 staff, shoestring budget) to 2002 (100 staff, $12M budget). Their Neighborhood Matching Fund — matching municipal capital against community volunteer labor and private contributions — backed 2,000+ projects between 1989 and 2003: new parks, reforested open space, planted street trees, community gardens, restored streams, traffic circles, neighborhood plans, murals. Similar matching-fund programs now exist in Victoria BC, Eugene OR, Santa Monica, Salt Lake City, Madison, Detroit, Cleveland, and dozens of other cities [*Superbia!*, Ch. 10, p. 164]. Atlanta has partial analogues — Park Pride's Legacy Grants for park projects, NPU-level advocacy, and Food Well Alliance's community-garden support — but no unified city-level Neighborhood Matching Fund. Long-horizon advocacy target. Reference: Jim Diers, *Neighbor Power: Building Community the Seattle Way* (University of Washington Press, 2004).
 
 **Stacked functions:** gives more than it takes from the local layers, while connecting you to resources and knowledge.
 
@@ -124,6 +140,8 @@ What does it actually mean to engage with existing organizations? Four levels:
 
 **Georgia Organics** — statewide network connecting organic growers, consumers, and advocates.
 
+**The L.A. Eco-Village analogue.** Los Angeles's Eco-Village (laecovillage.org), cofounded by Lois Arkin, is the single closest operational analogue to what the Cooperative Ring is pointed at over a 20+ year horizon. Starting in the early 1990s, they retrofitted two apartment buildings in a mid-density urban neighborhood, acquired $2M in real estate through cooperative work-sharing, converted a manicured courtyard to food production, planted 100 fruit trees across the neighborhood, and built cultural and racial diversity into the membership by design. Not a cohousing greenfield; a retrofitted existing urban block. Worth tracking their current status and methodology in 2026, and worth naming as a realistic 20-year destination for a ring rooted in an Atlanta ITP neighborhood. [*Superbia!*, Ch. 8, multiple Suggestions]
+
 **Global Growers Network** (Decatur) — partners with diverse cultural communities growing fresh food. Builds networks for equitable food system driven by cultural diversity and regenerative agriculture.
 
 **Wylde Center** (Decatur/East Atlanta) — environmental education, community gardens, food scrap drop-off location.
@@ -159,6 +177,8 @@ Mapping Atlanta's existing organizations against a fully closed-loop permacultur
 5. **No formal infant/toddler cooperative care framework.** Co-op preschools serve 2-5; no established model for 0-2. Village Blueprint Layer 3 addresses this.
 
 6. **No regular repair café.** Common in Europe and Pacific Northwest US but absent in Atlanta. Powerful addition to the skill share circle.
+
+7. **No city-level Neighborhood Matching Fund.** Seattle's model (volunteer labor + private contributions matched by municipal capital; 2,000+ projects 1989–2003) has been replicated in ~20 cities per *Superbia!* (Ch. 10) but not Atlanta. Park Pride / Legacy Grants cover some of the ground for park and green-space projects; NPU support for community-led planning is real but narrow. A unified matching-fund mechanism for neighborhood-sustainability projects would be an advocacy target.
 
 **Concrete Jungle's Fruit Tree Map has direct LA-based lineage.** Fallen Fruit (fallenfruit.org) — an LA activist art collective contemporary with Coyne & Knutzen — began mapping free public fruit and advocating that cities only plant fruit-bearing trees in public parks. Concrete Jungle extended the same model to Atlanta and Athens with 4,200+ mapped trees. Naming this lineage clarifies that Atlanta's fruit-tree commons isn't idiosyncratic but part of a national movement of "fruit-as-public-good" activism. [*The Urban Homestead*, Ch. 3, "Fruit Foraging"]
 
