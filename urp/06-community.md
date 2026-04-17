@@ -31,6 +31,8 @@ Monthly skill exchanges: one person teaches, others learn. Skills from PDC that 
 **Permaculture connection:** propagation swaps, seed library, shared tool collection.
 
 ### Layer 3: The Cooperative Ring (8-15 families)
+The ten Superbia design principles — Human Scale, Resource Responsibility, Walkability, and seven others — are detailed in `01-philosophy.md`. Principle 1 gives this 8–15-family target its upper horizon: 25–40 households is where a common physical facility becomes viable.
+
 Formal or semi-formal cooperative structures:
 - **Childcare cooperative:** rotating care among trusted families. Each family contributes X hours/week.
 - **Buying club:** bulk purchasing from farmers/wholesalers, split among members. Can operate through Fresh Harvest or directly.

@@ -67,4 +67,4 @@ As of April 2026, at the midpoint of our PDC at Rancho Mastatal. This design is 
 
 Current focus: presentation deliverables for PDC Day 12 (two complementary posters — one on zones and what they contain, one on closed-loop systems and the dependency radius).
 
-Next: integrating The Urban Homestead (Kelly Coyne) and Superbia (Dave Wann) into the relevant sections.
+Both *The Urban Homestead* (Coyne & Knutzen) and *Superbia!* (Chiras & Wann) have been integrated across files 01–09. See `book-notes/` for full extraction notes.
