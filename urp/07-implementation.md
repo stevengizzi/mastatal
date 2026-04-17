@@ -48,6 +48,7 @@ The phased rollout from pre-arrival through year 5, with specific actions across
 ### Social (Layer 1)
 - [ ] Invite one neighbor couple over for a meal. Just one.
 - [ ] Say hi to immediate neighbors, learn names
+- [ ] **Pick a rotating ritual object.** Before the cooperative ring is even a cooperative ring — while it's just 2–3 families doing shared meals — adopt a Blue-Tulip-style rotating object [*Superbia!*, Ch. 10]. A weird thing (a ceramic frog, a papier-mâché tomato, a painted garden gnome) that passes from lawn to lawn; whoever wakes up to it on their lawn hosts a Friday-night-or-weekend casual gathering. Zero coordination overhead; automatic scheduler for the ambient Layer-1 work.
 
 ### Waste
 - [ ] Sign up for CompostNow pickup
@@ -78,6 +79,9 @@ The phased rollout from pre-arrival through year 5, with specific actions across
 - [ ] Expand container garden
 - [ ] First vertical system operational (tower or trellis)
 - [ ] Herb spiral established
+
+### Zone 4 (Neighborhood)
+- [ ] **Neighborhood walk with the paths/edges/nodes/landmarks/districts framework** [*Superbia!*, Ch. 4, Kevin Lynch lineage]. A deliberate afternoon walking the new neighborhood and naming each feature type. Pairs with the bioregional quiz (nine questions from `02-systems-design.md`) and the initial asset inventory (`04-inventories.md`). Output: a hand-drawn map the household and eventual cooperative-ring partners can iterate on. Establishes shared mental geography before action-planning.
 
 ### Zone 3
 - [ ] Active in community garden. Build relationships.
@@ -167,6 +171,7 @@ The phased rollout from pre-arrival through year 5, with specific actions across
 - [ ] Tool share functional
 - [ ] Childcare cooperative formalized
 - [ ] E-cargo bike acquired or shared in cooperative ring
+- [ ] **Consider a weekend retreat for mission statement + consensus training.** Once the Cooperative Ring has ~6 months of regular practice, Chiras & Wann [*Superbia!*, Ch. 8, Suggestion 10] recommend a weekend retreat (rented house or cabin, hired facilitator who teaches consensus-based decision making) to draft a shared mission statement and agree on a governance process. The mission statement should be haiku-short. The governance process should lean lighter than full sociocracy at this stage. Introduce more formal NVC / sociocratic structure only when scale or conflict demands it.
 
 ### Engineering projects
 - [ ] DIY solar air heater built and in seasonal use
@@ -192,6 +197,10 @@ The phased rollout from pre-arrival through year 5, with specific actions across
 - [ ] The social network is deep
 - [ ] Household operates as an integrated system across all five areas (food, water, energy, waste, transport)
 - [ ] Dependency radius: 70%+ in circles 1-4
+
+### The owned-land-phase Way set
+
+Several *Superbia!* Ways are not fits during the rental phase but become live at owned-land phase: tearing down backyard fences for a shared commons (Way 12); replacing asphalt driveways with porous pavers (Way 16 — identical to Coyne & Knutzen's "depaving" in *The Urban Homestead*); residential solarization (Way 21); creating a formal common house by cooperative purchase or conversion (Way 25); mixed-use neighborhood retail via converting a house to a corner store or coworking space (Way 30); multi-family housing for age/income/racial diversity (Way 31). The 27-household Harmony Village model in Golden CO and the 40-unit L.A. Eco-Village apartment purchase are the reference precedents. Carry forward as aspirations but don't make the rental-phase work dependent on them.
 
 ### Decision point
 - [ ] Stay? Buy? Move?
