@@ -68,6 +68,24 @@ Direct application of PDC KIS Botanicals training. Note that this supplements, n
 
 ---
 
+## Neighborhood Asset Inventory
+
+**Asset inventory** — distinct from skill inventory. Where a skill inventory catalogs what the people in the Cooperative Ring can *do*, an asset inventory catalogs what the *place* offers. Veteran Seattle neighborhood activist Jim Diers: "The assets a neighborhood can build on range from natural features to school playgrounds, great stores, networks, organizations, artists, and the whole range of human and financial resources, energy, creativity, and ideas" [*Superbia!*, Ch. 8, Suggestion 11 — "Create a Neighborhood Asset Inventory"].
+
+### What to catalog on arrival
+
+- **Natural features:** mature trees (especially fruit, nut, and shade canopy), creeks, parks, pollinator-attractive plantings, soil quality, solar access.
+- **Built features:** community gardens within walking radius, coffee shops and markets, independent retail, schools, churches, coworking spaces.
+- **Organizations and networks:** active neighborhood associations, NPU (Neighborhood Planning Unit) leadership, mutual-aid groups, Buy Nothing Facebook chapter, adjacent Food Well Alliance gardens, nearest Concrete Jungle mapped fruit trees.
+- **Humans:** longtime residents, local artists, people with specialized knowledge (biology, history, engineering, healthcare), elders with cultural knowledge.
+- **Infrastructure:** Beltline adjacency, MARTA stations, bus frequency, bike routes, grocery access.
+
+Atlanta-specific starting points: the Concrete Jungle Fruit Tree Map (for natural food assets), the Atlanta NPU structure (for political assets), Food Well Alliance's community garden directory (for food-growing assets), and the Atlanta Bicycle Coalition / Propel ATL transit maps. The Green Map System (greenmap.org) offers a visual framework for publishing the resulting inventory. Kretzmann & McKnight's *Building Communities from the Inside Out* is the canonical methodology reference.
+
+**Why it matters:** the asset inventory is literacy work, but it's also advocacy work. What's inventoried is what gets defended when a developer targets it, and what gets shared when a new cooperative-ring family arrives.
+
+---
+
 ## Ancestral Skills
 
 Skills humans practiced for millennia before industrialization, categorized by current relevance to an urban renter household.
