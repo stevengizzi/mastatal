@@ -34,6 +34,8 @@ Beyond your intentional circle — the ambient community. Know your neighbors' n
 
 **Permaculture connection:** your front yard garden is a conversation starter and a demonstration site.
 
+**On neighborhood watch.** The underlying pattern — neighbors who know each other's routines and look out for unusual activity — is valuable and old. Chiras and Wann endorse formal Neighborhood Watch programs as a starting move [*Superbia!*, Ch. 8, Suggestion 3]. In 2026 Atlanta, the formal police-liaison model and its Nextdoor amplification carry real risks: surveillance patterns, racial profiling, over-escalation. The URP's version of the pattern is the Neighborhood Web itself — mutual recognition, visible presence, active front-yard life (parkway gardens, porch sitting, walking errands). A birdbath-and-garden conversation across a fence is early-warning infrastructure that doesn't route through law enforcement. This does what neighborhood watch claims to do, with none of its risks.
+
 **Pirate / guerrilla gardening in medians, parkways, and vacant lots.** The parkway strip between sidewalk and street is public land; anything grown there is legally public food. Coyne and Knutzen report their own two-year parkway vegetable garden (square raised beds on the public median) drew "nothing but pleasant comments from our neighbors, and no interaction with the city, though technically what we have done is illegal" [*The Urban Homestead*, Ch. 1]. Neighbors brought their kids over to see carrots growing. This became a key vector for community involvement. For Atlanta's front-yard culture, parkway planting is a concrete, low-stakes first move in building Layer 4 (the neighborhood web) after arrival — it turns a commute into a conversation.
 
 ### Layer 5: The Movement Ecosystem (city-wide)
@@ -44,6 +46,14 @@ Plug into existing organizations: Food Well Alliance, Georgia Organics, Cooperat
 ---
 
 ## Governance: How the Village Makes Decisions
+
+### Starting Light
+
+The formal tools below are the right destination; they are not the right starting point. In year 1, governance is a shared Signal thread, a rotating ritual object (see Layer 1), and single-host meals — that's it. No bylaws, no decision-making protocol, no mission statement. Let the ring discover what it actually does before trying to name what it is.
+
+Year 2–3, once enough practice has accumulated: draft a mission statement — haiku-short. Examples from the field: *West Park, Canton OH:* "dedicated to preserving and securing our neighborhood's integrity and history, utilizing the many talents and ideas of our residents, ultimately creating a safe and desirable community." *N Street, Davis CA:* "develop a common house, become ecologically sound, encourage diversity, and develop neighborhood celebrations." A weekend retreat with a hired facilitator to learn consensus decision-making is the recommended formalization step before adopting the sociocratic structure below. [*Superbia!*, Ch. 8, Suggestion 10]
+
+### Year 2+: Consent-Based Governance
 
 From the PDC's NVC training plus sociocratic principles:
 
@@ -57,6 +67,10 @@ From the PDC's NVC training plus sociocratic principles:
 
 **Regular retrospectives.** Monthly or quarterly "how are we doing?" conversations. Adjust the system, not the people.
 
+### Celebration as Infrastructure
+
+Jim Diers, directing Seattle's Department of Neighborhoods for fourteen years: *"Why have a meeting when you can have a party?"* In Seattle, most neighborhood meetings are potlucks; compost-turning is a "compost social"; an official Neighbor Appreciation Day in February triggers festivals citywide. A cooperative ring held together by process alone will not survive the conflicts that a cooperative ring that throws parties will. Name regular joy and ritual play as first-class governance infrastructure — co-equal with consent-based decisions and NVC protocol, not an afterthought. [*Superbia!*, Ch. 10, "Having Fun"]
+
 ### Failure Modes to Design Against
 
 | Failure mode | Prevention |
@@ -64,9 +78,11 @@ From the PDC's NVC training plus sociocratic principles:
 | Free-rider problem | Clear expectations. Minimum contributions defined. |
 | Burnout of organizers | Rotate roles. Rest is productive. Care for caregivers. |
 | Gendered labor imbalance | Make it explicit. Track who does what. Men: do the dishes. |
-| Ideological gatekeeping | Focus on shared practice, not shared ideology. You don't need to agree about capitalism to share a meal. |
+| Ideological gatekeeping | Focus on shared practice, not shared ideology. You don't need to agree about capitalism to share a meal. The cooperative ring carries an explicit ethical commitment to diversity-by-design: mixed-income, multi-generational, multi-racial rings, not as an afterthought but as a structural goal. The principle appears in *Superbia!* (Way 31), but the 2003 framing is dated; draw the current framing from Metro Atlanta Mutual Aid Fund, Cooperative Atlanta, and Global Growers Network — organizations already doing this work in Atlanta's specific racial and economic landscape. |
 | Social drama | NVC protocol. Address early. Accept that not every relationship will deepen — that's OK. |
 | Over-commitment | Start small. One shared meal before a co-op. Let it grow organically. |
+| Silent collapse of shared resources | Assign named roles. The L.A. Eco-Village "compost queen" pattern: every shared thing — tool library, compost system, e-cargo bike, seed library — has a visible tender with a title. No title, no tending. [*Superbia!*, Ch. 8, Suggestion 14] |
+| Premature formality | Lead with lightweight coordination in year 1 (single-host meal rotation, rotating ritual object, shared Signal thread). Introduce mission statement in year 2–3, sociocratic structure in year 2+. [*Superbia!*, Ch. 8, Suggestion 10] |
 
 ---
 
